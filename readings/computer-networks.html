@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="styles/local.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Reading List</title>
+  </head>
+  <body>
+
+<!--complete-->
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Reading List</h1>
+    </header>
+
+    <main id="computer-networks">
+      <section id="preamble">
+        <div class="book-cover">
+          <image src="https://www.pearsonhighered.com/assets/bigcovers/0/1/3/2/0132126958.jpg"
+                 alt="The cover from the book: Computer Networks, Fifth Edition"/>
+        </div>
+
+        <h2>Computer Networks</h2>
+        <h4>August 1, 2017</h4>
+
+        <p>
+          I absolutely loved this book! It offered for me a much needed soft but detailed introduction into how
+          the internet works. As a coder, as soon as you want to code anything that accesses the internet,
+          understanding the content laid out in this book is essential.
+        </p>
+
+        <p>
+          The major narrative in this book I would say is <em>transmission</em>. Building on this the main themes
+          I would say are <em>what do we need to make transmission possible?</em> followed up with <em>how do we
+          then go about making transmission possible?</em> To this end then, the plot ends up being a layer cake:
+          Protocol layers of communication. The first two chapters deal with the ability to transmit, while the
+          remainder deals with how best to transmit.
+        </p>
+
+        <p>&mdash;</p>
+
+        <p>
+          I found this text to be very logically organized, and just as importantly, it lets you see the technical
+          details of how to build an internet but without boring you. As a reference, it offers enough of the landscape
+          to get you started.
+        </p>
+
+        <p>
+          Some of the application layer stuff is beginning to be dated, and the security and ethics are definitely
+          dated given how much the world wide web has changed, but otherwise I found this book to be very relevant
+          for any coder wanting to write apps that use the internet&mdash;which is pretty much everyone these days.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#chapter_01">Chapter 1 - Physical Layer</a>
+          </li>
+          <li>
+            <a href="#chapter_02">Chapter 2 - Data Link Layer</a>
+          </li>
+          <li>
+            <a href="#chapter_03">Chapter 3 - Medium Access Control Layer</a>
+          </li>
+          <li>
+            <a href="#chapter_04">Chapter 4 - Network Layer</a>
+          </li>
+          <li>
+            <a href="#chapter_05">Chapter 5 - Transport Layer</a>
+          </li>
+          <li>
+            <a href="#chapter_06">Chapter 6 - Application Layer</a>
+          </li>
+          <li>
+            <a href="#chapter_07">Chapter 7 - Security and Ethics</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="chapter_01"></div>
+
+      <section>
+        <h3>Chapter 1 - Physical Layer</h3>
+
+        <p>
+          This chapter was interesting in the various transmission hardware it explained. Even in day to day life,
+          society still offers many details about how our technologies work, but I find there's very little when
+          it comes to the hardware infrastructure that makes the internet possible. I think I saw a TEDtalk once.
+          That's about it.
+        </p>
+
+        <p>
+          I especially liked the engineering concepts introduced. I come from a math background, not an engineering
+          background, so things like <strong>multiplexing</strong> I found conceptually fascinating!
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_02"></div>
+
+      <section>
+        <h3>Chapter 2 - Data Link Layer</h3>
+
+        <p>
+          This chapter was more theoretical. Knowing the available hardware from the previous chapter, we're taken
+          to looking at how to make transmissions across such hardware reliable. I enjoyed the practical considerations
+          as this chapter still split up the discussion making good comparisons between physical and wireless connectivity.
+          At the end of the day though, it was more about <strong>error correction</strong>, as well as sustainable
+          transmission&mdash;which is to say smoothly paced and synchronous transmissions, for example.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_03"></div>
+
+      <section>
+        <h3>Chapter 3 - Medium Access Control Layer</h3>
+
+        <p>
+          My favorite part of this chapter is finding out what MAC means, and how it applies to the internet. Mostly
+          because everytime I booted up a computer when I was originally attending school, the screen always mentioned
+          a "MAC Address" and I always wondered what that was, haha.
+        </p>
+
+        <p>
+          That's exactly it though. With the potential of transmission discussed in the previous two chapters,
+          we finally get to take a look at an actual end to end transmission. As this is an engineer's book,
+          we mitigate complexity through <em>stratification</em>. This is the first layer beyond the physical,
+          and is the simplest. This chapter focuses on local transmission from device to device within a single
+          network, each device having its own identifiable MAC address.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_04"></div>
+
+      <section>
+        <h3>Chapter 4 - Network Layer</h3>
+
+        <p>
+          The network layer is where things finally start coming together. It's the IP layer, the <em>Internet Protocol</em>.
+          As a programmer, I've written a few applications which make use of the internet protocol. Mostly I was relying on libraries
+          which had good enough documentation that I managed to succeed with my code, but I only kind of knew what I was doing.
+        </p>
+
+        <p>
+          I'm not saying this is the preferred approach, but when you're self-taught it's also difficult sometimes to find
+          comprehensive material to teach how an entire technology stack works. I am absolutely grateful to this book,
+          and this chapter in particular as it illuminated so many words I had come across previously such as
+          <strong>packets, routing, traffic, control, shaping, IPv4, IPv6</strong>. Many of these concepts I had intuitive
+          understandings, enough to get by, but it's so much more satisfying to find something definitive.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_05"></div>
+
+      <section>
+        <h3>Chapter 5 - Transport Layer</h3>
+
+        <p>
+          In a way, you can consider the network layer an explanation of the <em>capability of transmission</em>, as it
+          laid down the IP infrastructure. In that case, the transport layer explores how to go about transmitting at this level
+          of complexity. In particular, this is where one learns about things like <strong>sockets, connection establishments,
+          connection releases, error correction</strong>.
+        </p>
+
+        <p>
+          The other valuable knowledge this chapter introduces is that there are two transport layer protocols:
+          <strong>Transmission Control Protocol</strong> (TCP) as well as <strong>User Datagram Protocol</strong> (UDP).
+          I never knew there were two ways to send a message across the internet.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_06"></div>
+
+      <section>
+        <h3>Chapter 6 - Application Layer</h3>
+
+        <p>
+          For me, the most useful part of this chapter was in understanding how the <strong>Domain Name System</strong>
+          (DNS) works. I've run into the term, especially in learning to use linux, but it was kinda vague until now.
+          I definitely found understanding this layer worthwhile, as it helped clarify to me how applications use
+          <strong>ports</strong>, and how <strong>uniform resource locators (urls)</strong> actually work.
+        </p>
+
+        <p>
+          So much of the internet is just done for us, we don't even question it, so it's nice to see the processes
+          behind these things.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_07"></div>
+
+      <section>
+        <h3>Chapter 7 - Security and Ethics</h3>
+
+        <p>
+          This was the one layer that didn't fit the narrative, or rather the <em>mitigation strategy</em>. In a way,
+          security and ethics are orthogonal considerations, but I tend to agree with the general assessment given in
+          this chapter that <strong>security needs to be interleaved</strong> within this layer cake, it needs to exist
+          within each protocol in the technology stack. My only criticism&mdash;not just for this book but for this and so
+          many others&mdash;is that security is always an after-thought. Then again, many of the books I've read were written
+          long before this newer more dangerous internet. The threat vectors of the day were immature in comparison to what
+          needs to be taken into account today.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

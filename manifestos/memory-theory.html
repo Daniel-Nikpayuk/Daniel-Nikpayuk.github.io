@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Language Design</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Language Design</h1>
+    </header>
+
+    <main id="memory-theory">
+      <section id="preamble">
+        <h2>Memory Theory: A narrative for the design of pointer memory</h2>
+        <h3>January 7th, 2018</h3>
+
+        <p>
+          <strong>Manifest Statement</strong>: <em>Pointer memory is a fundamental context of computation. As such, it deserves
+          its own axiomatic type system, so as to inform any other design which relies on it as a dependency.</em>
+        </p>
+      </section>
+
+      <section id="main">
+        <p>
+          At the C/C++ level, pointer memory is so fundamental to the construction of so many other data structures,
+          it deserves its own clean design. Unfortunately, this is not the case: The history and the development of C
+          was at a time when there were more restrictive hardware constraints, less restrictive security constraints,
+          and before the time of emergent, ubiquitous, modern, programming language theories. Furthermore, the design of C
+          was tethered or indexed to assembly language, and so memory constructs followed the underlying narratives of register
+          machines. This is problematic as it does not translate to higher level narratives used in recent programming languages.
+        </p>
+
+        <p>
+          <strong>I declare</strong>, the missing narrative approach to cleanly designing minimalist memory is to divide
+          such memory into the following layers of increasing complexity: <em>bits, bytes, pointers, segments, hooks, links</em>.
+          For each layer, it is expected we devise a minimalist interface model which allows us to <em>navigate</em> and
+          <em>mutate</em> the internal states of these memory constructs. Our minimalist interface model should be built
+          from the basic symbols of memory: <em>name, location, internal state</em>. Finally, each layer is thus built on
+          top of the previous layer, leading to our desired axiomatic type system.
+        </p>
+
+        <p>
+          Finally, I have already devised such a model, and reference it in my public repository of essays under the title:
+          <a href="https://github.com/Daniel-Nikpayuk/Mathematics/blob/master/Essays/Axiomatic%20Pointer%20Memory/memory.pdf">Axiomatic
+          Pointer Memory</a>.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

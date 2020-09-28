@@ -1,0 +1,402 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Mooc Work</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Mooc Work</h1>
+    </header>
+
+    <main id="audio-signal-processing-for-music-application">
+      <section id="preamble">
+        <h2>Audio Signal Processing for Music Application</h2>
+        <h4>October 1st, 2016</h4>
+
+        <p>
+          This coursera mooc was offered by Universitat Pompeu Fabra, Barcelona (and Stanford University),
+          the main instructor being Xavier Serra.
+        </p>
+
+        <p>
+          I originally signed up for this mooc maybe 2 years ago? I started into it but it seemed more intense than I had first thought,
+          and I had other responsibilities at the time, so I left it. Having taken it a second time, I'm glad I did. I'm glad I put in
+          the effort and commitment required. It was my first real attempt at and introduction to <strong>signal processing</strong>
+          the <strong>engineer's way of thinking</strong> in particular. It pushed me outside of my comfort zone, and has expanded
+          my academic perspective. I'm glad and grateful.
+        </p>
+
+        <p>
+          As I'm writing this preamble, I have the advantage of hindsight. I'm able to say this course is broken down into three parts:
+          Weeks 1-4 are theory and tools needed to do audio signal processing, namely the <strong>fast fourier transform</strong>;
+          Weeks 5-7 build more specific theoretical models of audio analysis/synthesis; finally weeks 8-10 are more about applications.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#week_00">Week 0 - Introduction</a>
+          </li>
+          <li>
+            <a href="#week_01">Week 1 - Overview</a>
+          </li>
+          <li>
+            <a href="#week_02">Week 2 - Discrete Fourier Transform</a>
+          </li>
+          <li>
+            <a href="#week_03">Week 3 - Fourier Transform Properties</a>
+          </li>
+          <li>
+            <a href="#week_04">Week 4 - Short-time Fourier Transform</a>
+          </li>
+          <li>
+            <a href="#week_05">Week 5 - Sinusoidal Model</a>
+          </li>
+          <li>
+            <a href="#week_06">Week 6 - Harmonic Model</a>
+          </li>
+          <li>
+            <a href="#week_07">Week 7 - Sinusoidal plus Residual Modeling</a>
+          </li>
+          <li>
+            <a href="#week_08">Week 8 - Sound Transformations</a>
+          </li>
+          <li>
+            <a href="#week_09">Week 9 - Semantic Description</a>
+          </li>
+          <li>
+            <a href="#week_10">Week 10 - Concluding Topics</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="week_00"></div>
+
+      <section>
+        <h3>Week 0 - Introduction</h3>
+        <h4>October 5th, 2016</h4>
+
+        <p>
+          I decided to title this <em>week 0</em>, it's a lot like the first class of a course in university.
+          You pick up your syllabus, learn about your instructor(s), class expectations, overview of the course,
+          that kind of stuff. I do like how they've chosen to structure the mooc videos, breaking them down into
+          <em>theory, demonstration, programming</em>. It's nice, because you have the theory, then you can see
+          it in action with demonstrations, then you get an overview of the programming assignment.
+        </p>
+
+        <p>
+          This audio signal processing mooc is a 10 week course. I'll try to get it done in 2!
+        </p>
+      </section>
+
+      <div class="anchor" id="week_01"></div>
+
+      <section>
+        <h3>Week 1 - Overview</h3>
+        <h4>October 7th, 2016</h4>
+
+        <p>
+          Week 1 was a pretty standard week 1 as far as moocs go. It was more of a conceptual overview: What is Audio signal processing?
+          Analog vs digital signals, that sort of thing, ending in basic math prerequisites.
+        </p>
+
+        <p>
+          The applications such as <strong>compression, transformation, synthesis, semantic description</strong> seem interesting,
+          they definitely offer motivation, but looking ahead they're pretty far off still, it seems we have a lot of theory to
+          get through first.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_02"></div>
+
+      <section>
+        <h3>Week 2 - Discrete Fourier Transform</h3>
+        <h4>October 10th, 2016</h4>
+
+        <p>
+          As I proclaimed previously, I am looking to get through this course in two weeks. I think this is possible because
+          I had initially taken this course about two years ago. I had to drop the class as they say, but I skimmed the videos
+          at the time trying to get a feel for what signal processing is all about, and finding a narrative to ease me into
+          things this time.
+        </p>
+
+        <p>
+          This week as a lot of heavy theory: The <strong>discrete Fourier transform, DFT equation, complex exponentials,
+          scalar product in the DFT, DFT of complex sinusoids, inverse-DFT</strong>. I don't feel it's rushed, but everything
+          builds on this later on so it can't be taken for granted now. It's worth doing the assignments as they get you
+          to process what you've learned even further.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_03"></div>
+
+      <section>
+        <h3>Week 3 - Fourier Transform Properties</h3>
+        <h4>October 13th, 2016</h4>
+
+        <p>
+          Now that we know how the DFT is defined, this week we continue with our exploration looking at
+          <strong>Fourier transform properties</strong>. In particular we learned about <strong>linearity,
+          shift, symmetry, convolution, energy conservation</strong> with a definition of </strong>decibels</strong>.
+          We also explored best practices in actually using the DFT such as <strong>phase unwrapping, zero-padding</strong>,
+          not to mention the <strong>fast Fourier transform</strong> (FFT) as optimization, with its own best practice
+          of <strong>zero-phase windowing</strong>.
+        </p>
+
+        <p>
+          I won't lie, I don't fully get all of what's going on here. I'm trying to keep up, I understand each individual point,
+        </p>
+      </section>
+
+      <div class="anchor" id="week_04"></div>
+
+      <section>
+        <h3>Week 4 - Short-time Fourier Transform</h3>
+        <h4>October 18th, 2016</h4>
+
+        <p>
+          I've been rushing through the last few weeks because I could, but I finally had to slow down this week.
+          After two weeks with the DFT, somehow the <em>short-time Fourier transform</em> (STFT) felt alien, foreign,
+          and forced. Individually, I understood the <strong>STFT equation, analysis windows, FFT size</strong> and
+          <strong>Hop size, time-frequency compromise, inverse STFT</strong>, but I also felt like I didn't really
+          understand why we're specializing in an alternative discrete transform as compared with the general variety
+          we just learned about. This part the instructors didn't explain very well.
+        </p>
+
+        <p>
+          After researching it a bit further, I've found the perfect example: <strong>Spectrograms</strong> from linguistic
+          analysis. I've taken some linguistics in the past, and in the phonetic analysis component we study a visual
+          representation of speech sounds called a spectrogram. It's like: If we apply the DFT to short periods of time
+          along such a recording, we can analyse each small interval of time and determine the frequencies for that region.
+          So when you're looking at a spectrogram, it's like you're looking at a 3D plot from above, where the time axis follows
+          rightward as the recording continues, and each time segment maps outward showing the prevalence of certain frequencies
+          over others as those regions are darker and more defined.
+        </p>
+
+        <p>
+          I dunno, maybe this sounds obvious to you, but I was never trained as an engineer, and I never had any in person
+          teacher explain these things to me, so if you don't know the story in advance, it's not obvious until it is, you know?
+          Anyway, that's my experience it seems. At least I'm starting to understand how this all works now!
+        </p>
+
+      </section>
+
+      <div class="anchor" id="week_05"></div>
+
+      <section>
+        <h3>Week 5 - Sinusoidal Model</h3>
+        <h4>October 22nd, 2016</h4>
+
+        <p>
+          This week as a little boring for me. I've taken enough math and physics in the past I know how sinewaves work
+          and how they correspond nearly to pure tones in nature, and form the basis of more complex sounds. In any case
+          we specifically went into the <strong>sinusoidal model equation, sinewaves in a spectrum, sinewaves as spectral peaks,
+          time-varying in spectrogram, sinusoidal synthesis</strong>.
+        </p>
+
+        <p>
+          The bigger thing for me (in terms of my current interest) is how this relates back to everything else and how it'll
+          be applied coming up. I don't really see it yet, I'll just have to wait. Other than that, the homework assignments
+          have been pretty time consuming and challenging so far.
+        </p>
+
+      </section>
+
+      <div class="anchor" id="week_06"></div>
+
+      <section>
+        <h3>Week 6 - Harmonic Model</h3>
+        <h4>October 26th, 2016</h4>
+
+
+        <p>
+          This audio signal processing mooc is taking longer than expected. I admit it.
+        </p>
+
+        <p>
+          The hardest part for me I feel is that engineers use the exact same math but "invent" entirely new lexicons to describe
+          the same concepts. They don't do it to be difficult, they do it because embedded within these variant languages of theirs
+          are alternative connotations, all of which shape an alternate narrative story, and that makes a difference.
+        </p>
+
+        <p>
+          It's hard for me because I have to learn an entirely new language and figure out a hidden implicit story, and yet this is
+          applied to the same math otherwise that I already know. Having to discern and differentiate the subtleties of all this is
+          slowing me down&mdash;especially because I am trying to learn it thoroughly and well.
+        </p>
+
+        <p>
+          Anyway, our content this week was regarding <strong>harmonic model equation, sinusoids-partials-harmonics,
+          monophonic/polyphonic signals, harmonic detection, fundamental frequency detection.</strong>
+        </p>
+
+        <p>
+          I'm familiar with harmonics in a general sense having taken some linguistics previously which overlapped with what
+          is taught here. That helps for sure. Regardless, I think I'm starting to see where we're going with this and how
+          it applies to signal processing in general. I mean being able to model voices is a definite application of audio
+          manipulation in <em>audicity</em> for example, so I can see how those sound transformation tools might actually
+          be designed and built. Then again, maybe I should wait a little longer and see.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_07"></div>
+
+      <section>
+        <h3>Week 7 - Sinusoidal plus Residual Modeling</h3>
+        <h4>November 1st, 2016</h4>
+
+        <p>
+          This week we looked at the <strong>stochastic model, stochastic approximation of sounds, sinusoidal/harmonic plus
+          residual model, residual subtraction, sinusoidal/harmonic plus stochastic model, stochastic model of residual.</strong>
+        </p>
+
+        <p>
+          Okay! Things are finally starting to click with me here. The way I see it, we take the harmonic model and use it to
+          approximate a common sound such as human voice or a musical instrument. But this harmonic model (or the basic sinusoidal
+          model) doesn't approximate everything within the recorded sound. So we take that original recording, and "subtract"
+          our harmonic approximation and we're left with a recording of the remaining sounds (the <strong>residual</strong>).
+          It seems people with our physical oral/nasal cavities create echoes which we take for granted as parts of the sounds
+          we make when speaking.  Furthermore, there are many instruments (such as the trombone) which have similar echo chambers
+          which end up creating <em>percussive</em> sounds which form actual sound content, not just noise&mdash;even if we take
+          it for granted.
+        </p>
+
+        <p>
+          So, it's like we've <strong>stratified</strong> our signal. We have an original sound recording, full of complex sounds,
+          and as engineers we are looking to <strong>mitigate</strong> this complexity of sound by peeling back layers of its
+          complexity through layers of approximation. We subtract the harmonic layer and we're left with a percussive residual layer,
+          which we then approximate using a <strong>stochastic model</strong>.
+        </p>
+
+        <p>
+          I'm really starting to like audio signal processing!
+        </p>
+      </section>
+
+      <div class="anchor" id="week_08"></div>
+
+      <section>
+        <h3>Week 8 - Sound Transformations</h3>
+        <h4>November 6th, 2016</h4>
+
+        <p>
+          So far I've learned a lot of details in this course I know I will need more practice with. Otherwise I'm starting (I think)
+          to become comfortable with the bigger picture of what's going on and what we're actually doing when we say we're doing
+          audio signal processing. I feel may be able to pass this mooc now&mdash;this time around, we'll see&mdash;but I still have to admit
+          this engineer's way of signal processing as a whole language and methodology unto itself is gonna take some time to get use to.
+          This of course is why it matters I start learning all of this now rather than later :)
+        </p>
+
+        <p>
+          This week was all about application. I loved it! I had so much fun seeing just how all this theory pays off, not to mention
+          now having an overall idea of how sound software like <em>audacity</em> actually work under-the-hood, so to speak.
+        </p>
+
+        <p>
+          Our topics for this week:
+        </p>
+
+        <ul>
+          <li>
+            Short-time Fourier transform - <strong>filtering, morphing</strong>.
+          </li>
+          <li>
+            Sinusoidal model - <strong>time and frequency scaling</strong>.
+          </li>
+          <li>
+            Harmonic plus residual model - <strong>pitch transposition</strong>.
+          </li>
+          <li>
+            Harmonic plus stochastic model - <strong>time stretching, morphing</strong>.
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="week_09"></div>
+
+      <section>
+        <h3>Week 9 - Semantic Description</h3>
+        <h4>November 12th, 2016</h4>
+
+        <p>
+          It seems like things are starting to wind down in terms of the heavy content of the course. I'm glad, haha.
+          I'm always happy to learn more, but sometimes you do need a break from the heavy math. Even me.
+        </p>
+
+        <p>
+          This week we discussed <strong>sound/music description</strong>. Given our tools for modeling and analyzing sound,
+          we already have a lot to work with in finding measures, metrics, and general ways to compare and contrast audio
+          signals and recordings: <strong>spectral-based audio features, description of sound/music events and collections</strong>.
+          Beyond that, I'd say this week has so far been the weakest in the course. We didn't really go in depth in any way,
+          just explored the possibilities.
+        </p>
+
+        <p>
+          The fact that this week was slow did give me the opportunity to return to some of the concepts introduced earlier
+          in the course, namely that of the <strong>analysis window</strong> when implementing the STFT. In particular,
+          just for clarity, the windows introduced in this course have been: <strong>rectangular, hanning, hamming, blackman,
+          </strong> and <strong>blackman-harris</strong>.
+        </p>
+
+        <p>
+          I mean I get <em>how</em> these windows are applied, and analytically I get <em>why</em> they're applied, but the whole
+          concept of applying them still lacks intuition, it still lacks a story for me. Fortunately, in this nineth week, our
+          instructor Xavier Serra describes <strong>filter banks</strong> which is another variety of <em>smoothing window</em>.
+          He describes their application as a change of the signal perception to more closely match human hearing. We're better
+          at hearing subtle change in pitch at lower frequencies than higher ones&mdash;and I finally get it! This whole windowing
+          aspect of signal processing is not about changing the typological <strong>context</strong>, but rather it's about changing
+          the typological <strong>distribution</strong>, and we do it to change our perception of the data. Change in perspective
+          in the discrete formal language world differs from the continuous formal language world, and now I see how. For example
+          in a vector space (as discrete structure) a change in perspective is a change in basis. In the continuous world it's about
+          changing distributions. Interesting!
+        </p>
+
+        <p>
+          Well I say "I get it", but really it's just the first stepping stone intuition, but at least I finally have a starting point
+          to a story I otherwise don't yet know.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_10"></div>
+
+      <section>
+        <h3>Week 10 - Concluding Topics</h3>
+        <h4>November 19th, 2016</h4>
+
+        <p>
+          This week we had a review of class, and we took a look <strong>beyond audio signal processing for music applications</strong>.
+        </p>
+
+        <p>
+          We didn't go heavy into anything, but I was happy with this week as we got to see some really interesting areas of research
+          and development, as well as cutting-edge applications such as <strong>vocaloids</strong>!
+        </p>
+
+        <p>
+          It turns out the <em>Music Technology Group</em> (MTG), the people who made this mooc were in collaboration with
+          <em>Yamaha</em> to make Vocaloids. They even reference Hatsune Miku haha. If you don't know who that celebrity is,
+          please watch <a href="https://www.youtube.com/watch?v=egcfC7PCneQ">Kids React</a>. It's really cool finding out
+          I got my introductory signal processing lessons from such a group.
+        </p>
+
+        <p>
+          Since the course is winding down, I will critique (or complain) that the quality of this course could be a bit better
+          regarding narrative pedagogical design and similar such things. Engineers aren't always known to be natural communicators.
+          Regardless, it's not like it was horrible either, I'm not trying to overstate the complaint. They definitely provide lots
+          of quality reference material of the landscape for those who want to delve deeper. I'll also admit it was harder than
+          I thought it'd be, and I learned a lot. I was gonna share my final music composition, but it turned out really weird
+          and aesthetically unpleasing ahah. I tried to over-complicate things, as always. I won't be quitting my day-job
+          (or my night-job) any time soon to become a music composer, I'll tell you that.
+        </p>
+
+        <p>
+          I guess all that's left to say is: Yeah! I'm finally finishing my audio signal processing for music application mooc!
+          All in all I'm glad I took this course.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

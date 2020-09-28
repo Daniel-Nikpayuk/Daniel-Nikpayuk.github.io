@@ -1,0 +1,43 @@
+
+#branch-table
+{
+    display: grid;
+
+    grid-template-columns: repeat(2, 25%);
+
+    color: purple;
+
+    padding-left: 4%;
+}
+
+/*******************************************************/
+
+.module-paradigm
+{
+    width: 95%;
+
+    padding-top: 4%;
+    padding-bottom: 1.5%;
+    margin: 0;
+}
+
+sup
+{
+    font-size: 65%;
+}
+
+ol
+{
+    list-style-type: decimal;
+}
+
+ol > ol
+{
+    list-style-type: lower-latin;
+}
+
+blockquote
+{
+    font-style: italic;
+}
+

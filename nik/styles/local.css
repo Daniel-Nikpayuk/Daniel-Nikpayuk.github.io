@@ -1,0 +1,22 @@
+
+#branches
+{
+    display: grid;
+
+    grid-template-areas:
+        "metaric metaric-hint"
+        "grammaric grammaric-hint"
+        "numeric numeric-hint";
+
+    grid-template-columns: repeat(2, 25%);
+}
+
+#metaric	{ grid-area: metaric; }
+#metaric-hint	{ grid-area: metaric-hint; }
+
+#grammaric	{ grid-area: grammaric; }
+#grammaric-hint	{ grid-area: grammaric-hint; }
+
+#numeric	{ grid-area: numeric; }
+#numeric-hint	{ grid-area: numeric-hint; }
+

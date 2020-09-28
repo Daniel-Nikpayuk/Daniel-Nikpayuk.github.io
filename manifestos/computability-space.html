@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Language Design</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Language Design</h1>
+    </header>
+
+    <main id="computability-space">
+      <section id="preamble">
+        <h2>Computability Space: A paradigm for computational design</h2>
+        <h3>April 13th, 2018</h3>
+
+        <p>
+          <strong>Manifest Statement</strong>: <em>Computing science as well as industry oriented programming deserve
+          the same principles of design which make mathematical spaces and number systems as potent and utilizable as they are.</em>
+        </p>
+      </section>
+
+      <section id="main">
+        <p>
+          What are the design properties of mathematical spaces for which I speak?
+        </p>
+
+        <ol>
+          <li>
+            <strong>Navigable Complexity (Interface Theory, Structural Typology)</strong>:
+
+            <p>
+              Let's use the space <math>R<sup>3</sup></math>, the 3-dimensional product of real numbers as a prototypical example.
+            </p>
+
+            <p>
+              It has a concrete constructive grammar. It's built from the real line <math>R</math> and the grammatical <em>product</em>
+              construct. The real line is its own space which has its own constructive grammar, but we focus only on our current layer
+              of abstraction.
+            </p>
+
+            <p>
+              Once this space is constructed, we then inventory universal navigational systems. Basically, we have a space
+              of objects, so how do we access them? The most natural one is the <em>cartesian</em> coordinate system,
+              which is constructed directly from the navigation system of the real line. If we start at the <em>origin</em>,
+              we then take advantage of the monoids of <em>addition</em> and <em>multiplication</em> to move to the coordinate
+              of interest. There are of course alternative coordinate systems, namely <em>spherical</em> as well as
+              <em>cylindrical</em> coordinates.
+            </p>
+
+            <p>
+              If we were to take a bigger picture view of spaces like this, we would ask the question: Why this space? What makes
+              it special? Mathematical constructive grammar is potent enough we could construct all sorts of navigable spaces,
+              so why this one?
+            </p>
+
+            <p>
+              We choose spaces such as <math>R<sup>3</sup></math> because they are <strong>navigably complex</strong>. We are able
+              to easily find a rich magnitude of subspaces, all of which we can navigate by default through the universal coordinate
+              systems. As each subspace potentially uses less information to uniquely represent its internal objects than used in
+              the whole space, the informational entropy is also potentially lowered, meaning we can compress the representation
+              of the subspace. In the situation where we are also able to compress the navigational system, we call this an
+              <strong>interface</strong>.
+            </p>
+
+            <p>
+              Finally, there is the idea of a <em>type</em>. The space as a whole, in this case <math>R<sup>3</sup></math> is its
+              own type. Type is a matter of context though: A space in comparison to other spaces has a type, but if it existed
+              in isolation the idea of a type becomes less potent. As we don't consider <math>R<sup>3</sup></math> in the context
+              of other spaces, we can view it as <em>untyped</em>. Yet, when we create subspaces and interfaces from this untyped
+              space, we are introducing spaces as comparable against each other, and so the idea of a type again becomes potent.
+              These types aren't cultural or political&mdash;imbued by the will and intention of the user, they are implied by their
+              structural restrictions relative to the whole. As such they are referred to as <strong>structural types</strong>.
+            </p>
+          </li>
+
+          <li>
+            <strong>Predicate Logic (Concept Theory, Functional Typology)</strong>:
+
+            <p>
+              Predicates are the medium of exchange in logic, and math uses predicate logic as its deductive system.
+            </p>
+
+            <p>
+              Math largely has three kinds of predicates&mdash;all having to do with <em>similarity</em>: <strong>identity,
+              proximity, shape</strong>. <em>Identity predicates</em> identify objects with each other through equality
+              or equivalence. <em>Proximity predicates</em> compare objects with each other through their orders of nearness.
+              <em>Shape predicates</em> measure objects against each other through mappings of behaviour and the categorical
+              company they keep.
+            </p>
+
+            <p>
+              Predicates are our means of specifying subspaces, and within any interface it allows us to narrow groups of objects
+              in the scope of our focus. Predicates also allow us to construct new navigational systems within the limits
+              of interfaces. They allow us to extend or move beyond our monoids. for example in <math>R<sup>3</sup></math>
+              we may restrict ourselves to a Klein bottle and create new operators to navigate across its surface.
+              The combination of our space being navigably complex and being equipped with a predicate logic is that it allows
+              us to use this single space to <strong>model</strong> many different applications.
+            </p>
+
+            <p>
+              Our predicates are expressed through the properties of the concrete grammar used to construct the whole space.
+              From there, we can combine these predicates in new ways, forming a <strong>filter algebra</strong>. A filter
+              being the <em>dual</em> concept of a <strong>type specification</strong>. This is to say, the more filters
+              you combine, the further you restrict the type. There is a bijection between filters and types, yet a complicated
+              filter represents a simple type while a simple filter represents a complicated type.
+            </p>
+
+            <p>
+              Finally, each interface may be used as the model for a multitude of applications, which is to say it may be
+              interpreted and reinterpreted. Another way of viewing this is that we equip this interface with an additional
+              <em>perspective</em> of type, thus temporarily equipping it with additional navigators and other operators.
+              As we are imbuing the type upon the interface, it is cultural and political, and so we refer to these as
+              <strong>functional types</strong>.
+            </p>
+          </li>
+        </ol>
+
+        <p>
+          If you look at the history of computing science and programming, the focus has been on <em>algorithms</em>, not the spaces
+          for which the inhabit. It is time we build and teach computational spaces which parallel those ideal properties of design
+          which make mathematically designed spaces so intriguing.
+        </p>
+
+        <p>
+          This paradigm of design is split into specification side and implementation side,
+          each of which are decomposed into simpler paradigms:
+        </p>
+
+        <ol>
+          <li>
+            <strong>Specification side</strong>:
+
+            <p>
+              If the language permits, narratively construct the space through a polymorphic grammar which would allow you
+              to construct a <em>polymorphic</em> space. For example in C++ you could specify a memory space constructively
+              as bits, words, then addresses, all defined weakly through templates. This holds value as it allows you to
+              reuse this code for any interface that can be grafted on through interpretation later in practice.
+            </p>
+
+            <p>
+              For each constructive structure, supply an inventory of coordinate systems to universally navigate that structure.
+              Once the whole space has been constructed, restrict any relevant subspace along with its navigable discourse,
+              compress when possible, resulting in interfaces.
+            </p>
+
+            <p>
+              Supply inventories of perspectives (collections of methods and operators defining functional types) to interpret
+              and reinterpret the structural interface types.
+            </p>
+
+            <p>
+              As we build this paradigm on top of a concrete language, when possible take advantage of the language's natural
+              efficiencies and dispatch optimizations for concrete cases of structural and functional types. In the case of
+              C++ this might be done by dispatching partial template specializations for builtin types.
+            </p>
+          </li>
+
+          <li>
+            <strong>Implementation side</strong>:
+
+            <p>
+              We modularize our narratives by tethering/indexing them to hardware abstractions. For each hardware module,
+              we use the constructive narrative to further modularize any given narrative path into constructive objects.
+            </p>
+
+            <p>
+              We classify the code for each object as <em>interface, perspective, instance</em>.
+            </p>
+
+            <p>
+              Interfaces are decomposed into <em>structure</em> and <em>navigator</em>, while perspective holds an inventory
+              of functional types bundled as methods, and finally instances hold concrete cases which dispatch to optimized
+              or (general) user safe code.
+            </p>
+
+            <p>
+              The perspectives and instances both have <em>semiotic</em> and <em>media</em> versions: Semiotic code has
+              the requirement to be elegant, efficient, reusable, but otherwise it has no requirement to be safe. It's not
+              meant to be accessed by the general user, only the architects. Media code has the requirement to be safe
+              and user-friendly for the general user, and is built from the semiotic code. It has the best of both
+              worlds this way as it allows for optimizations and safety.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+  </body>
+</html>
+

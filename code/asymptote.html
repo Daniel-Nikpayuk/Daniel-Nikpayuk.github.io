@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Code</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Code</h1>
+    </header>
+
+    <main id="asymptote">
+      <section id="preamble">
+        <ol>
+          <li>
+            <a href="#gradients">Gradients</a>
+          </li>
+        </ol>
+
+        <p>
+          <strong>Asymptote</strong> is a vector graphics programming language with a C-like imperative grammar.
+          It's a niche language, notably because it has tethered its success to the <strong>LaTeX</strong> typesetting
+          language: It's meant to replace the natively supported <strong>Metapost</strong> graphics package.
+        </p>
+
+        <p>
+          Although asymptote is embedded as a <em>package</em> in LaTeX code, it does stand on its own as a Turing complete
+          programming language. Not only that, but its compiler effectively converts source code into the low level
+          <strong>postscript</strong> graphics language (analogous to assembly), which allows you to generate graphics
+          in an encapsulated postscript format. This is actually quite convenient as .eps is well supported to be converted
+          to many other graphics specifications.
+        </p>
+
+        </p>
+          I have made many fine graphics over the years with asymptote. I figured I'd show of some of them now and again
+          along with any grammatical constructs I've innovated within the language itself.
+        </p>
+      </section>
+
+      <div class="anchor" id="gradients"></div>
+
+      <section>
+        <h2>Gradients</h2>
+        <h4>March 6, 2016</h4>
+
+        <p>
+          I wasn't trained in graphics design, and I only recently discovered the value of gradients. I wanted to
+          create my own reusable interface in a flexible way, and I realized the <strong>stream paradigm</strong>
+          is a natural fit for this purpose.
+        </p>
+
+        <p>
+          Streams are essentially a manual implementation of <strong>lazy evaluation</strong>. They're created
+          with the expressions <strong>delay()</strong> and <strong>force()</strong>. Streams are a more natural
+          fit for functional languages. As asymptote is more imperative, an alternative interpretation is that
+          streams allow you to manually pause and play the iterations of a looping construct.
+        </p>
+
+        <p>
+          Think about it though: Many graphics are etched out most easily with parametric curves. In terms
+          of code this is effectively the same as running a loop to draw the curve piecewise. If for each
+          increment, you change the color slightly so that it ranges over a spectrum over the whole curve,
+          you'll end up with a gradient:
+        </p>
+
+          <image src="asymptote/single-gradient.jpg" alt="Image of asymptote graphic" style="width:25%">
+
+        <p>
+          The thing is, you can code such a gradient loop without streams, so what's their value? Two or more streams
+          of the same length can be combined to create a new stream. This is like saying you have two or more loops
+          (each defining separate gradient curves) and you wish to combine them into a single loop. The imperative
+          paradigm doesn't let you do this, but streams do:
+        </p>
+
+        <div class="center">
+          <image src="asymptote/multiple-gradient.jpg" alt="Image of asymptote graphic" style="width:25%">
+          <image src="asymptote/rotation-multiple-gradient.jpg" alt="Image of asymptote graphic" style="width:25%">
+        </div>
+
+        <p>
+          Then depending on what we've started with, we can compose our curves in more interesting ways.
+          With the circles, I decided to create the illusion of continuity and the completeness of a gradient disk:
+        </p>
+
+        <div class="center">
+          <image src="asymptote/thick-gradient.jpg" alt="Image of asymptote graphic" style="width:25%">
+          <image src="asymptote/super-thick-gradient.jpg" alt="Image of asymptote graphic" style="width:25%">
+          <image src="asymptote/complete-thick-gradient.jpg" alt="Image of asymptote graphic" style="width:25%">
+        </div>
+
+        <p>
+          Or you can define your curve by means of some fancy <em>polar coordinate</em> functions and create
+          a truly beautiful image:
+        </p>
+
+        <image src="asymptote/sunflower.jpg" alt="Image of asymptote graphic" class="center" style="width:50%">
+
+        <p>
+          You might not believe it, but this <em>sunflower</em> was generated with nothing more than a single
+          polar coordinate curve and a gradient from black to yellow.
+        </p>
+
+        <p>
+          As for implementing streams, given that asymptote is imperative in nature and stream are functional,
+          it wasn't straightforward. If you're interested though, here is the basic code for it:
+          <a href="asymptote/streams.asy">streams</a>.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>
+<!--
+        <li>
+          <a href="#"></a>
+        </li>
+
+    <article id="post_00">
+      <section id="">
+        <header>
+          <h1></h1>
+          <h3></h3>
+        </header>
+
+        <image src="bash/.png" alt="Image of ">
+
+        <p>
+        </p>
+
+       </section>
+    </article>
+-->

@@ -1,0 +1,27 @@
+
+.module-paradigm
+{
+    width: 80%;
+    padding-top: 2%;
+}
+
+.grid-module
+{
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    color: gray;
+
+    border-top: 2px solid blue;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+/***********************************************************************/
+
+span[class~="module_name"]
+{
+    color: black;
+}
+

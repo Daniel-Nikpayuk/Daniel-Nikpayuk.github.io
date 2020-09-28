@@ -1,0 +1,22 @@
+
+main
+{
+	margin: 55px 50px auto 55px;
+}
+
+article
+{
+	margin-bottom: 150px;
+}
+
+#editors-note
+{
+	border-top: 1px solid black;
+	margin: 150px auto 500px auto;
+}
+
+.align-center
+{
+	text-align: center;
+}
+

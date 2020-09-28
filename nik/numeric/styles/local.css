@@ -1,0 +1,27 @@
+
+span[id="bit-interface"		],
+
+span[id="bit-structure"		],
+
+/*******************************************************/
+
+span[id="word-interface"	],
+span[id="word-model"		],
+
+span[id="word-structure"	],
+span[id="word-uint"		],
+
+/*******************************************************/
+
+span[id="address-interface"	],
+span[id="address-model"		],
+
+span[id="address-structure"	],
+span[id="address-uint"		]
+
+/*******************************************************/
+
+{
+    color: black;
+}
+

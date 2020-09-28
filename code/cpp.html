@@ -1,0 +1,871 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Code</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Code</h1>
+    </header>
+
+    <main id="cpp">
+
+      <section id="preamble">
+        <p>
+          The majority of code presented in this section comes from my <a href="https://github.com/Daniel-Nikpayuk/nik">nik library</a>
+          which can be described as: <em>An independent C++ template library focused on the reimplementation of core STL data structures
+          while maintaining a clean narrative design</em>. The basic design decisions that will help you navigate its code content
+          are as follows:
+        </p>
+
+        <ul>
+          <li>
+            <strong>additivity</strong>: Branches are split up and indexed by hardware abstractions. For example there are narrative
+            branches for memory, the screen, the keyboard etc.&mdash;but to emphasize the idea that these are abstractions the branches
+            are given alternative names than their respective hardware types: <em>numeric, graphic, literic</em>, etc.
+          </li>
+          <li>
+            <strong>modularity</strong>: The modules within each branch are split up into <em>semiotic</em> and <em>media</em> modes.
+            The difference being that media variants are meant for general users of the library with the implicit assumption that code
+            in each mode is user-friendly and user-safe. Semiotic variants make no such assumptions, the code here is for the library
+            architects: It is meant to be as reusable as possible.
+          </li>
+          <li>
+            <strong>composability</strong>: Within semiotic modes, structure and function are kept independent and are only combined
+            (adhering to the object oriented paradigm) within media modules. This allows for greater composability of
+            <em>structure with structure</em>, and <em>function with function</em>.
+          </li>
+          <li>
+            <strong>optimization</strong>: The above design decisions are the default but may be deviated from during implementation
+            if a strong enough optimization is justified.
+          </li>
+        </ul>
+
+        <ol>
+          <li>
+            <a href="#coproduct">coproduct</a>
+          </li>
+          <li>
+            <a href="#read_type">read_type</a>
+          </li>
+          <li>
+            <a href="#copair">copair</a>
+          </li>
+          <li>
+            <a href="#product">product</a>
+          </li>
+        </ol>
+      </section>
+
+      <div class="anchor" id="coproduct"></div>
+
+      <section>
+        <h2>coproduct</h2>
+        <h4>May 3, 2018</h4>
+
+        <p>
+          Many if not most classes in <em>nik</em> are modelled as algebraic data types, meaning they are constructed
+          from <em>coproducts</em> and <em>products</em>. Bartosz Milewski
+          <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">points out</a>
+          that although coproducts have no formal grammar in C++ they can still be interpreted within the language.
+          Most notably, they show up as the disjoint union of overloaded constructors within a single class definition.
+        </p>
+
+        <p>
+          The intentions of my library differ slightly, and as consequence so does my model: To build an axiomatic narrative
+          for data structure construction, I choose to interpret <em>raw pointers</em> as coproducts. For example, if you were
+          to iterate over a linked list, effectively you're iterating over the pointers of its nodes. And even though these
+          nodes exist concurrently in memory, they are accessed sequentially, meaning you can only look at them one at
+          a time (hence the iteration). As such, you can view these nodes as the runtime disjoint union of alternatives:
+          The interpretation then is that pointers themselves are runtime coproducts.
+        </p>
+
+        <image class="snapshot" src="cpp/coproduct.png" alt="Image of coproduct code" style="width:60%">
+
+        <p>
+          The source code is
+          <a href="https://github.com/Daniel-Nikpayuk/nik/blob/master/grammaric/coproduct/interface/semiotic.hpp">here</a>.
+        </p>
+      </section>
+
+      <div class="anchor" id="read_type"></div>
+
+      <section>
+        <h2>read_type</h2>
+        <h4>May 4, 2018</h4>
+
+        <p>
+          From the experience of past projects I have included a <em>read_type</em> template class in the global definitions of
+          my library. This class has no runtime consequences, it's entirely overhead for maintaining type safety as an alternative
+          to using the <strong>const</strong> keyword in regards to pointer definitions. Intuitively, you give it a <em>Type</em>,
+          and it either adds or removes the <em>const</em> accordingly, taking special care when that type is a pointer <em>Type*</em>.
+        </p>
+
+        <p>
+          The main application of such meta-programming comes when defining <em>iterators, const_iterators</em>.
+          In practice such iterators tend to have nearly identical definitions with the exception of a few <em>const</em>
+          placements, and as <em>const</em> is entirely a compile time type safety consideration, it makes sense to handle
+          it in this way. The alternative is to define separate cases for each iterator which is unnecessarily redundant.
+        </p>
+
+        <image class="snapshot" src="cpp/read_type.png" alt="Image of read_type code" style="width:55%">
+
+        <p>
+          The source code is
+          <a href="https://github.com/Daniel-Nikpayuk/nik/blob/master/keyword.h">here</a>.
+        </p>
+      </section>
+
+      <div class="anchor" id="copair"></div>
+
+      <section>
+        <h2>copair</h2>
+        <h4>May 4, 2018</h4>
+
+        <p>
+          With some foresight regarding the larger narrative design of this library, I have included as part of the definitions a pair
+          of coproducts&mdash;aptly named <em>copair</em>.
+        </p>
+
+        <p>
+          Coproducts are used to define iterators, a construct already common in C++. On the other hand, until recently the idea of
+          <strong>ranges</strong>&mdash;which already show up in many other languages&mdash;was underutilized. Copairs will be used
+          to define such ranges in this library. Conceptually they parallel iterators, and as such they will be refered to as
+          <em>selectors</em>. This particular name derives from the ubiquitous digital utility of <em>text selection</em>.
+        </p>
+
+        <image class="snapshot" src="cpp/copair.png" alt="Image of copair code" style="width:70%">
+
+        <p>
+          The source code is
+          <a href="">here</a>.
+        </p>
+      </section>
+
+      <div class="anchor" id="product"></div>
+
+      <section>
+        <h2>product</h2>
+        <h4>May 4, 2018</h4>
+
+        <p>
+          As mentioned with <em>coproducts</em>, many if not most classes in <em>nik</em> are modelled as algebraic data types,
+          meaning <em>products</em> are also a fundamental grammatical construct within this library.
+        </p>
+
+        <p>
+          If a coproduct is interpreted as the <strong>sequential union</strong> of instances of a type, then a product is the
+          <strong>concurrent union</strong> of such instances. Granted, these are narrower definitions of <em>coproducts, products</em>
+          than the full category theoretic varieties, but it is our intention to take an interpretation which aligns well with the
+          idea of a <em>register machine</em>, and which aligns well with the grammar of C++ itself.
+        </p>
+
+        <p>
+          Concurrent memory requires an array, as such our product as type is implemented as one of fixed length. We might be
+          tempted to build into this low-level definition a more powerful dynamic length array, but the overarching narrative
+          of this library is that all data structures are fundamentally implemented as trees, which are themselves decomposed
+          into fixed length arrays. For a given data structure, there's no assumption its size will change, on the other hand
+          it's easy enough to define equipment for these products to actively vary the length of such memory.
+        </p>
+
+        <p>
+          Finally, even though the memory of products is concurrent, the assumption is that access to each product component
+          is still sequential, meaning we need ways of expressing and navigating product substructures. In this class we
+          declare iterators and selectors to do just this.
+        </p>
+
+        <image class="snapshot" src="cpp/product.png" alt="Image of product code" style="width:70%">
+
+        <p>
+          The source code is
+          <a href="">here</a>.
+        </p>
+      </section>
+
+    </main>
+
+  </body>
+</html>
+
+<!--
+      <p>
+        As the design of this library can be somewhat involved for the uninitiated I offer here a quick tour of its paradigms,
+        starting with general specifications:
+      </p>
+
+      <ul>
+        <li>
+          It is intended primarily to be a template library, prioritizing an axiomatic style of code reuse.
+        </li>
+        <li>
+          Its main modules are tethered to hardware concepts. For example the <em>numeric</em> module is meant
+          to represent the various levels of hardware memory, while the <em>graphic</em> module (not yet implemented)
+          would focus on interfacing with hardware screens.
+        </li>
+        <li>
+          The narrative design takes the perspective of algebraic data types, while still retaining the context of C++ grammar.
+          In particular this means the basic building blocks for all other classes are <em>coproduct</em> and <em>product</em>.
+          This terminology comes from category theory. The explanation of these classes are given below.
+        </li>
+        <li>
+          The numeric module builds the following classes: <em>bit, word, address, tree</em>. The idea is every other possible
+          data structure of interest is fundamentally (and efficiently) built from these types, and as they are numeric in
+          content, they are also implicitly generic. This means they can be intepreted and reinterpreted to represent
+          all other possible types as well.
+        </li>
+      </ul>
+
+      <p>
+        The above is paralleled by implementation design:
+      </p>
+
+      <ul>
+        <li>
+          Every class can be said to have two variants known as <em>semiotic</em> and <em>media</em>.
+        </li>
+        <li>
+          Semiotic classes are designed to be minimalist, clean, composable, reusable, with no expectation of safety.
+          This level is meant to be used by the library architect, to efficiently build the media classes.
+        </li>
+        <li>
+          Media classes are designed to be user-friendly and safe, and are meant to be used by general library users.
+        </li>
+        <li>
+          Semiotic classes will by default keep their methods separated as static functions for greater reusability.
+        </li>
+        <li> 
+        </li>
+      </ul>
+
+          <li>
+            <a href="#"></a>
+          </li>
+
+    <article id="post_000">
+      <section id="">
+        <header>
+          <h1></h1>
+          <h3></h3>
+        </header>
+
+        <image src="cpp/.png" alt="Image of ">
+        <a href=""></a>
+
+        <p>
+        </p>
+
+      </section>
+    </article>
+-->
+
+<!--
+    <article id="toc">
+      <nav>
+        <ol>
+          <li>
+            <a href="#qt-apps">qt apps</a>
+          </li>
+          <li>
+            <a href="#template-template">template template</a>
+          </li>
+          <li>
+            <a href="#designers-block">designer's block</a>
+          </li>
+          <li>
+            <a href="#applicative">applicative</a>
+          </li>
+          <li>
+            <a href="#template-branching">template branching</a>
+          </li>
+          <li>
+            <a href="#internal-compiler-error">internal compiler error</a>
+          </li>
+          <li>
+            <a href="#grow-grammar">grow grammar</a>
+          </li>
+          <li>
+            <a href="#polymorphic-dispatch">polymorphic dispatch</a>
+          </li>
+          <li>
+            <a href="#polymorphism">polymorphism</a>
+          </li>
+          <li>
+            <a href="#batch-map-list">batch map list</a>
+          </li>
+          <li>
+            <a href="#batch-map-iterator">batch map iterator</a>
+          </li>
+          <li>
+            <a href="#batch-map-dispatch">batch map dispatch</a>
+          </li>
+          <li>
+            <a href="#batch-map-operator">batch map operator</a>
+          </li>
+          <li>
+            <a href="#structured-bindings">structured bindings</a>
+          </li>
+          <li>
+            <a href="#template-quicksort">template quicksort</a>
+          </li>
+        </ol>
+      </nav>
+    </article>
+
+    <article id="post_014">
+      <section id="qt-apps">
+        <header>
+          <h1>qt apps</h1>
+          <h3>March 16, 2018</h3>
+        </header>
+
+        <p>
+          After a much needed <em>long break</em> from C++, I think I'd like to return.
+        </p>
+
+        <p>
+          Part of my time away was to immerse myself in <strong>functional programming</strong>. In particular,
+          I've spent more time with category theory as well as type theory, learning about denotational semantics,
+          and what these theories have to offer&mdash;not to mention how I can apply them to imperative paradigms
+          so that I could become a better C++ programmer in general. When I left, I felt I had somewhat
+          plateaued in all honesty.
+        </p>
+
+        <p>
+          In any case, I recently rediscovered the following videos for two apps I must've written a good 7-8 years ago:
+        </p>
+
+        <video width="320" height="240" controls>
+         <source src="cpp/flashcards.mp4" type="video/mp4">
+         Your browser does not support the video tag.
+        </video>
+
+        <video width="320" height="240" controls>
+         <source src="cpp/piano.mp4" type="video/mp4">
+         Your browser does not support the video tag.
+        </video>
+
+        <p>
+          I wrote them in <strong>Qt v4.8.3</strong>, which at the time was the start of and transition into <strong>Qml</strong>
+          and Qt 5. My <em>flashcards app</em> in particular I'm proud of (the above video might not do it justice), at the
+          same time though it was never completely finished either. I came very close. I was comfortable with Qt and C++,
+          but I wasn't strong enough as a <em>designer</em> or <em>engineer</em> and I knew it. I made it as far as I did
+          in coding these apps based entirely off my math training, but I knew if I didn't get better at design thinking
+          (which I claim is broader than math thinking) it would hinder me in the long run.
+        </p>
+
+        <p>
+          As I plan on making many apps and general software in the future&mdash;not to mention finishing my <em>nik</em>
+          library&mdash;I'm willing to say it was worth putting these projects on hold until I became a better designer.
+          Since then, I've committed these last 7-8 years to learning how to be one, and have even innovated my own
+          paradigms and narratives when it comes to interface design. I look at these unfinished apps, and I'm ready
+          to return with a stronger skillset and see what kind of difference it makes. I look forward to it.
+        </p>
+       </section>
+    </article>
+
+    <article id="post_013">
+      <section id="template-template">
+        <header>
+          <h1>template template</h1>
+          <h3>April 24, 2017</h3>
+        </header>
+
+        <p>
+          I've decided to take a short break from all my C++ stuff for a little while.
+        </p>
+
+        <p>
+          There are a few reasons. One of the biggest motivating factors though is in discovering a really thoughtful
+          template library called <a href="https://github.com/odinthenerd/brigand">brigand</a> written by Odin Holmes et al.
+          This library does much of what I've been trying to do in the <em>grammaric</em> module of my <em>nik</em> library,
+          but when it comes to speed optimization it does it much better. It's given me a lot to think about.
+        </p>
+
+        <p>
+          Certainly I'd like to adopt some of the optimization wisdoms I've found in brigand&mdash;there is some overlap&mdash;yet
+          at the same time I also recognize we have differing goals to begin with. Brigand is meant to scale for template
+          meta programming, while my own module is meant to be used throughout my larger <em>nik</em> library,
+          which shouldn't necessarily require such extreme efficiencies (and thus should not require the sometimes
+          overly complicated level of implementation code you'd find in brigand).
+        </p>
+
+        <p>
+          Basically, I've learned a few new ways of thinking about template meta programming which makes me look back at
+          all I've been doing, and I know I need to integrate these new tools, but I don't yet know how best. One example
+          worth mentioning is the <strong>template template</strong> grammar:
+        </p>
+
+        <image src="cpp/template-template.png" alt="Image of template template code" class="center" style="width:50%">
+
+        <p>
+          I've been doing things this whole time without even knowing this very important grammar point. I can rewrite
+          and simplify so much of my existing code now with this, but it also introduces new narrative design decisions
+          and in the short term complicates things. I'll have to sit and wait on it, all the more reason to take a break.
+        </p>
+
+        <p>&mdash;</p>
+
+        <p>
+          The other reason I'm deciding to take a break is due to the most recent design manifesto I've written regarding
+          <a href="https://daniel-nikpayuk.github.io/manifestos/concept-theory.html">concept theory</a>. I've known for
+          a while now that I wanted to make my own programming language, but with this manifesto I now know I have the
+          skeleton model necessary to do it. It also occurred to me the design of my <em>nik</em> library is slowly
+          converging toward this programming language, so it makes sense to work on it for a while: The more I have
+          figured out, the clear my design goals become for my <em>nik</em> library as well.
+        </p>
+
+        <p>
+          Lastly, I've been focused on my own designs for a while now, and although I feel this is important and have no
+          regrets, I also think it's important to learn other theories and other ways, to upgrade my skillset so to speak.
+          It is for all these reasons I will be taking a bit of a break from C++, though I hope to return with some new skills,
+          and a refreshed motivation.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_012">
+      <section id="designers-block">
+        <header>
+          <h1>designer's block</h1>
+          <h3>March 5, 2017</h3>
+        </header>
+
+        <p>
+          I haven't posted anything new in C++ in a little while. I thought I'd update my current line of thought.
+        </p>
+
+        <p>
+          I was stuck at a point of <em>modular divergence</em> in some design decisions regarding my <em>nik</em> library:
+          As my <em>grammaric</em> module has expanded, I've needed to set some clear specification designs regarding the
+          overall grammar. The problem that has come up is in the contrast between <strong>lazy</strong> as well as
+          <strong>strict</strong> evaluation. I have come to realize I need both, and I need to be able to code for either.
+          The best solution I can think of to allow for both is to default to one variety (lazy seems most appropriate)
+          then offer grammar that allows the low-level coder to override when necessary.
+        </p>
+
+        <p>
+          I tend to slow down when it comes to making large design decisions. I'm impatient to move the design forward,
+          but experience has taught me that you have to sit and really think it over or risk rewriting lots of code
+          down the road.
+        </p>
+
+        <p>
+          As an extension of this, it occurred to me it also makes sense as part of the narrative design to expand my
+          <em>grammaric</em> module to work its way up toward a full out <strong>LISP</strong> style evaluator.
+          I mean this template meta programming is functional to begin with. Not only would this be useful in its own
+          right, but it would give me practice at actually implementing metacircular evaluators and the likes.
+        </p>
+
+        <p>
+          I take my inspiration from the
+          <a href="https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1">metacircular evaluator</a>
+          presented in
+          <a href="https://mitpress.mit.edu/sicp/full-text/book/book.html">Structure and Interpretation of Computer Programs</a>
+          (SICP). It offers enough detail to be a skeletal roadmap. The problem that arises here, is I have to ask the question:
+          Is it actually worth it? In a learning sense, for my own benefit, it definitely is, but will it actually contribute
+          to the design of my library? It's enough of a time commitment on its own I need to think it through.
+        </p>
+
+        <p>
+          Things have stalled because I have more questions than answers right now. Maybe it means it's time to take a break,
+          work on one of my many other projects for a while and come back to this with fresh eyes. This was always intended
+          to be a multiyear project after all.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_011">
+      <section id="applicative">
+        <header>
+          <h1>applicative</h1>
+          <h3>February 8, 2017</h3>
+        </header>
+
+        <p>
+          This is another
+          <a href="https://github.com/Daniel-Nikpayuk/Proof-Of-Concept-Code/tree/master/C%2B%2B/Applicative">proof of concept</a>
+          code example: Compile time (template) "applicative" functors in the spirit of <em>haskell</em> et al.
+        </p>
+
+        <image src="cpp/applicative-1.png" alt="Image of applicative code">
+
+        <p>
+          <strong>variadic</strong> makes so much possible. An example in action which compiles to the exact same size as printing
+          value 1 directly:
+        </p>
+
+        <image src="cpp/applicative-2.png" alt="Image of applicative code">
+
+        <p>
+          Why bother? I've created compile-time control flow logic for my <em>nik</em> library in which this template control
+          flow logic is most effective using lazy evaluation. As part of this, not only is it desirable to lazy "evaluate" template
+          parameter types, but compile type constants as well. As such, it's more appropriate to express any such derived constants
+          as applicative which then only evaluates if actually called.
+        </p>
+
+        <image src="cpp/applicative-3.png" alt="Image of applicative code">
+
+        <p>
+          I do this for fun, but I think in the long run these sorts of explorations will pay off in real code, real projects.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_010">
+      <section id="template-branching">
+        <header>
+          <h1>template branching</h1>
+          <h3>February 6, 2017</h3>
+        </header>
+
+        <p>
+          Proud of my compile-time control flow grammatical construct.
+          Dispatches by variadic partial specialization. Lazy type evaluation:
+        </p>
+
+        <image src="cpp/template-branching-1.png" alt="Image of template branching code">
+
+        <p>
+          The value of such a thing is it becomes a core construct when you're looking to gain greater independence from the compiler.
+          An example of this grammar in action:
+        </p>
+
+        <image src="cpp/template-branching-2.png" alt="Image of template branching code">
+
+        <p>
+          Keep in mind these snapshots are incomplete, and <em>unsafe</em> as they will admit counter-intuitive orders such as
+          "else_then &hellip; if_then". Yet because of the nature of <strong>variadic</strong> itself the chain can be extended indefinitely.
+        </p>
+
+        <p>
+          I'd prefer "else" instead of "then" but it's already a keyword as you know, so unfortunately and obviously I can't.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_009">
+      <section id="internal-compiler-error">
+        <header>
+          <h1>internal compiler error</h1>
+          <h3>January 23, 2017</h3>
+        </header>
+
+        <p>
+          I am both horrified as well as proud: I have reached the next level :)
+        </p>
+
+        <image src="cpp/internal-compiler-error.png" alt="Image of internal compiler error code">
+
+       </section>
+    </article>
+
+    <article id="post_008">
+      <section id="grow-grammar">
+        <header>
+          <h1>grow grammar</h1>
+          <h3>January 18, 2017</h3>
+        </header>
+
+        <p>
+          An example of my <em>nik</em> library grammar in action. This function takes an array (out, length)
+          and resizes it (n) putting the new memory <em>before</em>:
+        </p>
+
+        <image src="cpp/grow-grammar.png" alt="Image of grow grammar code">
+
+        <p>
+          Its implementation is a special case of my batch-map operator.
+        </p>
+
+        <p>
+          Having declared a <em>tmp</em> pointer, we create an <em>assign</em> adverb. We specify our pointer-as-subject to be
+          allocated with size <em>length+n</em> and offset starting at position <em>n</em> (new memory "before"). We specify our
+          pointer-as-object to be deallocated communicating the <em>origin</em> (needed for array deallocation) to our instance.
+          We call <strong>map</strong> with <em>tmp</em>-as-subject and [<em>origin, origin+length</em>) as range as-object.
+          Here <strong>map</strong> copy-assigns the range to <em>tmp</em> from its offset passing <em>allocate, deallocate</em>;
+          <strong>map</strong> also knows to allocate <em>tmp</em> as array and deallocate <em>origin</em> after copy-assign.
+        </p>
+
+        <p>
+          Finally we reset <em>origin</em> (currently dangling) to <em>tmp</em>. <strong>Q</strong>: If we deallocate,
+          why specify <em>origin</em> if it's being passed anyway? It might seem redundant but it's not. The range-as-object
+          may cover only part of the object array for the actual map operation. As such you need to independently specify the origin.
+          We can't assume such info will be passed in the range.
+        </p>
+
+        <p>
+          Admittedly the many <em>typename</em> as well as <em>template</em> keywords make it seem complicated,
+          but otherwise this style is shaping up rather well. Well, that's it for now. Thanks.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_007">
+      <section id="polymorphic-dispatch">
+        <header>
+          <h1>polymorphic dispatch</h1>
+          <h3>January 8, 2017</h3>
+        </header>
+
+        <p>
+          I'm still looking to reduce <em>template instantiation code bloat</em>. This time out I've come up with some proof of concept
+          code for what I'm calling <strong>polymorphic dispatching</strong>:
+        </p>
+
+        <image src="cpp/polymorphic-dispatch-1.png" alt="Image of polymorphic dispatch code">
+
+        <p>
+          here we have two variant functions which dispatch by type. They're set up to be run-time polymorphic as pointer input.
+          Next we have four variant functions which dispatch by an extended type but also call the previous function as well.
+        </p>
+
+        <image src="cpp/polymorphic-dispatch-2.png" alt="Image of polymorphic dispatch code">
+
+        <p>
+          in this case our 4 variants take their dispatch-adverb by reference. Why not pass directly to the called function as well?
+          because template instantiation would create 4 versions of the called function (square) instead of 2&mdash;the compiler might
+          not realize this.
+        </p>
+
+        <p>
+          Now we test to see if the compiler (gcc) even accepts this grammar:
+        </p>
+
+        <image src="cpp/polymorphic-dispatch-3.png" alt="Image of polymorphic dispatch code">
+
+        <p>
+          admittedly I've only tested two of the four functions here. In any case here are the results:
+        </p>
+
+        <image src="cpp/polymorphic-dispatch-4.png" alt="Image of polymorphic dispatch code">
+
+        <p>
+          It's an artificial example but <em>proof of concept</em> is after all to see if a paradigm and its implementation grammar
+          work in the first place.
+        </p>
+
+        <p>
+          Any solution is better than none, but I'm still looking at alternatives. I've used run-time (dynamic) polymorphism here.
+          it uses a virtual lookup table and has potential for cache misses. The main alternate would be compile-time polymorphism.
+          that's what I'm researching now. I have a proof, but I'm not satisfied (too messy, doesn't scale well). Just keep trying
+          is all.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_006">
+      <section id="polymorphism">
+        <header>
+          <h1>polymorphism</h1>
+          <h3>January 4, 2017</h3>
+        </header>
+
+        <p>
+          In my journey toward building this <em>nik</em> library, I've run into the all-too-well-known problem of template
+          instantiation <em>code bloat</em>. I've been experimenting lately with how to reduce it.
+        </p>
+
+        <p>
+          Here I have compile-time function-dispatch by base type which reduces instantiation bloat while allowing type extensibility:
+        </p>
+
+        <image src="cpp/polymorphism-1.png" alt="Image of polymorphism code">
+
+        <p>
+          Hooray for polymorphism!
+        </p>
+
+        <image src="cpp/polymorphism-2.png" alt="Image of polymorphism code">
+
+       </section>
+    </article>
+
+    <article id="post_005">
+      <section id="batch-map-list">
+        <header>
+          <h1>batch map list</h1>
+          <h3>January 3, 2017</h3>
+        </header>
+
+        <p>
+          An example of my grammar using a weak (generic) list structure along with lower level iterators that compose it.
+          We deep copy then deallocate:
+        </p>
+
+        <image src="cpp/list-1.png" alt="Image of batch map list code">
+
+        <p>
+          this test case then displays the following:
+        </p>
+
+        <image src="cpp/list-2.png" alt="Image of batch map list code">
+
+       </section>
+    </article>
+
+    <article id="post_004">
+      <section id="batch-map-iterator">
+        <header>
+          <h1>batch map iterator</h1>
+          <h3>December 28, 2016</h3>
+        </header>
+
+        <p>
+          Here's the updated C++ grammar for my batch paradigm: (functional) <em>repeat, morph, map</em> operators.
+          We start with the tedious but clean setup:
+        </p>
+
+        <image src="cpp/iterator-1.png" alt="Image of batch map iterator code">
+
+        <p>
+          I've modularized the adjective/adverb signifiers and used them as operator dispatches. Proper input are templated pointers.
+          This is all part of my <a href="https://github.com/Daniel-Nikpayuk/nik">nik</a> library.
+          Here we have basic test cases for each operator:
+        </p>
+
+        <image src="cpp/iterator-2.png" alt="Image of batch map iterator code">
+
+        <p>
+          All of this compiles to about 22K. Finally we run the program:
+        </p>
+
+        <image src="cpp/iterator-3.png" alt="Image of batch map iterator code">
+
+        <p>
+          Engineers emphasize modularity, extensibility, additivity. As a mathematician, I would add the need for axiomatic
+          or narrative paradigms. That's the idea behind the library anyway.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_003">
+      <section id="batch-map-dispatch">
+        <header>
+          <h1>batch map dispatch</h1>
+          <h3>December 26, 2016</h3>
+        </header>
+
+        <p>
+          This is an example of a <em>dispatch</em> of my C++ batch-map operator. It's ugly in its own way,
+          but if you knew all it took to get it working&hellip;
+        </p>
+
+        <image src="cpp/closing-closing-map.png" alt="Image of batch map dispatch code">
+
+        <p>
+          I broke taboo and used macros to hide the complexity of parameter &amp; argument type. I also broke efficiency taboo by
+          calling functions within a loop. As I've stated previously, I have modularized a <em>prototype</em> version from an
+          inlined <em>specialize</em> version.
+        </p>
+
+        <p>
+          Sometimes I feel C++ needs a way to compile-time build functions so I don't need to resort to this. The feature
+          I'm most proud of is how a language like C++ lets you modularize structure from type. For example this map takes
+          untyped pointers as input (list begin/end), but also independently takes type info (as adjective) about it.
+          Hard to explain why that's good, but it is. It provides an elegant flexibility and makes it very reusable :)
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_002">
+      <section id="batch-map-operator">
+        <header>
+          <h1>batch map operator</h1>
+          <h3>December 20, 2016</h3>
+        </header>
+
+        <p>
+          This is an example of the <em>batch-map</em> operator C++ grammar I've been working on for so long now. This is the setup:
+        </p>
+
+        <image src="cpp/batch-map-1.png" alt="Image of batch map code">
+
+        <p>
+          With variadic templating I use templates as namespace modules. I also parallel linguistic grammar to free-form construct
+          <em>adjectives</em> and <em>adverbs</em>. I've set up the interface to be user-friendly in that when specifying
+          <em>associations/connotations</em> (traits/policies) one need not worry about order or completion (defaults are provided)
+          with the setup, I now create a basic array [0..4] and use a lambda as function to pass to the <em>list-map</em> operator:
+        </p>
+
+        <image src="cpp/batch-map-2.png" alt="Image of batch map code">
+
+        <p>
+          I then print the result of the lambda "square" function:
+        </p>
+
+        <image src="cpp/batch-map-3.png" alt="Image of batch map code">
+
+        <p>
+          I admit it's quite complicated looking to do something so simple&mdash;especially compared to functional languages which
+          have the map operator built in. And even in standard C++, there are quicker ways to express the result, but it's not about
+          that. The real work in what's hidden underneath the grammar interface. I have 9216 map variants (not including the function
+          pass), all of which follow a clean efficient design, which will be reused in so much else within the library I'm building.
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_001">
+      <section id="structured-bindings">
+        <header>
+          <h1>structured bindings</h1>
+          <h3>December 17, 2016</h3>
+        </header>
+
+        <p>
+          I've been coding in C++ for almost 10 years now. The first years were just getting comfortable with the various
+          grammar constructs and the overall expressivity of the language. These following years&mdash;now that I'm comfortable
+          with the grammar&mdash;have been more about <em>design thinking</em>: Paradigms, and other computational ways of thinking
+          that are broader than any given language.
+        </p>
+
+        <p>
+          Recently though, I've reached a sort of <em>ceiling</em> where to really get better at optimizations, I needed to
+          know more about the underlying C++ specification itself. In turn I have found a very nice
+          <a href="https://www.youtube.com/watch?v=DvUL0Y2bpyc">video presentation</a> by Bjarne Stroustrup himself:
+        </p>
+
+        <image src="cpp/structured-bindings.png" alt="Screenshot of a video presentation on cpp">
+
+        <p>
+          What I found most fascinating about future C++ specifications is they will support features that are similar to
+          <em>multiple return values</em> in <strong>python</strong> et al., as well as <em>pattern matching</em>
+          in <strong>haskell</strong>. Sweet! :)
+        </p>
+
+       </section>
+    </article>
+
+    <article id="post_000">
+      <section id="template-quicksort">
+        <header>
+          <h1>template quicksort</h1>
+          <h3>December 13, 2016</h3>
+        </header>
+
+        <p>
+          I've been coding in meta C++ for a little while now. I still enjoy the fact that I can implement quicksort
+          in this <em>functional</em> template language.
+        </p>
+
+        <image src="cpp/quicksort.png" alt="Image of quicksort code">
+
+        <p>
+          Though not all the internal details are offered here, believe me: In C++ this is elegant :P
+        </p>
+
+       </section>
+    </article>
+-->
+

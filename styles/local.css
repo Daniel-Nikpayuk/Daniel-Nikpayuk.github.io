@@ -1,0 +1,73 @@
+
+header > h1
+{
+	margin: 0;
+}
+
+main
+{
+	display: flex;
+
+	padding-top: 5%;
+}
+
+.main-column
+{
+	box-sizing: border-box;
+
+	padding-top: 1%;
+	width: 50%;
+}
+
+/*******************************************************/
+
+.table
+{
+        display: grid;
+
+	grid-template-columns: repeat(2, 35%);
+
+	padding-left: 7%;
+}
+
+.column
+{
+	display: flex;
+	flex-direction: column;
+
+	padding-left: 7%;
+}
+
+/*******************************************************/
+
+section[id="portfolio"] > div
+{
+	padding-bottom: 4%;
+}
+
+#computer-programming-links > .table
+{
+	padding-bottom: 4%;
+}
+
+#computer-programming-links > .table:last-child
+{
+	padding-bottom: 0;
+}
+
+#about
+{
+	padding-left: 15%;
+	padding-top: 43%;
+}
+
+#contact-info > .table
+{
+	grid-template-columns: repeat(2, 20%);
+}
+
+#contact-info > .table > span > a[href="https://ca.linkedin.com/in/daniel-nikpayuk-90888513a"]
+{
+	padding-left: 19px;
+}
+

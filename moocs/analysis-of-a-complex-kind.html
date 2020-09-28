@@ -1,0 +1,368 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Mooc Work</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Mooc Work</h1>
+    </header>
+
+    <main id="analysis-of-a-complex-kind">
+      <section id="preamble">
+        <h2>Analysis of a Complex Kind</h2>
+        <h4>September 1st, 2016</h4>
+
+        <p>
+          This coursera mooc is offered by Wesleyan University, taught by Petra Bonfert-Taylor. 
+        </p>
+
+        <p>
+          I've never actually <em>formally</em> studied complex analysis before. Before taking calculus in school, I taught it
+          to myself first and I tried learning complex variables, but all I saw were the same results as with real variable calculus.
+          Having taken honors analysis as my undergraduate degree, afterward I found a graduate text giving a rigorous treatment
+          of the topic. I spent several months with that book, going over every proof. It helped a lot, but I had spent too much
+          time seeing the trees instead of the forest, as they say. I understood the proofs and their techniques, but I never got
+          to see the application of the theory.
+        </p>
+
+        <p>
+          To be frank, the biggest issue I've had with the complex number system is not that it was overwhelming or too complicated,
+          rather because I saw the main calculus results as being the same as for the real number system, I didn't see the point
+          really. As a <strong>lifelong learner</strong> I've decided it's worth overcoming this mental block, and getting my hands
+          dirty and putting in the effort to really understand just how the reals and the complex numbers are different.
+        </p>
+
+        <p>
+          For example, I have a greater appreciation of the <strong>real numbers</strong> themselves because I know just how
+          they're different from the <strong>rational numbers</strong>. From a <em>set-theoretic</em> lens, the most basic
+          set-based structure (after a set itself) is a <em>relation</em>. The three main relations are <em>functions</em>,
+          <em>equivalence relations</em>, and <em>ordering relations</em>. As there is no redundancy in these number systems
+          there's no relevance in looking for equivalence. That just leaves functions (monoids), and orderings. The thing is,
+          both the rationals and reals are linearly ordered. Both are densely ordered. Both are algebraic fields given their
+          respective monoid operators (addition, multiplication).
+        </p>
+
+        <p>
+          So how are they different? The real number system is complete. This is to say it has the <strong>completion
+          property:</strong> For every non-empty subset (of the reals) with an upper-bound, such a set also has a
+          <strong>supremum</strong> (a <em>least upper bound</em>). This single fundamental difference is why you have
+          unique limits, convergence, continuity within the real number line while you don't with the rationals.
+          That's it. <strong>Reader beware:</strong> I intend to offer both a summary and a light critique of this
+          mooc for anyone thinking of taking it themselves, but I'm also exploring this alternative motivation of mine:
+          Looking for narrative differences between the complex numbers and their predecessor the reals.
+        </p>
+
+        <p>
+          It is for all these reasons I'm glad to be taking this mooc: I found it gives a nice tour around the application side
+          of complex analysis. Not too soft, not too hard, just right.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#week_01">Week 1</a>
+          </li>
+          <li>
+            <a href="#week_02">Week 2</a>
+          </li>
+          <li>
+            <a href="#week_03">Week 3</a>
+          </li>
+          <li>
+            <a href="#week_04">Week 4</a>
+          </li>
+          <li>
+            <a href="#week_05">Week 5</a>
+          </li>
+          <li>
+            <a href="#week_06">Week 6</a>
+          </li>
+          <li>
+            <a href="#week_07">Week 7</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="week_01"></div>
+
+      <section>
+        <h3>Week 1</h3>
+        <h4>September 4th, 2016</h4>
+
+        <p>
+          This is a math mooc that takes itself seriously. Not to say it's not fun or somehow uninviting,
+          but right in week one we're immediately thrown into the basic arithmetic and algebraic properties
+          of the complex numbers.
+        </p>
+
+        <p>
+          Definitions worth taking away: <strong>modulus, conjugate, polar coordinates, principal argument (Arg z),
+          nth roots of unity</strong>. Topological concepts are introduced, but I've been looking ahead, and it seems
+          like they're not used too much, which makes sense: This isn't a proof heavy class, it's a 7-week mooc after all.
+        </p>
+
+        <p>
+          Identities, formulas, equations:
+          <ul>
+            <li>
+              <math>z conj(z)=|z|<sup>2</sup></math>
+            </li>
+            <li>
+              <math>|z|=0</math> iff <math>z=0</math>
+            </li>
+            <li>
+              The triangle inequality
+            </li>
+            <li>
+              <math>e<sup>conj(i theta)</sup> = e<sup>-i theta</sup></math>
+            </li>
+            <li>
+              <math>1/e<sup>i theta</sup> = e<sup>-i theta</sup></math>
+            </li>
+            <li>
+              DeMoivre's formula
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          The <em>Fundamental Theorem of Algebra</em> is mentioned of course, this is not unexpected. As I've studied
+          a proof-oriented narrative of complex numbers before, I especially enjoyed how <strong>exponential notation</strong>
+          was introduced this early, and the clever way it side-steps the complications of introducing full exponentiation
+          which would otherwise require heavier analytic tools, namely power-series.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_02"></div>
+
+      <section>
+        <h3>Week 2</h3>
+        <h4>September 12th, 2016</h4>
+
+        <p>
+          My favorite part of this week by far was <strong>Julia sets</strong>. Touching on <em>chaos theory, fractals</em>,
+          and the <strong>Mandelbrot set!</strong> I've been exposed to these ideas, but just barely, I didn't even know the
+          natural way to access them was through complex analysis.
+        </p>
+
+        <p>
+          Otherwise what stood out for me, a connection I hadn't made myself, was visualizing the hard to visualize
+          4D space when graphing complex valued functions. In particular mapping circles from one plane to another.
+          In any case, this week also introduced <strong>limits, sequences, continuous functions.</strong>
+        </p>
+      </section>
+
+      <div class="anchor" id="week_03"></div>
+
+      <section>
+        <h3>Week 3</h3>
+        <h4>September 17th, 2016</h4>
+
+        <p>
+          This week we finally got to the basics of complex variable calculus, namely <strong>differentiation, analytic functions,
+          the Cauchy-Riemann equations, the complex exponential function, complex trigonometric functions.</strong>
+          Similarly to last week, I was pleasantly surprised as to the practical techniques I'd never considered before in developing
+          visual intuition for complex functions. In particular, the effectiveness of <strong>mapping horizontal and vertical lines
+          from plane to plane.</strong>
+        </p>
+
+        <p>
+          This week I also finally started making some intuitive connections in how to distinguish the complex number system from
+          the real number system. Even back in the day, having studied complex numbers a little previously, the non-linear ordering
+          of the complex numbers (by means of the <em>modulus</em>) differ from the linearly ordered real numbers. A difference
+          such as that is obvious, so when I say I've been looking to distinguish, it's more like: Because I've studied "the story"
+          of the real numbers, how would "the story" of the complex numbers differ? More importantly, why would it differ?
+        </p>
+
+        <p>
+          Over these past 3 weeks (of the course), I've been sticking to the basics, and I've come to realize a main narrative
+          of complex numbers that distinguish them from reals:
+        </p>
+
+        <ul>
+          <li>
+            <p>
+              multiplication
+            </p>
+
+            <p>
+              Think about origins: The very motivation that creates a need for complex numbers in the first place is
+              is the identity <math>i*i = -1</math>. This implies a definition of complex multiplication which is an extension
+              of real multiplication. If you look more closely at this extended definition, it embeds rotation, and as a result
+              it intertwines the Re z, Im z components. The real and imaginary components <em>oscillate</em> based on the rotation
+              factor introduced by any given multiplication, and those oscillations are connected. Although this is a simple
+              observation of the basic nature of complex multiplication, notice how this shows itself in the definition of
+              <math>e<sup>z</sup></math> as well as the <strong>Cauchy-Riemann equations</strong>. It's like, those analytic
+              (continuous) complex valued functions are only continuous because regardless of how they map a complex variable,
+              they still preserve this rotational behaviour overall. For example <math>f(x)=x<sup>2</sup></math> is a parabola
+              for the real numbers, it's a very well studied continuous function. But when we extend it to
+              <math>f(z)=z<sup>2</sup></math> it involves multiplication and thus rotation. If it weren't continuous,
+              it would have to tear some kind of hole in its rotational behaviour.
+            </p>
+
+            <p>
+              In any case, although this is all just intuition on my part (and although I'm jumping ahead because I have some
+              knowledge of what's to come), I'm willing to say this idea of rotation (and of circles) shows up again and again
+              as a major theme as a result of this fundamental property of complex numbers.
+            </p>
+          </li>
+        </ul>
+
+        <p>
+          It's good to be doing math again :)
+        </p>
+      </section>
+
+      <div class="anchor" id="week_04"></div>
+
+      <section>
+        <h3>Week 4</h3>
+        <h4>September 24th, 2016</h4>
+
+        <p>
+          A lot was new for me this week. When I had studied complex analysis previously, I never touched on the theory of
+          <strong>conformal mappings</strong> which then specialize to <strong>Mobius transformations</strong> then leading
+          up to the <strong>Riemann Mapping Theorem</strong>. The fact that you can translate the half-plane into an open
+          unit disk is amazing! And I actually enjoyed the treatment of decomposing and classifying Mobius transformations
+          into atomic variants, furthermore using <em>circles and lines to circles or lines</em>.
+        </p>
+
+        <p>
+          In any case, as far as the rest of the week went, we finally get to see some topology, not to mention
+          <strong>inverse functions</strong> as well as the very important <math>Log z</math>.
+        </p>
+
+        <p>
+          As an aside, I was giving it some thought and what I find interesting is when you have isolated singularities
+          such as with <math>f(z)=1/z</math> at <math>z=0</math>, and then you create a primitive (anti-derivative) of this
+          function seems to not only "preserve" the discontinuity, but the act of reshaping this otherwise continuous mapping
+          seems to create an even more pronounced tear which is why you have an entire slit (ray) discontinuity within the domain
+          of <math>Log z</math>. That's my current intuition about it anyway.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_05"></div>
+
+      <section>
+        <h3>Week 5</h3>
+        <h4>September 27th, 2016</h4>
+
+        <p>
+          This week was more familiar to me. Having previously taught myself the honours version of this complex analysis,
+          the book I read spent a lot of time and effort detailing the full <strong>Cauchy Theorem</strong>, and as a result
+          so did I. Everything from complex <strong>integration</strong>, to the partial <strong>Cauchy theorems</strong>
+          to the <strong>Cauchy integral formula</strong>, all of it leads up to the general Cauchy theorem, but they're
+          each just beautiful in their own right. Not only are they elegant as asthetic, they're very powerful tools of proof.
+          It's the first time I really started to see the beauty in the complex number system.
+        </p>
+
+        <p>
+          In week 3 I discussed what I feel is a main narrative as to why the complex numbers and the reals differ. I've been
+          thinking things over this week and I feel I've realized another:
+        </p>
+
+        <ul>
+          <li>
+            <p>
+              completeness
+            </p>
+
+            <p>
+              The complex numbers form an algebraic field, but you can't quite say they have the <em>completeness property</em>
+              because you can't say every non-empty set with an upper bound has a least upper bound (because that would require
+              linear ordering).
+            </p>
+
+            <p>
+              And yet you still have a calculus of sorts, so what kind of calculus do you have? First of all, as I've taken
+              honours analysis as my undergrad, we studied N dimensional vector calculus (mapping to M dimensional vector
+              spaces). Having that background, I can say even without the <em>supremum</em> property in full, you still have
+              strong enough topological properties to define unique limits, and so you still have ideas of differentiation
+              and even integration. Here, the complex plane mapped to the complex plane is just a special case of vector calculus.
+            </p>
+
+            <p>
+              Beyond this though, we have a unique situation: As mentioned at the start, this vector space is also an algebraic
+              field. With that said, you can say you end up with a complex calculus/analysis which is quite similar to real
+              calculus/analysis. The subtle differences show up because it can be said <strong>the complex number system
+              contains the completeness property, but it doesn't have the completeness property.</strong>
+            </p>
+
+            <p>
+              This is to say, because of the algebraic field, and because you can trace paths (which are isomorphic to the
+              real line, and thus <em>have the completeness property</em>) throughout the complex plane, you end up with
+              <strong>invariance-of-path line integrals</strong>. The amazing thing is, once you have this equivalence class
+              of loops, you can choose which closed paths to work with, and since we know circles are very well-behaved
+              in this system of numbers which privilege rotation, we return to this pattern of circles yet again. It becomes
+              a natural extension that Cauchy's Theorem as well as the Cauchy Integral Formula behave so consistently throughout
+              this space.
+            </p>
+          </li>
+        </ul>
+
+        <p>
+          It's a lot of narrative conjecture to take in I admit, but maybe something to think about?
+        </p>
+      </section>
+
+      <div class="anchor" id="week_06"></div>
+
+      <section>
+        <h3>Week 6</h3>
+        <h4>October 2nd, 2016</h4>
+
+        <p>
+          This week we got into <strong>infinite series</strong>, their types, as well as <strong>tests for convergence</strong>.
+          Aside from the concept of <strong>radius of convergence</strong>, the treatment of series is otherwise pretty well
+          identical to that of infinite series in real analysis. As mentioned before, having seen this sort of identical-ness
+          when studying complex calculus the first time around, this is why I didn't know how to take complex variables seriously.
+        </p>
+
+        <p>
+          The most fascinating part of the week for me was the <strong>Riemann zeta function</strong> along with the infamous
+          <strong>Riemann hypothesis</strong>. I've looked into these ideas before, but I never had much insight into them.
+          I'm grateful to Petra Bonfert-Taylor for the way she introduced this topic, as she has enough background to navigate
+          it in a way the rest of us can appreciate.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_07"></div>
+
+      <section>
+        <h3>Week 7</h3>
+        <h4>October 4th, 2016</h4>
+
+        <p>
+          The <strong>residue theorem</strong> with the application of <strong>evaluating improper integrals</strong> was one
+          of my original motivations in studying complex variables when I was young and looking into them on my own. I admit,
+          with all my efforts at the time, I never really understand the ideas in the sense of being able to prove them,
+          or even using the technique to solve any improper integrals that came my way.
+        </p>
+
+        <p>
+          After having sat with my thoughts and reflections on the complex number system, both refreshing and relearning
+          as well as simply just <strong>learning humbly</strong>, I no longer take the <strong>Laurent series</strong>
+          or <strong>singularities</strong> for granted. I no longer wish to rush past them to get to the residue theorem,
+          but rather am happy to see them for their own importance.
+        </p>
+
+        <p>
+          I'll leave this course with these final thoughts: These last two weeks on series tie in with the
+          <em>Cauchy integral formula</em> due to the fact that it says all the information required to determine the image
+          of an analytic function is embedded in a closed curve surrounding the point to be mapped. In terms of power series
+          of analytic functions: The information within the coefficients are sufficient to completely (locally) describe its
+          function. In a way you have both a local and global perspective of analytic functions&mdash;power series being local
+          representations, the Cauchy integral formula being global. analytic functions seem to stabilize&mdash;to the extent that
+          they have infinite derivatives. Furthermore, regarding power series, notice how <em>circles show up yet again</em>
+          as such series are described by their annuli as radii of convergence? Maybe all of this is also a property of the
+          interconnectedness of the component parts due to the multiplication definition? Analytic functions are forced by
+          their rotational nature to be exceptionally smooth.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

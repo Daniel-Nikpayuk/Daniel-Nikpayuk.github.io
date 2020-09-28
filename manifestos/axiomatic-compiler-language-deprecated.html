@@ -1,0 +1,459 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Language Design</title>
+  </head>
+  <body>
+
+    <a href="index.html">up</a>
+
+    <article id="axiomatic-compiler-language">
+      <section id="">
+        <header>
+          <h2>Axiomatic Compiler Language</h2>
+          <h3>May 1, 2017</h3>
+        </header>
+
+        <p>
+          A compiler should be designed and coded in an axiomatic style similar to the axiomatic method in mathematics.
+        </p>
+
+        <p>
+          How would this work? In any branch of mathematics, one starts with the <em>axioms</em> of that system&mdash;logical statements
+          assumed to be true&mdash;and from them we derive a first round of lemmata, theorems, corollaries, etc. which is to say the
+          next round of logical statements logically derived from all previous logical statements already assumed (as axioms)
+          or proven to be true (as derivations) under the system of logic.
+        </p>
+
+        <p>
+          In computing science, as a programming language, it would more or less work the same way, only we'd massage the
+          interpretation a little. Instead of axioms, we start with modules of code represented by distinct grammatical constructs
+          within the language specification. These in a way are assumed to be true, in the sense that to create the necessary code,
+          we'd have to write it in another language such as assembly, C, or ideally something safer.
+        </p>
+
+        <p>
+          This makes sense by analogy actually, as in mathematical logic one cannot prove any given branch of mathematics as internally
+          consistent (which is to say its axioms do not inevitably lead to contradictions), rather we can only prove a branch of math
+          is consistent relative to a different branch of math. It shifts the burden to the <em>dependency</em> branch. As an aside,
+          this is why one branch among them all is given special status as being <em>foundational</em>, because the internal consistency
+          of all other branches are derived from it&mdash;it itself is axiomatic to them in the sense that it cannot be proven consistent.
+          It's a very uncertain world we live in, but that's all we've got. Though that's neither here nor there.
+        </p>
+
+        <p>
+          So the <strong>axiomatic grammar</strong> of this axiomatic compiler language would be implemented in another
+          language&mdash;shifting the burden to this <em>dependency</em> language, and from there we would use this minimalist
+          core of the compiler to compile the next round of grammatical constructs to add to the compiler itself. We continue
+          this process so the grammar and its compiler fan outward and upward in an axiomatically dependent style. We have the
+          added bonus&mdash;not just a side effect, but as part of the design&mdash;that each additional <em>round</em> of grammatical
+          constructs (equivalently <em>code modules</em>) added to the compiler forms libraries which&mdash;they have to be done
+          right&mdash;can be used by api developers of the language as a whole.
+        </p>
+
+        <p>
+          <em>The grammar and compiler take turns building each other</em>.
+        </p>
+
+        <p>
+          This is an ideal way to design a programming language. Take a typed lambda calculus that mitigates the halting problem:
+          Structure it axiomatically, but instead of privileging mathematical narratives which are more concerned with theoretical
+          elegance, inform the axiomatic narrative with the perspective of a register machine. If you were a register machine,
+          what resources would you have available to you? How would you build yourself outward and upward?
+        </p>
+
+        <p>
+          This is how you build a safe, verifiable, and just as importantly <em>intuitive</em> programming language.
+        </p>
+
+      </section>
+    </article>
+
+    <article id="a-shift-in-computational-thinking">
+      <section id="">
+        <header>
+          <h3>March 13, 2017</h3>
+          <h1>A shift in computational thinking</h1>
+        </header>
+
+        <p>
+          The two biggest limitations of modern high level programming languages are:
+        </p>
+        <ol>
+          <li>
+            functions need to be defined in full.
+          </li>
+          <li>
+            variables represent values (which are instances of types).
+          </li>
+        </ol>
+        <p>
+          I offer in this essay a fundamental shift in thinking about the nature of computation
+          with the intent of deconstructing these social constructs while providing an alternative.
+        </p>
+
+        <h2>Computing science as a way of thinking:</h2>
+
+        <p>
+          The alternative I here aim to describe is computation as an interpretation of <em>identity resolution</em>.
+          Not only is this philosophically relevant, but I intend for it to be the basis of a new genre of programming languages.
+        </p><p>
+          We start by asking: <em>what then is computation?</em>
+        </p><p>
+          The quickest answer for those in the mathematical know is that we axiomatically assume certain mathematical objects
+          are computable, which in effect means we are indexing the success of any computational model we come up with to the
+          success in proving <em>computable functions</em> (our mathematical objects) to be successfully simulated. The historical
+          models we do consider successful have notably been the universal Turing machine, with register machines a more
+          practical extension of this, while the typed lambda calculus being a valuable bug mitigating alternative.
+        </p><p>
+          If we're going to shift our view of computation though, we have to get more philosophical than all of this.
+          We have to go back to the origins: <em>What then is computation?</em>
+        </p><p>
+          For me at least, an intuitive <em>linguistic</em> analysis suggests the root (simplest; abstract) <em>verb</em>
+          behind the meaning of <em>computation</em> is: <strong>move</strong>. Why? Because computation at its heart is
+          all about <em>translation</em>, which is to say the intention is to translate input into a designated output.
+          In the most literal and physical sense, translation means "to move". To move from an initial to a terminal,
+          an origin to a destination, a source to a sink.  This brings up three possible design perspectives actually,
+          as moving implies points of <em>departure</em> and <em>arrival</em>.
+        </p><p>
+          If you look at imperative languages like C, it is more "departure" oriented. This is to say, an imperative
+          statement within language is a command, and the root verb of any command is <strong>do</strong>. To "do" something
+          I make the claim is to focus on where you are now and how you're going to depart. For example with register
+          machines, we look at the current state of the registers, and execute the next instruction to depart from this
+          state. It's the perspective: How do we turn this current state of information into the next step?
+        </p><p>
+          If you look at functional languages like LISP, it is more "arrival" oriented. Why? Because the lambda calculus
+          (especially its typed variants) have always been focused on mitigating the halting problem. The best way to do
+          this is to focus on the point of arrival. If you know it exists in advance, then instead of trying to get there,
+          you focus on backtracking from there to where you currently are. It's like visualizing yourself at the destination,
+          and walking backwards until you get to where you actually are now, and that's your path forward. This bakes halting
+          into the very design of the language itself as the destination is then the point of halting.
+        </p><p>
+          The third perspective then is the one I'm interested in, and which I have not especially seen in the languages
+          that exist out there now. The third perspective focuses not on the initial, not on the terminal, but rather on
+          the <em>path</em> itself.
+        </p>
+
+        <h2>Interface design:</h2>
+
+        <p>
+          An additional motivating factor in shifting the philosophical perspective of computation is in the grammatical
+          design of languages themselves. Languages like Haskell cook type safe design considerations right into the
+          grammar&mdash;and this has set a precedent, it has raised the bar for designing the grammar of languages&mdash;but
+          I also think grammar could be furthered still by making use of the wisdom of interface design.
+        </p><p>
+          In such a case, given my above argument that computation is really about movement, or <em>motion</em>, it's
+          worthwhile to look at what humans find intuitive when it comes to our natural ability to traverse this planet.
+          For me a natural starting place is neuroscience, the brain, and <em>spatial memory</em>:
+        </p>
+        <ol>
+          <li>
+            Place Cells - location
+          </li>
+          <li>
+            Grid Cells - path
+          </li>
+          <li>
+            Head-direction Cells - orientation 
+          </li>
+          <li>
+            Border Cells - boundary
+          </li>
+          <li>
+            Spatial view Cells - territory
+          </li>
+        </ol>
+
+        <p>
+          I should be clear, I am only borrowing loosely and interpreting freely (non-scientifically) from this actual science,
+          but let me spin you a narrative&mdash;good storytelling is in fact much of the point when it comes to interface design
+          after all.
+        </p><p>
+          Much amazing work has been done to show that we have neurons, brain cells, in our heads which pattern recognize
+          different types of space, and are used to remember actual spaces to which we've been. We have place cells which
+          fire at certain locations we've been to before; we have grid cells which act like (equilateral) triangular lattices
+          across the ground, helping us recognize paths; we have head direction cells which tell us our orientation relative
+          to a known landscape; we have border cells which fire as we are positioned at physical boundaries; and we have
+          spatial view cells which can be thought of as recognizing areas or territories of space. My summary does not
+          do this justice, I honestly refer you to a very accessible
+          <a href="https://www.ted.com/talks/neil_burgess_how_your_brain_tells_you_where_you_are">TEDtalk</a>
+          about it instead.
+        </p><p>
+          For my purposes, such science is useful in a way analogous to Gestalt Theory from general Design: If we're
+          going to build simple, effective, intuitive, interfaces we need to know how humans perceive space and motion.
+        </p><p>
+          I would argue we can effectively do so by means of the following navigational constructs
+          (as suggested by spatial memory theory): <strong>location, path, orientation, boundary, territory</strong>.
+          These are my fundamental categories in describing motion in the broadest sense of the word.
+        </p>
+
+        <h2>A political view of language:</h2>
+
+        <p>
+          The reader might complain we have moved dangerously away from type safe computational language to a more fluid,
+          fuzzy psuedo-scientific variety. Doing so risks corrupting any programming language we intend to design later on
+          with imprecision and potentially even contradiction.
+        </p><p>
+          As this is not the intention let's address this consideration, let's make expectations clear: The idea here
+          is to stick to designing formal safe languages, but we pretend that we have access to all possible safe languages;
+          then of all the safe languages we could design, we find one which also has an intuitive interface. This way we
+          have the best of both worlds: Something safe; something expressive. To find such a <em>something</em>,
+          we appeal to the intuition and inspiration of non-programming languages.
+        </p><p>
+          This of course immediately brings up another important question: What then is the difference between
+          <em>formal</em> (artificial, mechanical) language and <em>natural</em> (biological, organic) language?
+        </p><p>
+          In my attempt to describe natural language over the years, I have come to conclude that it is a kind of sociological
+          politics. My theory is that language is <strong>self-similar</strong> to the politics of a given species
+          (in math terms this is not isomorphic, but something along the lines of homomorphic). For example, a consequence
+          of such a view is if you were trying to understand the language of a given insect species, you would first need
+          to understand its politics. What it uses language to talk about is inevitably shaped by its politics of life after
+          all.  Okay, so insect politics is an interesting tangent in its own right, but the focus here is human politics:
+          So what about human politics?  Humans are <em>mammals</em>, we have evolved to be in <em>tribes</em>.
+        </p><p>
+          As an Inuk I identify as being not too far removed from my traditional way of life. I say this because my parents
+          raised me with the sensibilities of how to belong to an Indigenous community. I am willing to say we have many
+          wisdoms regarding teamwork other societies are only now learning. We have such wisdoms for the simple reason
+          that without effective teamwork in a harsh Arctic environment, we would not have survived as a people.
+          Such are my credentials for the theory I am about to purport, but if this does not satisfy you I will add:
+          As I participate in this modern labour force I have many years of work experience under my belt already (19+),
+          and I have seen many times now how people work in large teams&mdash;it's pretty similar to tribal politics.
+        </p><p>
+          With that said, I'm willing to say an effective model to tribal politics is that there are what I would call
+          <strong>pillars of support</strong> as <em>people</em> who keep the community together. In such an organic
+          dynamic setting, things are always changing, but these pillars of support remain stable and thus tether
+          everyone else. These pillars not only are stable on their own, but they reinforce each other as well.
+          Of course as such is a living, breathing, ever changing community, even its pillars change over time, but usually
+          for example if one pillar falls or fades or leaves, another rises to replace it. Incrementally. Gradually. Usually.
+        </p><p>
+          It is my theory then that if you want to model human language (or even culture) this is the main contributing theory to
+          start with. In application this means when looking at existing human grammar, one looks for those pillars of grammar
+          which provide the fundamental support for everything else in the language. One looks to see how they reinforce each other,
+          and how they effect the politics of the surrounding grammar. Patterns of sociology and politics should evidence themselves
+          when looking at how such politically self-similar languages change over time.
+        </p><p>
+          Lastly I would note, <em>formal languages</em> are not immune from these effects for the simple reason that formal
+          languages tend to be infinite in nature, and given the finite nature of humanity, we are required to choose our
+          <em>focus</em>, our <em>gaze</em>. As soon as that happens, even in a rigourously defined formal environment,
+          patterns of politics emerge in deciding what focus to privilege. This is to say, it is expected of a formal
+          language designer to be informed and to inform patterns of natural language design as well.
+        </p>
+
+        <h2>Shifting the burden to identity:</h2>
+
+        <p>
+          So finally we are ready to discuss ideas of <strong>identity</strong>. What then is identity?
+        </p><p>
+          This question is as much philosophy as anything else. The word in the English language spans multiple disciplines,
+          each with their own understanding. Women's Studies, Humanities, Psychology, Sociology, Philosophy, Mathematics,
+          Computing Science, to name just a few. Whatever <em>identity</em> is, it is important to the human experience.
+          Each of the above mentioned disciplines has its own insights into identity because each also has its own insights
+          into the nature of language itself.  I premise such a relationship on the theory of the previous section:
+          language as self-similar politics.
+        </p><p>
+          Although each discipline that seeks to understand identity is worthy of study in its own right&mdash;each contributing to
+          the understanding of the broader human experience&mdash;here we limit ourselves to language as a means of <em>description</em>.
+          Why? Because we seek to understand computation by means of perfectly descriptive language&mdash;this is the nature of computing
+          science after all&mdash;so if we are to introduce the concept of identity it makes sense to approach it as yet another description.
+        </p><p>
+          <em>So what then is descriptive identity?</em>
+        </p><p>
+          <strong>Identity is a filter that resolves uniquely under a given community space.</strong>
+        </p><p>
+          Why <em>community space</em>? Why the word <em>community</em>? As humans we have the rights to many self-identities,
+          but in regards to descriptive identity, we are determined by the communities to which we belong, and by the
+          communities which claim us. We have identity if a community recognizes us. A community is a space that allows
+          us to <em>navigate</em> our identities.
+        </p><p>
+          The first big idea here is that of a <em>filter</em>. The most obvious examples for me are examples from linguistic grammar:
+          <strong>nouns, adjectives, verbs, adverbs</strong>. Take the phrase: "The friendly cat". From a traditional linguistic lens
+          we would say "cat" is the noun, "The friendly" being the adjective (+ article). From a broader perspective though,
+          we could also view this entire descriptive construct as a filter. A collection of <em>type</em> information which when
+          built up narrows down the possible interpretation of what is being described. A more refined filter would for example be:
+          "The friendly cat napping on the tree across the street" (how'd it get up there?). This is very specific, enough information
+          is there that if you were adjacent to a street with a tree you might glance up to see if it was there.
+        </p><p>
+          Filters on their own&mdash;even very specific ones&mdash;aren't enough as it turns out to define the identity we are looking for.
+          Let's say you look up and across the street to find that there are two trees each with its own napping cat. Which cat?
+          Context makes the remainder. The filter itself provides us with signifiers to navigate the context. The very nature
+          of the context plus our ability to navigate it successfully is what allows us to identify, or rather resolve the identity
+          of our cat. Finally, such an identity is only determined when it is recognized by us: Its community. This cat for this
+          time and place belongs to our community space.
+        </p>
+
+        <h3>Identity Spectrogram:</h3>
+
+        <p>
+          In audio signal processing, one takes an audio recording (called the time domain signal&mdash;recorded in <em>time</em>)
+          and converts it into a frequency (pitch) domain signal. If you want to see how the frequencies of the record change
+          over time (keep in mind you lose direct representational access to the time-encoded information during the domain
+          tranformation), you first split up the time signal into small intervals and convert those instead. Once converted,
+          you put those images back together into what's called a spectrogram.
+        </p><p>
+          Let's say we have a community space, as well as the following filter: "The rich woman", which provides enough
+          information to resolve to a unique identity. In computing science, using an object oriented paradigm, we might
+          say this construct has an internal state. This living breathing woman who is rich has an identity. What happens
+          as time passes? In what we call <em>the real world</em> this person will change over time. Her internal state
+          and situation in life will change over time. She might become richer, she might become poorer, she will actively
+          take charge of her own life, she will have successes, she will have hardships, she will learn and grow and change,
+          yet, through all of this she will be considered to be the same person&mdash;to have the same identity. How is this so?
+        </p><p>
+          This is an ancient philosophical paradox: If something is always changing, how do you define its identity? After all
+          identity implies something must be the same from one iteration of change to the next, so what aspect of it stays
+          the same such that it allows the idea of identity in the first place? We take for granted that there is such an
+          aspect, though if you really try to pin it down you'll realize it's more complicated than you thought.
+        </p><p>
+          This is where we introduce the idea of an <em>identity spectrogram</em>. We've started out with "The rich woman".
+          As time passes maybe she becomes "The rich woman with long hair". In time she might change to "The rich woman
+          with long hair with a university degree". Following that she might become "The rich woman with a university degree
+          who became CEO of a world changing business" (who no longer has long hair). This is to say, if we were to look
+          at her whole life in some sort of movie montage, we would resolve many such filters that identify her uniquely
+          throughout it all. If we collected those identity filters together preserving the stream of time we would have
+          something similar to a spectrogram. This you might say could even be considered her descriptive identity in full.
+        </p><p>
+          One thing you would notice in analyzing such an <strong>identiogram</strong> is that even though filters change over
+          time, you'd still see repeating patterns: Some filter types would show up again and again and again while others
+          would be more volatile. This parallels the <em>pillars of support</em> discussed earlier regarding politically
+          oriented language.
+        </p>
+
+        <h2>Programming Language:</h2>
+
+        <p>
+          With an <em>interpreter</em> we take an expression of source code, evaluate and apply and reduce it to something
+          similar to an abstract register machine, then we <em>execute</em> it. With a <em>compiler</em> we take an expression
+          of source code, evaluate and apply and reduce it to something similar to an abstract register machine, then we
+          <em>translate</em> it.
+        </p><p>
+          Identity resolution is the idea that only if and when we resolve the identity of an instruction do we execute
+          or translate it respectively. This narrative design&mdash;choosing to focus on identity&mdash;provides a catalyst for
+          designing intuitive, expressive, and flexible grammars for a new class of programming languages.
+        </p><p>
+          <strong>This is a shift in computational thinking.</strong>
+        </p><p>
+          As far as programming languages go, one of your first reactions might be "this sounds quite similar to databases":
+          You query (filter) with a given search pattern and identity the data you want to retrieve. In that sense there are
+          similarities, but in all honesty it is expected that there would be similarities to many different programming
+          languages and styles already in existence.
+        </p><p>
+          The intention is to start with a fundamental shift in interpretation and work from there. At the same time, just because
+          the philosophical design differs, does not mean we should disregard all the wisdom and best practices learned from
+          the many great languages already out there.
+        </p><p>
+          Inevitably though, this family of languages is intended to be about a different variety of code expressivity.
+          As a mathematician, I cut my teeth so to speak on brute force formula and identity manipulations. In many ways
+          imperative languages have mimicked the expressivity of mathematical arithmetic and algebra, but from years of
+          practice I've always felt they've been missing something. They're not flexible enough.
+        </p><p>
+          This leads back to my claim of <em>the two biggest limitations of modern high level programming languages</em>
+          introduced at the beginning of this essay:
+        </p>
+        <ol>
+          <li>
+            functions need to be defined in full.
+          </li>
+          <li>
+            variables represent values (which are instances of types).
+          </li>
+        </ol>
+        <p>
+          Let's deconstruct:
+        </p>
+        <p>
+          <strong>1.</strong> A function does <strong>not</strong> need to be defined in full, at least not until it's
+          actually called. This paradigm seems to be inherited from linguistics and philosophy, as a kind of
+          "semantic completeness". A function really does only need to be complete by the time it is actually called.
+          For expressive purposes, until then, it has higher entropy if you allow its identity to be filtered parts at a time.
+        </p><p>
+          Many algorithms share very similar patterns only swapping out pieces of code in otherwise modular places internally.
+          For example if you're acting on singly or doubly linked lists, for many algorithms the only difference is
+          in the fact that with singly you only have to worry about one pointer link (at a junction between nodes)
+          while with doubly you need to worry about two (pointing to each other). One possibility in refactoring such common
+          patterns is to make function calls within the algorithm, and there are situations where that's warranted,
+          but there are contexts of design where it's not. Calling functions within a loop can be more expensive at times.
+          With greater expressivity when it comes to function identity resolution you could alternatively inline by
+          assembling any variant modular code as needed internally.
+        </p><p>
+          Another expressivity advantage of computation as identity resolution is the idea of a function with a complete
+          instructional pattern which is only missing type information. C++ actually has this idea already, it's called
+          <em>templating</em>. The difference is, with templates, every different type you instantiate, the compiler creates
+          a separate copy of the function's instruction set. If different types correspond to different register memory sizes,
+          then such (near) duplicates are in fact justified, on the other hand it's too easily possible to instantiate different
+          types which lead to the same machine code being included more than once. One ends up with code bloat.
+        </p><p>
+          <strong>2.</strong> A variable does <strong>not</strong> need to represent a value with an assumed type. This design
+          seems to be inherited from register machine design, as the registers themselves are the classic variables&mdash;they have names,
+          can hold mutable data, and their respective sizes are their types. From an identity resolution position, types and type
+          instances (values) are one and the same: They're all filter tags. You only need add enough tags equipped with a navigational
+          space; if the compiler/interpreter can resolve it, then it translates/executes. Such a perspective promotes the design of
+          a strong filter algebra, where you can split an identity into its stable and volatile tags.
+        </p><p>
+          This idea shows up somewhat already in Haskell with typeclasses: We declare weaker specifications (stable tags),
+          enough to <strong>prove</strong> a given algorithm&mdash;or show its dependencies, but still allow the algorithm to run
+          under stronger more refined types (volatile tags).
+        </p><p>
+          The difference with identity resolution is that you can more clearly view type information as a stratum of filters.
+          It is my own belief signal processing as a way of thinking will provide many useful analogies apt for translation
+          as it has a rich language of filter constructs already.
+        </p><p>
+          When separating out variable from type, a natural design choice for such identity resolution programming languages
+          is to modularize structural filters from functional filters. This is to say,
+          <a href="https://github.com/Daniel-Nikpayuk/Stratified-Powerset-Part-One-/blob/master/stratified%20powerset%20(part%20one).pdf">
+          untyped structures</a> provide filter information all on their own, and a language would have higher expressive
+          entropy if they were separated from typed functional tags.
+        </p><p>
+          An example to make this more clear: Let's say we have a sequence of 50 mutable elements, and we want to reverse the order
+          of this sequence while saving on memory. One possible solution for an algorithm is to start at each end of the sequence,
+          swap those elements, then move inward on both sides and repeat. Repeat until we reach the middle. Notice such an algorithm
+          requires no actual type information? The sequence (the nature of the container) itself <em>is</em> type information.
+          It is enough "typeclass" information to weakly specify such a reversal algorithm.
+        </p><p>
+          The paradigm then is to be able to specify structural filter information, and express algorithms which can act on that
+          information alone. When the time comes we can add the necessary functional filter information so that such algorithms
+          resolve uniquely; so that they have identity. Furthermore, similar to Haskell such algorithms may be reused on objects
+          with more refined types, and <em>unlike</em> C++ there is no redundancy penalty for supplying additional tags
+          to that type info. The best of both worlds.
+        </p><p>
+          &mdash;
+        </p><p>
+          At this point, at this stage, all that is left is an example of <em>possible</em> code grammar for such a language.
+          I offer the following without explanation, hoping you might be able to interpret it given the ideas purported here.
+          It is not out of our ability to do so: Computation is a way of mind, we were the original computers after all.
+          <pre><code>
+  functional R =
+  {
+  	ware: memory,
+  	type: real,
+  	bytes: 4,
+  	value
+  }
+
+  structural complex =
+  &lt;
+  	x: R,
+  	y: R
+  &gt;
+
+  ###
+
+  operator complex u * complex v = complex
+  @
+  	x: u/x * v/x - u/y * v/y
+  	y: u/x * v/y + u/y * v/x
+
+  complex z
+  @
+  	x/value: 15
+  	y/value: 2
+
+  complex w = z*z
+
+          </code></pre>
+        </p>
+
+      </section>
+    </article>
+
+  </body>
+</html>

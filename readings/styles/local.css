@@ -1,0 +1,26 @@
+
+.book-stack
+{
+	float: left;
+
+	width: 50%;
+	padding-top: 2%;
+	margin-right: 2%;
+}
+
+.book-cover
+{
+	float: left;
+
+	width: 25%;
+	padding-top: 2%;
+	margin-right: 2%;
+}
+
+.clear-float
+{
+	clear: left;
+
+	padding-top: 2%;
+}
+

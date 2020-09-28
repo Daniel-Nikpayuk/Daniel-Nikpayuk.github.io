@@ -1,0 +1,393 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="styles/local.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Reading List</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Reading List</h1>
+    </header>
+
+    <main id="introduction-to-automata-theory-languages-and-computation">
+      <section id="preamble">
+        <div class="book-cover">
+          <image src="https://www.pearsonhighered.com/assets/bigcovers/0/2/0/1/0201441241.jpg"
+                 alt="The cover from the book: Introduction to Automata Theory, Languages, and Computation, Second Edition"/>
+        </div>
+
+        <h2>Introduction to Automata Theory, Languages, and Computation</h2>
+        <h4>June 01, 2017</h4>
+
+        <p>
+          I found this book quite accessible, practical, as well as theoretically intriguing. In particular it looks to
+          answer questions of <strong>decidability</strong> as well as <strong>intractability</strong>. What does that mean?
+          In the words of the authors themselves, decidability would be asking: What can computers do <em>at all</em>?
+          While intractability would ask: What can computers do <em>efficiently</em>?
+        </p>
+
+        <p>
+          Keep in mind this book is more theory based. In terms of teaching a generation of coders to participate in industry,
+          it may have been taught in the past, but isn't necessarily as relevant now. I say this in the sense that very little
+          of its content would be applied directly to building software these days. Most of the software that uses such theory
+          is already ubiquitous and thus packaged into many existing platforms, libraries, and development kits in today's
+          digital economy.
+        </p>
+
+        <p>
+          If you're looking to learn the theoretical limits of computation, or just looking to grow your understanding
+          of computing science as a way of thinking, then this book is better suited for you. My own motivation is to
+          learn computing as a way of thinking, but I'm also designing my own programming language (at the time of this
+          writing) and would like to build the first generation of its compiler. If you have a similar aim, this book
+          is also for you.
+        </p>
+
+        <p>
+          As for the content and structure of the book itself: One way of <em>reading</em> this text is to interpret it as
+          an overall attempt to <em>mitigate the complexity of computation</em>, in particular by stratifying it into layers.
+          The vehicle for doing so being <em>automata</em>. A secondary theme woven through this stratification narrative
+          worth praising is that each layer of complexity has a dual interpretation as both automata and as language with
+          a given grammar, and for each theoretical level of language complexity, the description of its corresponding
+          automata is such that it is very straightforward to implement in an actual programming language.
+          <strong>lexers</strong> and <strong>parsers</strong> for example. As an aside, learning about Noam Chomsky's
+          contribution to computing science with the <strong>Chomsky hierarchy</strong> is pretty cool as well.
+        </p>
+
+        <p>
+          Finally, this book does a really good job exploring and explaining <strong>deterministic</strong> vs
+          <strong>non-deterministic</strong> algorithms, and what these actually mean. You can get away with a casual
+          understanding in many industry contexts having to do with <strong>concurrency</strong>, but if you want to delve
+          deeper this book is worth it.
+        </p>
+
+        <p>
+          In summary: If you really need (or desire) a strong theoretical understanding of the foundations of computing science,
+          I highly recommend this book. If you don't, you can get by without it, relying on more localized education
+          for whatever your software context is. This may sound harsh, but it is a pretty rigorous book, it's worth it,
+          but also know what you're getting into.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#chapter_01">Chapter 1 - Automata: The Methods and the Madness</a>
+          </li>
+          <li>
+            <a href="#chapter_02">Chapter 2 - Finite Automata</a>
+          </li>
+          <li>
+            <a href="#chapter_03">Chapter 3 - Regular Expressions and Languages</a>
+          </li>
+          <li>
+            <a href="#chapter_04">Chapter 4 - Properties of Regular Languages</a>
+          </li>
+          <li>
+            <a href="#chapter_05">Chapter 5 - Context-Free Grammars and Languages</a>
+          </li>
+          <li>
+            <a href="#chapter_06">Chapter 6 - Pushdown Automata</a>
+          </li>
+          <li>
+            <a href="#chapter_07">Chapter 7 - Properties of Context-Free Languages</a>
+          </li>
+          <li>
+            <a href="#chapter_08">Chapter 8 - Introduction to Turing Machines</a>
+          </li>
+          <li>
+            <a href="#chapter_09">Chapter 9 - Undecidability</a>
+          </li>
+          <li>
+            <a href="#chapter_10">Chapter 10 - Intractable Problems</a>
+          </li>
+          <li>
+            <a href="#chapter_11">Chapter 11 - Additional Classes of Problems</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="chapter_01"></div>
+
+      <section>
+        <h3>Chapter 1 - Automata: The Methods and the Madness</h3>
+
+        <p>
+          This chapter introduces the initial terms, and how they might relate to computational complexity.
+          Beyond that it also introduces the fact that we're expected to hold a high level of mathematical rigour:
+          Several sections are spent going over the idea of a formal proof and types of proofs. For the record,
+          I actually like that as I come from a pure math background, but I also understand for those who don't
+          it might scare them off. For their sake, I hope it doesn't.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_02"></div>
+
+      <section>
+        <h3>Chapter 2 - Finite Automata</h3>
+
+        <p>
+          In this chapter we explore the basic mechanics of automata, what they are, how they're built, how to use
+          them. We look at the differences in <strong>deterministic</strong> vs <strong>nondeterministic</strong>
+          automata, not to mention they are actually equivalent in their potential, which is to say they can
+          be translated into each other.
+        </p>
+
+        <p>
+          This chapter didn't mean much to me on first glance. It was very thorough, and as the idea of automata
+          were completely new to me at the time, it was a lot to take in, with little to no motivation for
+          such strangely behaving creatures. The application of automata to text search was a first step
+          in seeing their use, but just barely. Mostly they just seem like a convoluted way to search text
+          as their are more direct approaches.
+        </p>
+
+        <p>
+          Regardless, as everything builds on this chapter, don't take it for granted, and don't rush over it.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_03"></div>
+
+      <section>
+        <h3>Chapter 3 - Regular Expressions and Languages</h3>
+
+        <p>
+          This is the first chapter where things really began to click for me. I've seen regular expressions in <strong>bash</strong>,
+          the linux commandline. I learned to use them a bit in <strong>grep</strong>, but not knowing the classical history
+          of <strong>unix</strong>'s development, I just assumed&mdash;although very clever and inventive&mdash;that regular expressions
+          were an ad-hoc design. I didn't realize they had actual theoretical underpinnings. Not only that, but with a rigorous
+          treatment of their mechanics, I have become much more comfortable with their use.
+        </p>
+
+        <p>
+          Furthermore, seeing them in application to text search and how that tied in with the finite automata from the previous
+          chapter, I started to see the depth of this theory. I mean I've seen text searching algorithms before, and for as
+          elegant, efficient, and powerful as they are, I've only ever seen exact text matching. With regular expressions
+          you can match patterns, and if you didn't know any better you'd think the underlying algorithms for such pattern
+          matching would be somewhat complex, when translated into finite automata they're actually quite simple and
+          straightforward. So much so the whole process can be coded as a <strong>lexer</strong>. That's really amazing!
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_04"></div>
+
+      <section>
+        <h3>Chapter 4 - Properties of Regular Languages</h3>
+
+        <p>
+          This chapter gets back to theory, proving more <em>classical mathematical</em> properties of regular languages
+          such as <strong>closure, decidability, equivalence</strong>. This of course relates back to regular expressions
+          and finite automata because they're all equivalent.
+        </p>
+
+        <p>
+          At first glance, I could see the theoretical value of proving these theoretical aspects of regular languages,
+          and reducing a DFA to its simplest form has an obvious practical application of <strong>algorithm optimization</strong>.
+          At the same time though this chapter otherwise seemed tedious. Necessary, important, but kind of dry, you know?
+          I didn't get it at first.
+        </p>
+
+        <p>
+          I was wrong! I was wrong on account of the <strong>pumping lemma</strong>, which they actually introduce early on.
+          It seems kind of abstract, and it lacks motivation, at least for me. Usually lemmas are only important in proving
+          more powerful theorems, so I knew not to take it for granted, but I didn't appreciate it immediately. To be honest,
+          I only clued into its importance a few chapters ahead when they reintroduce the pumping lemma for another class
+          of languages.
+        </p>
+
+        <p>
+          Here's the realization so you don't make the same mistake I did: Don't be impatient with the pumping lemma!
+          It is used to prove the validity in even bothering to classify and stratify different levels of languages
+          and their automata. I mentioned the narrative of this book is to mitigate computational complexity by stratification.
+          This is an engineering tactic, but in this case, it's not only practical, it's theoretically warranted. That's amazing!
+        </p>
+
+      </section>
+
+      <div class="anchor" id="chapter_05"></div>
+
+      <section>
+        <h3>Chapter 5 - Context-Free Grammars and Languages</h3>
+
+        <p>
+          This is a big chapter. Don't jump ahead. Sit with it for a while, contemplate it, let it sink in.
+        </p>
+
+        <p>
+          Here we effectively learn what kind of <em>strings</em> we can derive (or recognize) using tree-recursion.
+          With regular languages for example, we have access to recursion (the star operator), but it's limited to
+          the recursion of <em>repeated insertion</em>. Here we can recurse from a finite collection of template patterns
+          until we insert their final <strong>yields</strong>.
+        </p>
+
+        <p>
+          It's hard to explain without actually reading the chapter, but the concepts and ways of thinking offered here
+          should not be taken for granted. What blew my mind though was when it all started connecting back to
+          <strong>trees</strong> and <strong>parsers</strong>.
+        </p>
+
+        <p>
+          The other part of this chapter dealt with <strong>ambiguity</strong> of context free grammars, which is to
+          say grammars in which you could derive a string in more than one way. The issue here is in practice,
+          if you took a string, and broke it down into its derivation tree, you would then use that derivation tree
+          to interpret and evaluate the meaning of that string. If there's more than one possible derivation,
+          it's also possible there's more than one interpretation and evaluation which you do not want for a
+          programming language.
+        </p>
+
+        <p>
+          This part of the chapter is devoted to showing just because a particular grammar for a language is ambiguous,
+          doesn't necessarily mean all such grammars for that language are. In such cases, you can often find alternative
+          grammars which are not ambiguous. Problem solved. Only: And I hope I'm not giving spoilers here, but the general
+          decidability of ambiguity is known to be negative. This is to say, if you're given a random context-free language,
+          there is no single universal algorithm to determine if that language is ambiguous (all its grammars are ambigous).
+          This is to say: <strong>ambiguity is undecidable</strong>. All is not lost of course, it just becomes a matter if
+          it being case-by-case, but knowing this theoretical result could save a lot of time as it lets us know our limits.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_06"></div>
+
+      <section>
+        <h3>Chapter 6 - Pushdown Automata</h3>
+
+        <p>
+          I thought my mind was done being blown already, but pushdown automata blew my mind. Basically they're just finite
+          automata, but this time their equipped with some memory. I'll cheat here, as we're coders and we're already familiar
+          with various data structures, but the memory structure these automata are equipped with is simply a <strong>stack</strong>.
+          A stack, is in <em>push, pop</em>, first in last out (filo), that sort of thing.
+        </p>
+
+        <p>
+          It blows my mind because these PDAs are equivalent to context free grammars, meaning parsers, tree-derviations,
+          are effectively equivalent to repeat recursion with some stack memory. That's weird. Haha.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_07"></div>
+
+      <section>
+        <h3>Chapter 7 - Properties of Context-Free Languages</h3>
+
+        <p>
+          This chapter is in a similar spirit to that of chapter 4, where we looked at broader mathematical properties
+          of context-free languages. In particular we first learn to convert grammars into <strong>chomsky normal form</strong>,
+          which allow us to more readily prove these broader mathematical properties such as closure.
+        </p>
+
+        <p>
+          We also take a look at the <em>pumping lemma</em> again. Strictly speaking it's not the same pumping lemma, as it is
+          both expressed and proven for a different class of languages. Regardless, it's actually quite similar, and it serves
+          the same purpose of proving there exist languages that aren't context-free, which can only be higher up in the hierarchy
+          of our stratification.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_08"></div>
+
+      <section>
+        <h3>Chapter 8 - Introduction to Turing Machines</h3>
+
+        <p>
+          This is where we start showing Turing machines as the final layer, the boundary with no higher layers of
+          complexity. It ends up being more about theoretical limitations than the mechanics of Turing machines themselves.
+          As for Turing machines themselves, this chapter devotes a lot of space to showing various implementations of Turing
+          machines to be equivalent. It only briefly introduces the idea of <strong>halting</strong>.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_09"></div>
+
+      <section>
+        <h3>Chapter 9 - Undecidability</h3>
+
+        <p>
+          Having reached the end of our automata hierarchy, from here on out we look to discover boundary limitations in
+          the potential and capabilities of these machines.
+        </p>
+
+        <p>
+          The main way to look at it, is a given language (of strings) equipped with a given Turing machine is either
+          <strong>decidable</strong> or <strong>undecidable</strong>. If it's decidable, it is <strong>recursive</strong>,
+          meaning the Turing machine corresponding to it will halt for any <em>possible</em> string you give it,
+          even if that string doesn't belong to the language the Turing machine generates.
+        </p>
+
+        <p>
+          A given language with its Turing machine is undecidable if, for any string not in the corresponding language,
+          the Turing machine never halts. It halts of course if the string is in the language, as that's the nature
+          of the Turing machine&mdash;it accepts and generates its corresponding language.
+        </p>
+
+        <p>
+          We don't stop there though: So far we have languages which are decidable, and we call them recursive.
+          We have languages which are undecidable, but there's more than one variety of undecidable it turns out.
+          The first class of undecidable languages are called <strong>recursively enumerable</strong>. The language
+          such that the <strong>universal Turing machine</strong> corresponds to it is one such example. Things get
+          funky when we learn there are languages which are <strong>not recursively enumerable</strong>. What this means
+          is that there are no corresponding Turing machines, or rather there is no way to access such languages in full
+          through the toolset of Turing machines. That's fascinating! By the way, the <strong>diagonalization language</strong>
+          is the classical example. Think of it as a translation of Cantor's diagonalization argument applied to automata.
+        </p>
+
+        <p>
+          Beyond this, we look at <strong>Rice's Theorem</strong>, and <strong>Post's Correspondence Problem</strong>,
+          and take an inventory of other well known undecidability problems.
+        </p>
+
+      </section>
+
+      <div class="anchor" id="chapter_10"></div>
+
+      <section>
+        <h3>Chapter 10 - Intractable Problems</h3>
+
+        <p>
+          We've reached the end of our automata hierarchy, and now with the previous chapter we've explored the theoretical
+          boundaries and limits in potential of our Turing machines. All that's left is to look at problems which are
+          <em>absolutely</em> (theoretically) decidable, but are <em>relatively</em> (practically) not.
+        </p>
+
+        <p>
+          This is to say, we look at problems where we know we potentially could solve them, but in real life application
+          we might not have the actual time or resources to do so. We split such problems up into classes <strong>P, NP</strong>,
+          where it's assumed <em>but not proven</em> <strong>P does not equal NP</strong>.
+        </p>
+
+        <p>
+          Finally, we're introduced to the class <strong>NP-complete</strong>. Think of a problem where every other problem
+          which is just as hard or harder can be translated into this problem. Not only that, but every other such problem
+          can be translated efficiently enough we can ignore the cost of the translation. Such a problem as this is a <em>sink</em>,
+          a <em>terminal object</em>. The value of identifying a problem such as this is that it can be viewed as a bottleneck,
+          or a representative of its class. The idea then is, if we take all such problems in NP and group them together,
+          we call these problems NP-complete. As it turns out no one has ever shown an NP-complete problem to be in the class P,
+          which adds further inductive evidence to the claim that P does not equal NP.
+        </p>
+
+        <p>
+          I have to admit, this strategy of comparing computational complexities through representatives
+          ("reducing one problem to another") is of both practical and philosophical interest,
+          as convoluted as it might be, haha.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_11"></div>
+
+      <section>
+        <h3>Chapter 11 - Additional Classes of Problems</h3>
+
+        <p>
+          Final chapter. Basically we extend the previous chapter to include other classes of solvable problems
+          of varying degrees of computational complexity. The main variation in theme here is looking at
+          <strong>polynomial and non-deterministic polynomial space</strong> classes of problems rather than
+          just polynomial and non-deterministic polynomail <em>time</em> classes as before.
+        </p>
+
+        <p>
+          Beyond that, it's really more a taxonomy of such classes, only useful for hardcore algorithmics experts.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

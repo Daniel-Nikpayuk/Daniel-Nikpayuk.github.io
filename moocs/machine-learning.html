@@ -1,0 +1,491 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Mooc Work</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Mooc Work</h1>
+    </header>
+
+    <main id="machine-learning">
+      <section id="preamble">
+        <h2>Machine Learning</h2>
+        <h4>June 9th, 2014</h4>
+
+        <p>
+          This coursera mooc was offered by Stanford University, taught by Andrew Ng.
+        </p>
+
+        <p>
+          I've taken a few moocs at this point, and I have to say, this was the best one I've taken so far. Not only the best,
+          but of a much higher teaching quality, like several levels higher. Keep in mind (I found out), <em>Andrew Ng</em>
+          is not only a leading authority on machine learning and artificial intelligence, he's actually a cofounder of the
+          coursera platform itself. He has a vested interest to make his course of a high quality, but if you take this course
+          you'll find he's also a good teacher regardless&mdash;it shows in his videos.
+        </p>
+
+        <p>
+          As for the course itself: For my own personal gain, and maybe you're the same, I found this to be a much better way
+          to learn the tools of <strong>statistics</strong> than many statistics courses I've taken. The focus is different,
+          but if you want to get use to the toolset, sometimes it helps to find an alternate motivational approach first.
+          You can always return to the standard statistical treatment after.
+        </p>
+
+        <p>
+          As for the course breakdown: Weeks 1-7 deal with what's called <strong>supervised learning</strong> while the remaining
+          weeks 8-10 focus on <strong>unsupervised learning</strong>. The special care taken to build intuition for the theoretical
+          tools we use, as well as the insights offered regarding best practices such as how to best use a data set for training
+          are highlights of this course. A lot of courses would rush through the material, but here we even have a week (week 6)
+          to decompress and allow everything we've learned in the previous weeks to sink in. When I finished this mooc,
+          compared with any other, I felt like I had actually been taught from a teacher I respect and like.
+        </p>
+
+        <p>
+          Finally, for our assignments we get to use <strong>octave</strong> (or <strong>matlab</strong>) as our programming language.
+          I was still pretty new to octave, but after coming out of this course I have a lot more practice with it, and I feel
+          pretty comfortable with its basics and what it offers overall as a language.
+        </p>
+
+        <p>
+          If you're wondering whether this mooc is worth it, I highly recommend it. Thanks.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#week_01">Week 1 - Linear Regression</a>
+          </li>
+          <li>
+            <a href="#week_02">Week 2 - Multivariable Linear Regression</a>
+          </li>
+          <li>
+            <a href="#week_03">Week 3 - Logistic Regression</a>
+          </li>
+          <li>
+            <a href="#week_04">Week 4 - Neural Networks: Representation</a>
+          </li>
+          <li>
+            <a href="#week_05">Week 5 - Neural Networks: Learning</a>
+          </li>
+          <li>
+            <a href="#week_06">Week 6 - Diagnostics (Best Practices)</a>
+          </li>
+          <li>
+            <a href="#week_07">Week 7 - Support Vector Machines</a>
+          </li>
+          <li>
+            <a href="#week_08">Week 8 - Clustering</a>
+          </li>
+          <li>
+            <a href="#week_09">Week 9 - Anomaly Detection</a>
+          </li>
+          <li>
+            <a href="#week_10">Week 10 - Stochastic Learning</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="week_01"></div>
+
+      <section>
+        <h3>Week 1 - Linear Regression</h3>
+        <h4>June 16th, 2014</h4>
+
+        <p>
+          If I were to summarize this week, I would say (being the first week) it introduces terminology you probably won't understand
+          until later&mdash;I didn't, but that's okay, at least being exposed to them helps to know what's coming. Regardless, what did
+          help motivate me this week were the examples, they stand out: Housing prices, (supervised) cancer classifier, the
+          (unsupervised) <strong>cocktail party problem</strong> and its one line of code algorithm were all very intriguing.
+        </p>
+
+        <p>
+          Aside from the introduction, we actually got right into it with <strong>linear regression</strong>. We discussed ideas
+          and terminology including <strong>hypothesis, parameters, cost function, goal (minimize cost function), training set</strong>.
+          We also got into <strong>gradient descent</strong> and the </strong>learning rate</strong>. I really liked how Andrew Ng
+          points out the most common ways this model could go wrong, including <strong>slow convergence, overshooting,
+          failing to converge, </strong> not to mention plain old <strong>divergence</strong>. We also compared the
+          <strong>local minimum</strong> with the <strong>global minimum</strong>.
+        </p>
+
+        <p>
+          As for personal comments for this week: This mooc is serious! It's a 10 week course and week 1 is 3 hours of video
+          for the lecture.
+        </p>
+
+        <p>
+          Okay, so it turns out we're using the <strong>octave programming language</strong>. From what I can tell, from what
+          Andrew Ng himself has mentioned about it, it's a good prototyping language for machine learning. The way to put it is
+          <em>developer's time</em> is most expensive, so a prototyping language is ideal. If for example you end up needing
+          to implement your prototype in an industry application, you can always translate it after-the-fact into a more
+          efficient and/or optimized language later. There are so many best practices to learn! It's good! :)
+        </p>
+
+        <p>
+          I don't think I'll write so much each week, but there was a lot to take in and think about and comment on this week
+          in particular. What I especially enjoyed was the following: "By the time you finish this class, you'll know how to
+          apply the most advanced machine learning algorithms to such problems as anti-spam, image recognition, clustering,
+          building recommender systems, and many other problems. You'll also know how to select the right algorithm for the
+          right job, as well as become expert at 'debugging' and figuring out how to improve a learning algorithm's performance."
+        </p>
+
+        <p>
+          Finally, I am excited to say I learned my first machine learning algorithm: Linear regression, implemented with
+          <strong>the square error function</strong> and <em>gradient decent</em>. Also, it surprised me to learn that
+          machine learning itself uses <strong>multivariable calculus</strong>. It's nice to apply a bunch of math
+          I had learned in the past that I otherwise never get the chance to use.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_02"></div>
+
+      <section>
+        <h3>Week 2 - Multivariable Linear Regression</h3>
+        <h4>June 23rd, 2014</h4>
+
+        <p>
+          This week can be summarized as: <strong>Multivariable linear regression, multivariable gradient descent</strong>.
+          In a lot of ways, it's an extension of last week.
+        </p>
+
+        <p>
+          In particular though, we looked at best practices such as <strong>feature scaling</strong> (normalizing features
+          to be on the same scale; to be comparable), <strong>mean normalization</strong> (centre features so they have nearly
+          zero mean), <strong>choice of learning rate</strong> (scouting out at different scales). Maybe I'm reading too much
+          into it, but what's interesting about Andrew Ng's <em>best practices</em> is they are in-and-of-themselves strategies
+          and tactics for machine learning, haha. That's great!
+        </p>
+
+        <p>
+          We ended with a comparison of the <strong>normal equation solution</strong> (analytic) to finding our local minimum
+          with the <strong>gradient descent</strong> (approximation) approach.
+        </p>
+
+        <p>
+          In terms of personal comments this week: One of the first practical examples of machine learning we've seen is to write
+          some code to scrape housing market data and use that to provide an estimate of the selling price of an arbitrary house.
+          In real life it's more complicated than that&mdash;I don't even know the landscape of where to scrape quality data
+          (retail listings?) and also there are still negotiations I believe, but at the very least this provides you with a near
+          objective measure and anchor for which to negotiate (a starting point). Regardless, that's pretty interesting. Mostly,
+          for as enthused as I am to learn this toolset, I'm trying to be critical of it as well.
+        </p>
+
+        <p>
+          Other thoughts: I'm trying to build general stories and narratives about machine learning. It's still early on so I don't
+          yet know what to expect, but one thing that already stands out is to question the nature of <strong>optimization</strong>
+          which is <em>the other half</em> of engineering (as far as I can tell)&mdash;the first being <strong>modularization</strong>.
+        </p>
+
+        <p>
+          I'm kind of jumping around I admit, but I'm having a lot of random thoughts as I'm trying to get a feel for all of this:
+          I will add, I truthfully don't think I would be able to keep up with machine learning without my previous
+          <strong>Humanities</strong> and <strong>literary theory</strong> training. This might be a provocative statement,
+          so let me explain: Literary theories allow you to be critical and break down the landscape of a communications infrastructure
+          pretty quickly as a skillset. Any formal math oriented theory still has a language as its interface, so being able to recognize
+          concepts and get a feel for where they fit really helps when learning an entirely new discipline such as machine learning.
+          This is especially true for as I come from a math background, not an engineering background. I'm able to recognize the
+          engineer's way as different, but I don't yet have enough experience with it to know how. My humanities training helps.
+        </p>
+
+        <p>
+          As an example, I've been thinking about the nature of a <em>cost function</em>: With regression, you need a measure of error,
+          so first you specify standards (usually intuitive) for which <em>any</em> possible cost function should satisfy
+          (design specification). This implies that cost functions are semiotic spaces (because there's more than one way
+          to represent context [context here being error]).
+        </p>
+
+        <p>
+          If that's the case, then of all possible cost functions, the one you choose (design implementation)&mdash;you more or less
+          choose one that is most user-friendly of all the ones you could choose. Even then, due to complexity theory, you likely
+          will be able to cluster a few known cost functions (semiotic spaces) none best in the general sense&mdash;the choice among
+          these will be narrowed down finally by the actual context itself (or possibly the media space, which is in theory never
+          a best practice, but sometimes you have to work with the real world resource constraints given to you).
+        </p>
+
+        <p>
+          Well anyway, for better or worse that's my rant this week, if it even makes sense, ahah. Though if I'm ending on
+          a joke I might as well go all out: Oh, by the way, the "learning" in <em>machine learning</em> is equivalent to being
+          able to find your way downhill. So it turns out us humans are really only <em>as smart as gravity</em>. Zing!
+        </p>
+      </section>
+
+      <div class="anchor" id="week_03"></div>
+
+      <section>
+        <h3>Week 3 - Logistic Regression</h3>
+        <h4>June 30th, 2014</h4>
+
+        <p>
+          This week we changed topics toward logistic regression, which Andrew Ng points out is actually a type of
+          <strong>classification</strong>. It's only called <em>regression</em> as an historical inheritance of name.
+        </p>
+
+        <p>
+          As for specifics: We got into <strong>the sigmoid function, logistic function, decision boundary</strong>
+          (choosing a convex cost function), as well as applying gradient descent to the learning module.
+          We were also introduce to some optimization algorithms other than gradient descent:
+          <strong>conjugate gradient, BFGS, L-BFGS</strong>. I will say I'm disappointed the explanation of these
+          other optimization algorithms was outside the scope of this mooc, but at least they were introduced.
+          As far as criticisms of a course go, that's not too bad.
+        </p>
+
+        <p>
+          We also looked at <strong>multiclass classification</strong>, which is to say: <strong>One-vs-all</strong>
+          (compare different classifiers and choose the most likely one). We ended with <strong>regularization</strong>,
+          which is the smoothening of overfitting (vs feature reduction), where we penalize features. This seems like
+          a hack, again I come from a pure math background and we'd never do something like this. I admit I found it
+          pretty innovative and interesting anyway.
+        </p>
+
+        <p>
+          As for personal thoughts this week: Economics was my minor in my undergraduate degree, and although I didn't
+          end up taking any econometrics course, I did hear about them. Now with machine learning&mdash;emphasis on "cost"
+          functions (which we are mentioned in economics)&mdash;I'm starting to piece together what I would've learned
+          if I had taken econometrics, and a lot of other economics courses are starting to make more sense too.
+          So that's cool.
+        </p>
+
+        <p>
+          There's always more to learn, in so many different ways. Hooray!
+        </p>
+      </section>
+
+      <div class="anchor" id="week_04"></div>
+
+      <section>
+        <h3>Week 4 - Neural Networks: Representation</h3>
+        <h4>July 5th, 2014</h4>
+
+        <p>
+          This week we again change direction, moving to <strong>neural networks</strong>. It's a big topic
+          so most of this week has been introduction actually. We started with the <strong>non-linear hypotheses</strong>.
+          Tied in with that we stepped back from machine learning directly and discussed the <strong>one learning algorithm</strong>
+          in <em>neuroscience</em>. Several examples were given in how the brain can adapt to different input signals. I especially
+          liked the example where people learned to see with their tongues. That was cool!
+        </p>
+
+        <p>
+          We started into <strong>forward propagation</strong>, but just as an overview of neural nets in general.
+          I have to admit I was very excited to reach this part of the course. The name <em>neural networks</em>
+          just sounds cool and sci-fi. I'm disappointed to learn we don't get into the mechanics of it until next week.
+          So sad, so impatient. Waiting is the worst!
+        </p>
+      </section>
+
+      <div class="anchor" id="week_05"></div>
+
+      <section>
+        <h3>Week 5 - Neural Networks: Learning</h3>
+        <h4>July 12th, 2014</h4>
+
+        <p>
+          This week we continued with neural networks, but got into the actual math of it. As it turns out the main idea is that
+          it is an extension of <em>logistic regression</em>, which makes sense as it is a <em>classifier</em>. The complication
+          comes from <strong>backpropagation</strong>, with subtleties of potential bias which are solved by
+          <strong>random initialization</strong>.
+        </p>
+
+        <p>
+          I'm very happy to have learned this. I feel like if I can do this much, maybe I really can do machine learning in general.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_06"></div>
+
+      <section>
+        <h3>Week 6 - Diagnostics (Best Practices)</h3>
+        <h4>July 19th, 2014</h4>
+
+        <p>
+          This week was actually a really big help. I didn't think it would be at first, as we weren't moving on to new material,
+          it felt like we were losing traction. Instead, we consolidated everything we've learned so far by looking at best practices.
+          In particular we were introduced to the ideas of <strong>diagnostics, test sets, bias, variance, precision/recall</strong>.
+          This is more along the lines of statistics learning to distinguish things like <em>false positives</em>.
+          What stood out the most was the strategy taken in using a given data set for training, summarized as:
+        </p>
+
+        <ol>
+          <li>
+            70% training set
+          </li>
+          <li>
+            30% test set
+          </li>
+        </ol>
+
+        <p>
+          When we are selecting from several hypothesis models, we extend this strategy as follows:
+        </p>
+
+        <ol>
+          <li>
+            60% training set
+          </li>
+          <li>
+            20% cross validation set
+          </li>
+          <li>
+            20% test set
+          </li>
+        </ol>
+
+        <p>
+          What this means is you take 60% of your data set (randomized), train until your error is sufficiently small.
+          As you have more than one hypthesis model, you train each, and then use the cross-validation subset 30%
+          to test which model still has a sufficiently small model. What's more, for a given model, the information
+          provided by looking at both can help you determine if you're underfitting (bias) or overfitting (variance). 
+          You're underfitting if both your training and cross validation errors are large, and you're overfitting if
+          your training error is small but your cross-validation error is large. Finally, once you are satisfied
+          with the right model, you can see if the test set error is also satisfactory.
+        </p>
+
+        <p>
+          As for the remainder of this week, we looked at some real world applications. I'll add our instructor just told
+          us regarding <strong>spam filters</strong> that researchers actually try to <em>honeypot</em> fake addresses
+          as an easy way of collecting real world data for better training sets, lol. That's cool.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_07"></div>
+
+      <section>
+        <h3>Week 7 - Support Vector Machines</h3>
+        <h4>July 26th, 2014</h4>
+
+        <p>
+          This week we discussed <strong>support vector machines</strong> with <strong>gaussian kernels</strong>.
+          Think of it as an alternative learning technique to everything we've learned so far in supervised learning.
+        </p>
+
+        <p>
+          Upon first glance I don't have a full appreciation for SVMs I admit. To be fair we've spent far more time
+          with linear and logistic regression, and then we just rushed through this new tool in a week. My guess
+          is the point was to introduce us to the fact that alternatives do exist, that if we are to really master
+          machine learning we need to know more about the landscape of tools available to us. Also, alternatives
+          exist for a reason, which usually means there are optimization trade offs when it comes to the contexts
+          these algorithms are deployed in.
+        </p>
+
+        <p>
+          I will have to let this week sink in more I think. In any case, we are finally on to <em>unsupervised machine learning</em>
+          this coming week. Clustering in particular sounds awesome! I am very impatient for next week already...
+        </p>
+      </section>
+
+      <div class="anchor" id="week_08"></div>
+
+      <section>
+        <h3>Week 8 - Clustering</h3>
+        <h4>August 2nd, 2014</h4>
+
+        <p>
+          Hooray! It's the start of unsupervised learning! I should be catching up on my other moocs before continuing with
+          this one, but we've finally reached clustering! How can I not?
+        </p>
+
+        <p>
+          This week blew my mind! We learned about <strong>clustering</strong> using <strong>K-means<strong>,
+          as well as <strong>dimensionality reduction</strong> with </strong>principal component analysis</strong> (PCA).
+        </p>
+
+        <p>
+          K-Means! It's like the most straightforward intuitive clustering algorithm. If someone asked me to come up with
+          a clustering algorithm without knowing any beforehand, it's the one I would've come up with. It's what I expected,
+          but it's still cool. And worth going over of course as what's being taught here is polished with best practices.
+        </p>
+
+        <p>
+          I absolutely loved learning about dimensionality reduction! It was explained both intuitively and in detail.
+          What's more, I had known about this technique while exploring biology and genetics, but I didn't know the name
+          or the math behind it. Now I do, and it's less complicated than they made it out to be. Also, or lastly,
+          it even shifted my perspective. Years ago when I had been introduced to linear regression through things
+          like <em>least squares approximation</em>, I had considered how graphically the vertical projections weren't
+          the best approximation, so I had wondered what was. Not only does PCA answer this question, it gives me a new
+          appreciation for linear regression as well.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_09"></div>
+
+      <section>
+        <h3>Week 9 - Anomaly Detection</h3>
+        <h4>August 9th, 2014</h4>
+
+        <p>
+          We can summarize this week as learning about <strong>anomaly detection</strong>, using the <strong>gaussian distribution</strong>
+          (and its multivariate version). As well we went into <strong>recommender systems</strong>, with
+          <strong>content-based</strong> recommendations, and into <strong>collaborative filtering</strong> recommender systems.
+        </p>
+
+        <p>
+          I hadn't realized anomaly detection was a type of unsupervised machine learning. Very useful for security :)
+          I took it for granted because it's obvious in a lot of ways, although this is the first time I've been exposed to
+          multivariate gaussian distributions. It's the sort of thing I think I'd learn better with use, but at least for
+          now I know the name and know where to review the basics if I ever need to delve deeper.
+        </p>
+
+        <p>
+          Recommender systems I found really interesting. I recommend them! Ahah, so that was my bad joke for the day.
+          Actually my favorite joke so far is: This week in my machine learning mooc I learned that behind every recommender
+          system secretly is a human who just recommends stuff to people :)
+        </p>
+
+        <p>
+          Jokes aside, I'm actually grateful and glad to have learned about recommender systems. I have heard about <em>Netflix</em>
+          holding a machine learning competition in regards to improving their recommender systems, so it's nice to see what kind
+          of math is actually involved.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_10"></div>
+
+      <section>
+        <h3>Week 10 - Stochastic Learning</h3>
+        <h4>August 16th, 2014</h4>
+
+        <p>
+          Wow. So it's the final set of videos. Has it been 10 weeks already? Feels strange for it to be winding down.
+        </p>
+
+        <p>
+          I would summarize this week as: <em>Big Data Learning</em>. It's for when the datasets are too large for our existing
+          algorithms. The learning algorithms we equip our learning models with don't scale so well with large matrices it seems.
+          In response to this we took more heuristic approaches, notable <strong>stochastic gradient descent, parallel batch gradient
+          descent</strong> (using map reduce). I liked using map reduce actually, because of the functional programming I've been
+          studying lately. Aside from its interesting theoretical considerations, I've always wondered where in industry it's applied.
+        </p>
+
+        <p>
+          I really appreciated the diagnostics for this week, where we learned about <strong>ceiling analysis</strong>
+          (pipeline bottlenecks). I've said it before, but coming from a pure math background we don't spend much time
+          with the engineer's way of thinking, such things as diagnostics.
+        </p>
+
+        <p>
+          Okay, so if anything disappointed me this week, it's the use of <strong>sliding windows</strong>. Like, sliding windows?
+          Really? Is that the best you can do? Ahah. Anyway, I'll end with hopefully a more encouraging machine learning thought:
+        </p>
+
+        <p>
+          This gets more into my own personal line of research (and specialized use of language), but if semantics as objects
+          are exactly media space constructs as modularization templates (partial specifications of data structures more or less),
+          then does the brain learn free-form by first trying to mimic such non-deterministic media constructs by what it sees around
+          it ? (local environment) To which it would then apply natural selection to see which constructs are reusable and which aren't?
+        </p>
+
+        <p>
+          Also: What if we use machine learning to structure <em>comment sections</em>. Then when looking at them people
+          can choose filters and look at the <em>types</em> of comments they're interested in? Should I start my own
+          Indigenous newspaper with innovative media spaces for people to interact?
+        </p>
+
+        <p>
+          Well, that's it! I hope you enjoyed my review of this course. Thanks!
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

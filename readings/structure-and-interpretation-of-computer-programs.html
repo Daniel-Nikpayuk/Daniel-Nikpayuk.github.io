@@ -1,0 +1,194 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="styles/local.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Reading List</title>
+  </head>
+  <body>
+
+<!--complete-->
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Reading List</h1>
+    </header>
+
+    <main id="structure-and-interpretation-of-computer-programs">
+      <section id="preamble">
+        <div class="book-cover">
+          <image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/SICP_cover.jpg/220px-SICP_cover.jpg"
+                 alt="The cover from the book: Structure and Interpretation of Computer Programs"/>
+        </div>
+
+        <h2>Structure and Interpretation of Computer Programs</h2>
+        <h4>May 10, 2017</h4>
+
+        <p>
+          This book is definitely one of my biggest influences as a coder. It's amazing on so many levels,
+          but what stands out the most for me is its emphasis on <em>design thinking</em>.
+        </p>
+
+        <p>
+          After reading this classic, the way I see things now is the general trend of a person's growth as a programmer is in
+          two stages: First they learn a given language or two. If they're working on challenging projects they will learn
+          the subtleties of those language's grammars, along with many techniques and concepts to solve many specific problems.
+          That's the first stage. The second stage is once they're comfortable with reading and writing in a given language
+          (once they're literate), they then move past specific languages and instead start learning about larger design thinking,
+          paradigms for organizing code, patterns that transcend.
+        </p>
+
+        <p>
+          With that said, I recommend this as a must read to anyone who wants to know more about the linguistics
+          of programming languages in general. As well, if you want to improve your range of general design thinking.
+        </p>
+
+        <p>&mdash;</p>
+
+        <p>
+          Consisting of five rich chapters, the wealth of knowledge here can be broken down by its main theme:
+          The philosophy of ideas, where an idea is constructed as
+        </p>
+
+        <ol>
+          <li>
+            primitive expressions
+          </li>
+          <li>
+            means of combination
+          </li>
+          <li>
+            means of abstraction
+          </li>
+        </ol>
+
+        <p>
+          In particular <em>Chapter 1</em> focuses on primitive expressions, <em>Chapter 2</em> on means of combination,
+          while the remaining <em>Chapters 3, 4, 5</em> can be said to discuss means of abstraction.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#chapter_01">Chapter 1 - Building Abstractions with Procedures</a>
+          </li>
+          <li>
+            <a href="#chapter_02">Chapter 2 - Building Abstractions with Data</a>
+          </li>
+          <li>
+            <a href="#chapter_03">Chapter 3 - Modularity, Objects, and State</a>
+          </li>
+          <li>
+            <a href="#chapter_04">Chapter 4 - Metalinguistic Abstraction</a>
+          </li>
+          <li>
+            <a href="#chapter_05">Chapter 5 - Computing with Register Machines</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="chapter_01"></div>
+
+      <section>
+        <h3>Chapter 1 - Building Abstractions with Procedures</h3>
+
+        <p>
+          The language <strong>scheme</strong> is used throughout this book, which is in the <strong>lisp</strong> family of
+          languages, and is therefore <strong>functional</strong> in its paradigm of computational programming. In the functional
+          paradigm everything can be thought of as functions, so naturally this introductory chapter focuses on the basics
+          of computational functions, which it calls <em>procedures</em>.
+        </p>
+
+        <p>
+          This chapter explores the range of what a procedure is, ending with ideas of lambdas as anonymous references.
+          This chapter also creates the transition to the next chapter by introducing how to <em>combine</em> procedures
+          by using them as first class citizens within arguments as well as return values.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_02"></div>
+
+      <section>
+        <h3>Chapter 2 - Building Abstractions with Data</h3>
+
+        <p>
+          With the basic means of combination now available to us, this chapter focuses on how to combine larger and broader
+          patterns of procedures. In particular this is where we learn to mitigate the complexity of design through ideas of
+          <em>modularization</em> and <em>additivity</em>.
+        </p>
+
+        <p>
+          What I found most fascinating personally were the ideas of <em>abstraction barriers</em>, and how they could be
+          used along with <em>constructors</em> and <em>selectors</em> to effectively define a <strong>type</strong>.
+          Or maybe <em>type discovery</em> is a better phrase? They don't specifically rely on type theory, instead
+          implementing them through what they call "tagged data".
+        </p>
+
+        <p>
+          The highlight of this chapter is the modularizing <strong>dispatch paradigm</strong>. In particular
+          it diverges in two directions when extending to include additivity: <strong>data directed</strong>
+          programming as well as <strong>message passing</strong>. I admit my own intellectual boundaries were
+          being pushed in realizing that data direction was more suitable in contexts where operators were more
+          stable and types more volatile, whereas message passing was the opposite&mdash;being more suitable when types
+          were more stable but operators more volatile.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_03"></div>
+
+      <section>
+        <h3>Chapter 3 - Modularity, Objects, and State</h3>
+
+        <p>
+          Ideas of <em>state</em> as well as <em>assignment</em> are introduced here, leading to some
+          very interesting philosophical considerations regarding the nature of <em>identity</em>. Beyond this, the
+          <strong>stream paradigm</strong> is introduced through the concepts of <em>delay</em> and <em>force</em>.
+        </p>
+
+        <p>
+          In a way this chapter is independent of the main theme, but it's also a pivot point. By implementing examples
+          of particular variant paradigms within this language, it offers fodder for the remaining two chapters.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_04"></div>
+
+      <section>
+        <h3>Chapter 4 - Metalinguistic Abstraction</h3>
+
+        <p>
+          By playing with and loosening the ideas of a <strong>model of evaluation</strong>, the previous chapter allows
+          us to transition to the idea of <em>using</em> one variant of the language to <em>simulate</em> other variants
+          of the same language. It's one thing to ad-hoc implement variant language features, but how do we scale? This book
+          is all about design thinking after all. Simulating the evaluator of the language itself is the means to scale.
+          It allows a systematic way to prototype other variants.
+        </p>
+
+        <p>
+          The discussion on <strong>lazy evaluation</strong> I found most valuable, as this paradigm shows up in languages
+          like <strong>Python</strong> or <strong>R</strong> for example, and helps me to understand them on a deeper level.
+        </p>
+      </section>
+
+      <div class="anchor" id="chapter_05"></div>
+
+      <section>
+        <h3>Chapter 5 - Computing with Register Machines</h3>
+
+        <p>
+          One of the nicest aspects of this book is it ends as strong as it begins. The first four chapters were overwhelmingly
+          beautiful, and this one did not let down. The transition to <strong>register machines</strong> to reimplement the simulator,
+          the <em>metacircular evaluator</em> while showing exactly how the feature of <strong>tail recursion</strong>
+          works&mdash;and is an implementation specific feature&mdash;blew my mind.
+        </p>
+
+        <p>
+          For me, the other valuable part of this chapter was showing how the interpreter worked, and from the perspective
+          offered here <strong>compilers</strong> and <strong>interpreters</strong> only differ in their final step&mdash;whether
+          or not to execute the expression or to translate it to machine code. For anyone looking to build a compiler, this
+          offers a very nice and soft introduction as to how.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

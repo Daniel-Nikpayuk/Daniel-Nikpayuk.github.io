@@ -1,0 +1,14 @@
+
+#register_type-table
+{
+    display: flex;
+
+    flex-direction: column;
+
+    color: purple;
+
+    padding-left: 4%;
+}
+
+/*******************************************************/
+

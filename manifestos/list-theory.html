@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Language Design</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Language Design</h1>
+    </header>
+
+    <main id="list-theory">
+      <section id="preamble">
+        <h2>List Theory: A narrative on the design of lists as data structures</h2>
+        <h3>March 10th, 2018</h3>
+
+        <p>
+          <strong>Manifest Statement</strong>: <em>List data structures are a fundamental construct of computation
+          which deserve a flexible, expressive, operator interface that privileges composability of structure as well
+          as composability of operations.</em>
+        </p>
+
+        <p>
+          The motivation for this narrative comes from C++ where lists are a common intersection between <em>arrays,
+          singly-linked lists, doubly-linked lists, vectors, strings, etc</em>. I restrict the intent of the design to an
+          abstraction of such lists, but deviate from the Standard Template Library (STL) specification by following my
+          own theory of <a href="interface-theory.html">interface design</a>, leading to a suprisingly innovative
+          alternative as means to building (or rebuilding) these classes, to be natural extensions of this narrative.
+        </p>
+
+<!--
+        <p>
+          We constrain ourselves to looking at purely navigable constructs with no considerations for <em>mutations which
+          cannot be directly referenced</em>. This excludes the possibility of side effects, which then also excludes
+          the possibility of higher order optimizations at this level of abstraction. Any such desired optimizations
+          must be resolved within another level of computational complexity.
+        </p>
+-->
+      </section>
+
+      <section id="main">
+        <h2>Infrastructure</h2>
+
+        <p>
+          Our model starts with a list of arbitrary but fixed length, and of arbitrary content. I will leave things
+          at an intuitive level, but if one requires higher formality an infinite list of random content should suffice.
+        </p>
+
+        <h2>Substructure</h2>
+
+        <p>
+          To initiate our interface, we look for <em>self-similar</em> substructures, the natural candidates being sublists.
+          They will be the focus of our interface. Keep in mind there are other possible (non-linear) substructures, but as
+          we value <em>computationally effective</em> interfaces, we restrict ourselves to ones of the simplest recursive
+          variety.
+        </p>
+
+        <h2>Algebra</h2>
+
+        <p>
+          Our substructures can be viewed in two ways: As their own structure allowing for their own interface,
+          or as objects within an interface to the original. As we are now looking for the existence of appropriate
+          algebras, we will treat these sublists as objects within an interface.
+        </p>
+
+        <p>
+          I take for granted that the natural monoidal operator for lists has already been well researched.
+          I thus declare <strong>concatenation</strong> as our monoid, with the <strong>empty list</strong>
+          as the identity element, to be our primary algebra.
+        </p>
+
+        <h2>Interface Layer</h2>
+
+        <p>
+          With a collection of substructures and a monoidal operator forming an algebra, we now look to turn this space into
+          an interface layer by finding it a compressed representation. Furthermore, as we support structural composability
+          in our design, our compression must also account for this.
+        </p>
+
+        <p>
+          I assert the natural compression of a list is a <strong>selector</strong>, which is a pair consisting
+          of two positional endpoints. For comparison, in the context of C++ these would be lifted as boundary
+          nodes (or pointers) of a list. Selectors hold value given that their positional endpoints have the
+          following properties:
+        </p>
+
+        <ol>
+          <li>
+            They compress longer lists which would otherwise be represented as three or more positional points in full.
+          </li>
+          <li>
+            They act as boundaries for which structural and operational composition are naturally supported.
+          </li>
+          <li>
+            They can be used to locally decompress and retrieve required information to algorithmically navigate
+            and operate within this interface layer.
+          </li>
+        </ol>
+
+        <p>
+          With our selectors as compressed representation, we now need to show our underlying algebra still holds.
+          Moreover, given that composability is a supported concern, with foresight we will divide our possible selectors
+          into the following <strong>interval ranges</strong>:
+        </p>
+
+        <ol>
+          <li>
+            <strong>[a..b] closed</strong>: a selector containing both of its endpoints <strong>a, b</strong>;
+          </li>
+          <li>
+            <strong>[a..b) closing</strong>: a selector containing its initial endpoint <strong>a</strong>,
+            but not containing its terminal endpoint <strong>b</strong>;
+          </li>
+          <li>
+            <strong>(a..b] opening</strong>: a selector not containing its initial endpoint <strong>a</strong>,
+            but containing its terminal endpoint <strong>b</strong>;
+          </li>
+          <li>
+            <strong>(a..b) open</strong>: a selector containing neither of its endpoints <strong>a, b</strong>.
+          </li>
+        </ol>
+
+        <p>
+          Keep in mind our focus is navigational in nature, which is to say we privilege structure, not content.
+          As such the endpoints in the above ranges are <em>structural</em> locations, not to be confused with list values.
+        </p>
+
+        <p>
+          From a narrative perspective, we limit ourselves to a single selector interface layer, but in implementation
+          it is practical to split this into three layers: Selectors which represent whole lists, selectors which represent
+          arbitrary sublists, and the special case where the selector's endpoints are the same&mdash;in this case such
+          selectors may be optimized as the better known <strong>iterators</strong> which already exist in C++. 
+        </p>
+
+        <h3>Ecology</h3>
+
+        <p>
+          Our ecology consists of operators which allow us to navigate toward all possible selectors. Structural differences
+          can be summarized as differences in <em>length</em>, given that our selectors are intended to be the compressed forms
+          of lists. This realization informs the following interpretation of the lifecycle stages of a selector as structure:
+        </p>
+
+        <ul>
+
+          <li>
+            <strong>Construction</strong>:
+          </li>
+
+          <ul>
+            <li>
+              <strong>initialize</strong>: This operator returns an empty selector with its endpoints set to the zero positional.
+            </li>
+          </ul>
+
+          <li>
+            <strong>Extension</strong>:
+          </li>
+
+          <ul>
+            <li>
+              <strong>catenate</strong>: This operator takes two selectors, links the terminal endpoint of the first,
+              to the initial endpoint of the second, returning the single selector remaining.
+            </li>
+            <li>
+              <strong>preserve</strong>: This operator takes a selector, and shifts its initial endpoint outward.
+            </li>
+            <li>
+              <strong>reserve</strong>: This operator takes a selector, and shifts its terminal endpoint outward.
+            </li>
+          </ul>
+
+          <li>
+            <strong>Mutation</strong>:
+          </li>
+
+          <ul>
+            <li>
+              <strong>decrement</strong>: This operator takes a selector, and shifts its initial endpoint outward,
+              while shifting its terminal endpoint inward.
+            </li>
+            <li>
+              <strong>increment</strong>: This operator takes a selector, and shifts its initial endpoint inward,
+              while shifting its terminal endpoint outward.
+            </li>
+          </ul>
+
+          <li>
+            <strong>Reduction</strong>:
+          </li>
+
+          <ul>
+            <li>
+              <strong>split</strong>: This operator takes a selector and a midpoint,
+              and returns two new selectors with the specified midpoint as their endpoints.
+            </li>
+            <li>
+              <strong>pretract</strong>: This operator takes a selector, and shifts its initial endpoint inward.
+            </li>
+            <li>
+              <strong>retract</strong>: This operator takes a selector, and shifts its terminal endpoint inward.
+            </li>
+          </ul>
+
+          <li>
+            <strong>Destruction</strong>:
+          </li>
+
+          <ul>
+            <li>
+              <strong>terminalize</strong>: This operator takes an empty selector and sets its endpoints to the zero positional.
+            </li>
+          </ul>
+
+        </ul>
+
+        <p>
+          I have only outlined the most basic operators. There will be distinct implementations regarding selector
+          parameters such as <strong>interval type</strong> (<em>closed, closing, opening, open</em>) as well as
+          <strong>interval direction</strong> (<em>forward, backward</em>). Furthermore, each basic operator may
+          be readily extended to more powerful variations which allow for arbitrary shift distances.
+        </p>
+
+        <h3>Content Mutation</h3>
+
+        <p>
+          Structure and content are othogonal, and we have exploited this property so far to focus entirely on structural
+          operators of a list. In implementation it is worth considering an algebra of content oriented operators as well:
+        </p>
+
+        <ul>
+          <li>
+            <strong>repeat</strong>: This operator takes a selector and a content value,
+            and assigns the content value to the range of selector values.
+          </li>
+          <li>
+            <strong>morph</strong>: This operator takes a selector, a function, and a numerical range,
+            and assigns to the selector values the image values of the function applied to the numerical range.
+          </li>
+          <li>
+            <strong>map</strong>: This operator takes a selector, a function, and a list of the same length,
+            and assigns to the selector values the image values of the function applied to the list.
+          </li>
+        </ul>
+
+        <p>
+          In practice, it is worth optimizing the special case of <em>map</em> when the function is the
+          identity. In this case, <em>map</em> simplifies to a "copy" operator, named here as <strong>assign</strong>.
+          This operator may be further optimized in the special case when the selector is actually an iterator: In such
+          a case, <em>assign</em> simplifies to a single memory assignment also known as <strong>set</strong>.
+        </p>
+
+        <h3>Batching</h3>
+
+        <p>
+          In implementation, content mutation is often interleaved with structural navigation. This is notably the case when
+          optimizing to reduce parse cycles, which translates to refactoring several content mutations over the same navigational
+          path within a structure, also known as <strong>batching</strong>. In any case, it is necessary to classify all operators
+          as either structural or content oriented. In the context of C++ a subtlety arises as dynamic memory requires the use of
+          <em>allocators</em> and <em>deallocators</em>, but how do we categorize these operators?
+        </p>
+
+        <p>
+          I submit that memory oriented operators should be interpreted as an additional form of content mutation.
+          This can be seen by viewing hardware memory as a long array of addresses. In this case hardware memory
+          is then a data structure in which each address holds application content as well as memory management content.
+          The noteworthy pattern here being that both can be considered location content.
+        </p>
+
+        <p>
+          As such, our design will continue privileging navigational operators over mutative operators, and in the case
+          of batching where we interleave these operations in practice, priority still goes to the act of iterating over
+          the navigational path, and only then, while at a given location, do we batch mutate (including mutations of
+          memory access). In practice, we thus add batch parameter support to navigational operators such as
+          <em>repeat, morph, map</em>, as well as <em>immutate, allocate, deallocate</em>.
+        </p>
+
+      </section>
+    </main>
+
+  </body>
+</html>

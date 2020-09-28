@@ -1,0 +1,38 @@
+
+span[id="empty-perspective"	],
+
+span[id="empty-identity"	],
+
+/*******************************************************/
+
+span[id="constant-interface"	],
+
+span[id="constant-structure"	],
+
+span[id="constant-perspective"	],
+
+span[id="constant-identity"	],
+span[id="constant-proximity"	],
+
+span[id="constant-model"	],
+
+span[id="constant-boolean"	],
+
+/*******************************************************/
+
+span[id="conditional-interface"	],
+
+span[id="conditional-structure"	],
+
+/*******************************************************/
+
+span[id="builtin-interface"	],
+
+span[id="builtin-structure"	]
+
+/*******************************************************/
+
+{
+    color: black;
+}
+

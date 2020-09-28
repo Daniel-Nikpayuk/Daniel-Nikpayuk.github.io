@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="styles/local.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Reading List</title>
+  </head>
+  <body>
+
+<!--complete-->
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Reading List</h1>
+    </header>
+
+    <main id="operating-system-concepts">
+      <section id="preamble">
+        <div class="book-cover">
+          <image src="https://images.gr-assets.com/books/1387667734l/83833.jpg"
+                 alt="The cover from the book: Operating System Concepts, Seventh Edition"/>
+        </div>
+
+        <h2>Operating System Concepts</h2>
+        <h4>July 11, 2017</h4>
+      </section>
+
+      <section id="main">
+        <p>
+          The strength of this book is it takes the <em>idea</em> of an operating system and shows it in different
+          contexts (<em>distributed systems</em> for example) and pushes the boundaries of the idea itself. It gets you
+          to <em>think</em> hard about what an operating system even is. Until I read this book, I only had the common
+          but naive understanding from working with desktops and laptops.
+        </p>
+
+        <p>
+          As this is primarily and engineering book, there is a lot of technical details, so I would suggest it's
+          best to scan and familiarize yourself with the landscape first, rather than trying to memorize everything
+          from beginning to end.
+        </p>
+
+        <p>&mdash;</p>
+
+        <p>
+          I had originally studied this book to find out where operating systems leave off, and where programming languages
+          begin. I wanted to know how to be a better programmer at lower levels. If I could think the way the computer hardware
+          coordinates the programming language code, I could plan and optimize my code better. I think I held myself
+          up to a standard of integrity in doing so, but I also recognize this is limited for two reasons. First,
+          it turns out if you want to know the boundary between programming languages and operating systems, then
+          studying <em>assembly language</em> is better for that.
+        </p>
+
+        <p>
+          Second, as for optimizations, I hear most modern compilers do a lot of optimizations in the backend unknown
+          to the coder. You could write what you think is optimized code and the compiler will ignore it and optimize
+          its own way. With that said, compilers still don't largely know how to optimize larger patterns of design,
+          so it's still good practice to learn to think about efficient coding regardless, and learning how an operating
+          system allocates and manages resources in particular does help with this.
+        </p>
+
+        <p>
+          Regardless of this hindsight, here is my review:
+        </p>
+
+        <p>&mdash;</p>
+
+        <p>
+          The first major chapters discuss <strong>Process Management, Memory Menagement, Storage Management</strong>.
+          As a programmer both memory and storage management were pretty familiar already, especially having worked
+          with linux for years, but I didn't know much about process management and really enjoyed its chapter.
+          It's the sort of thing <em>only</em> system administrators would need to know about, but is still valuable
+          for the rest of us, especially to feed ones curiosity.
+        </p>
+
+        <p>
+         The remaining chapters are more ad-hoc if you're looking for a unified narrative. I felt their section
+         on <strong>Protection and Security</strong> was the weakpoint of the book as a whole, especially with
+         the modern landscape of connected devices, criminal ransomware, and nation state hacking.
+        </p>
+
+        <p>
+          The chapter on <strong>Distributed Systems</strong> was very academically strong. As a theorist myself
+          I especially enjoyed delving into more mathematical concepts and strategies including <strong>network topologies,
+          distributed coordination, event ordering, mutual exclusion, concurrency, deadlock handling, election algorithms</strong>
+          as well as ideas of <strong>agreement</strong>. Parallel processing is a very challenging and thus interesting
+          area of research and practice.
+        </p>
+
+        <p>
+          The chapter on <strong>Special Purpose Systems</strong> didn't stand out that much for me. Mostly it had
+          to do with optimizing an operating system for real-time as well as multimedia interactions. Obviously
+          important, but I felt these topics weren't covered in great depth, nor were any amazing insights revealed.
+        </p>
+
+        <p>
+          One of the happier outcomes from reading this book is it clarified a lot of keywords I've seen throughout
+          my perusals of general programming literature, such as <strong>threads, swapping, paging</strong>.
+          Unfortunately the version of the book I read now has some outdated case studies such as <em>windows xp</em>.
+          I can't speak to new editions, it's likely they've updated some of these examples, but even if they haven't,
+          the concepts and techniques introduced are abstracted away enough from the specific softwares of the day,
+          and overall I've found as of writing this review this book has aged pretty well.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

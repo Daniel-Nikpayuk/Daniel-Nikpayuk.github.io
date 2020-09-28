@@ -1,0 +1,216 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Mooc Work</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Mooc Work</h1>
+    </header>
+
+    <main id="sql-for-data-science">
+      <section id="preamble">
+        <h2>SQL for Data Science</h2>
+        <h4>December 15th, 2017</h4>
+
+        <p>
+          This coursera mooc is offered by the University of California, Davis. It uses <strong>SQLite</strong> as its teaching language.
+        </p>
+
+        <p>
+          I'll be honest: I have always put off learning <em>databases</em> as I have never needed them in my personal projects.
+          But as <strong>a lifelong learner</strong>, and given SQL's ubiquity in industry, I knew it was a perspective worth learning,
+          worth putting in the effort, and finally time to begin learning.
+        </p>
+
+        <p>
+          SQL is worth learning. As for this particular mooc itself: I don't know if I'd recommend it. Actually I'm on the fence about it.
+          The instructor <em>Sadie St. Lawrence</em> is good, she puts in the personal care of any good teacher, it shows in the videos,
+          but in terms of the course content and pace: It depends on what you're looking for and the background you're coming from.
+          This mooc worked for me because I am self-motivated, I have enough experience working with data (in <strong>R</strong>
+          for example), that I could piece together everything that is otherwise missing or rushed in a four week course.
+        </p>
+
+        <p>
+          If you have a strong coding background already and just want a brief introduction into the landscape and best practices,
+          knowing you can then move onto reference manuals for practice, then yes, this course is worth it. If you're just starting
+          out in coding though, I'd say maybe not.
+        </p>
+
+        <p>
+          <strong>course strengths:</strong> Concepts as well as grammar are introduced and explained with time and care,
+          notably context is given when looking at comparisons and exceptions (to grammar constructs or SQL implementations
+          for example). Best practices were frequently given.
+        </p>
+
+        <p>
+          <strong>course weaknesses:</strong> Actual code examples were lacking overall. With a four week course there's
+          not enough time to look at broader design issues with the language, efficiency tradeoffs, optimizations, etc.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#week_01">Week 1 - Selecting and Retrieving Data with SQL</a>
+          </li>
+          <li>
+            <a href="#week_02">Week 2 - Filtering, Sorting and Calculating Data with SQL</a>
+          </li>
+          <li>
+            <a href="#week_03">Week 3 - Subqueries and Joins with SQL</a>
+          </li>
+          <li>
+            <a href="#week_04">Week 4 - Modifying and Analyzing Data with SQL</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="week_01"></div>
+
+      <section>
+        <h3>Week 1 - Selecting and Retrieving Data with SQL</h3>
+        <h4>December 15th, 2017</h4>
+
+        <p>
+          As with any first week, we got "the tour"&mdash;expectations of the course. What I found valuable in particular was the
+          attention paid to giving an overview of "sequel" (I now know this is how it's pronounced). Although we're not exposed
+          to too much grammar just yet, we're given enough about what it is, where and how it fits into industry that I feel
+          I'm starting to get a feel for SQL as a technology.
+        </p>
+
+        <p>
+          By way of analogy, if you look at web browsers you have a "franchise"-like model there, where HTML/CSS/Javascript
+          is a <em>technology stack specification</em>, and each actual browser (such as firefox or chrome) are <em>vendors</em>.
+          If they're specification compliant, it means they predictably read webpages according to the standard.
+        </p>
+
+        <p>
+          SQL then is a specification like HTML, but it's weaker so that its vendors can reinterpret the grammar itself just a little.
+          You end up with more variation for each <em>database management system</em>. You end up with different dialects. Furthermore,
+          the prevalence of databases in industry means a lot of modern programming languages such as <em>python</em> or <em>R</em>
+          offer support for interacting with database files directly.
+        </p>
+
+        <p>
+          Finally, the most useful content in this week was the introduction to <strong>data modelling</strong> with
+          <strong>entities, attributes, relationships</strong>, with additional offsite links exploring <strong>ER Diagrams</strong>,
+          not to mention the contrast with <strong>NoSQL</strong> technologies.
+        </p>
+
+        <p>
+          <strong>grammar:</strong> SELECT, CREATE TABLE, INSERT INTO
+        </p>
+      </section>
+
+      <div class="anchor" id="week_02"></div>
+
+      <section>
+        <h3>Week 2 - Filtering, Sorting and Calculating Data with SQL</h3>
+        <h4>December 22nd, 2017</h4>
+
+        <p>
+          My favorite part of this week is the <em>Chinook Database</em>. Another reason why I haven't learned <em>databases</em>
+          until now is I've never found a nice practice database to work with. I think partly I like Chinook because it has
+          Alberta addresses, which is local for me, so it feels a little more personal :)
+        </p>
+
+        <p>
+          Otherwise, this week really gets us started into the guts of the grammar, using <strong>WHERE</strong> as the platform
+          for various filtering, soring, and general comparison tests. We're introduced to math operators and aggregate functions
+          such as <strong>COUNT</strong>, not to mention we get to see the use of wildcards <strong>% _ []</strong>. I like how
+          it's noted <strong>[]</strong> is implementation specific and not actually in sqlite (but worth knowing when working
+          with alternative implementations of SQL). Finally I also like the attention to detail in contrasting <strong>IN</strong>
+          with <strong>OR</strong>.
+        </p>
+
+        <p>
+          <strong>grammar:</strong> SELECT FROM WHERE, WHERE IN, WHERE OR, ORDER BY, GROUP BY (HAVING).
+        </p>
+      </section>
+
+      <div class="anchor" id="week_03"></div>
+
+      <section>
+        <h3>Week 3 - Subqueries and Joins with SQL</h3>
+        <h4>December 29th, 2017</h4>
+
+        <p>
+          Our third week is back to theory. It took me a little while to actually figure out <strong>joins</strong>.
+        </p>
+
+        <p>
+          I thought the exposition could have been better. The overview was decent, offering screenshot worthy reference
+          material for join types such as <strong>inner joins</strong>, <strong>left joins</strong>, <strong>aliases</strong>,
+          as well as <strong>self-joins</strong> for example. Right joins are mentioned but aren't in sqlite, and are isomorphic
+          to left joins anyway.  Regardless, I still had to go outside the course to find material introducing joins which made
+          more sense to me, and it only really started making sense after getting some practice. If it were me explaining joins
+          to someone else (with the understanding I now have), I would put it like this: The prerequisite concept needed to
+          understand joins is the idea of <em>comparison</em>. What does it mean to compare?
+        </p>
+
+        <p>
+          We take it for granted. This lack of understanding is the cause of many misguided political debates for example,
+          especially regarding social welfare: "This group would be better off if they adapted [this] way of existing!"
+          The [this] being the detail which people think is comparable but don't realize is not. More simply put:
+          If you have a group of 5 apples and a group of 5 potatoes, you've abstracted out a common pattern from each which
+          allows them to be comparable. But if for example you've abstracted out some property of fruit and some property
+          of vegetables not mutually shared, then from this perspective they're not comparable. The point is, you can't
+          automatically assume things are comparable, you have to specify a measure of comparison and show it is applicable.
+          People take this for granted.
+        </p>
+
+        <p>
+          As for joins, they're a way of <em>merging</em> two tables. Merging not by structure but by content. In order to do
+          this there needs to be a means of comparing content to know what to include. That's why certain columns are given
+          <strong>keys</strong>. Up until now I had wondered the point of keys. If two tables share a common column which
+          allows for comparison, that's how those tables can be merged, by matching up rows. Beyond that realization then,
+          different types of joins are just about variations on this overall theme.
+        </p>
+
+        <p>
+          Beyond that, <strong>subqueries</strong> were also discussed. I especially liked the focus (if not limited)
+          on best practices for runtime optimizations, and their general tradeoffs with other approaches.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_04"></div>
+
+      <section>
+        <h3>Week 4 - Modifying and Analyzing Data with SQL</h3>
+        <h4>January 5th, 2018</h4>
+
+        <p>
+          I recall reading "Nobody actually knows how GROUP BY works!" in one of the auxiliary links to this course.
+          That's been bothering me, and even this mooc doesn't really go into detail about how this grammar point works,
+          so I've been exploring it further on my own.
+        </p>
+
+        <p>
+          I can't speak to the full expressivity of it, but as best I can tell it works a lot like <em>fold</em> (or accumulate,
+          or reduce; different names for the same thing) in functional languages. It takes a row, and looks for the next group
+          by match, and replaces it. It does this until it goes through the table. It only keeps the last row.
+          This pattern then changes by filtering which columns to keep (SELECT), and then only acts like our functional fold
+          when you add in <em>aggregate</em> math operators such as SUM() or COUNT(). When looking at it this way,
+          it makes so much more sense now!
+        </p>
+
+        <p>
+          This final week introduces <strong>strings</strong> and their core operators: <strong>concatenation, trimming, substrings,
+          data/time strings</strong>. We finally also get to see control flow branching with <strong>CASE</strong>. It's pretty
+          standard stuff you'll find in any library on data manipulation in modern languages.
+        </p>
+
+        <p>
+          Lastly, the week ends with a light discussion on <strong>views</strong> which I'd like to explore further.
+          I admit I don't think I fully appreciate their value just yet. It ends with how SQL is used in data science,
+          which is expected given the title of the course. I greatly appreciated the best practice advice on
+          <em>data governance, profiling</em> and other troubleshooting strategies for debugging. Learning a language
+          is never just about grammar after all.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

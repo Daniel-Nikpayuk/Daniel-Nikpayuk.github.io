@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/context-shared.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="styles/local.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Nik</title>
+    <script defer src="../scripts/semiotic-object.js" type="text/javascript"></script>
+    <script defer src="../scripts/media-convert-core.js" type="text/javascript"></script>
+    <script defer src="../scripts/media-convert-path.js" type="text/javascript"></script>
+    <script defer src="scripts/modules-local.js" type="text/javascript"></script>
+    <script defer src="scripts/modules-main.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <header id="path_list"></header>
+
+    <main id="toc">
+
+      <div class="module-paradigm">
+        <image src="../images/module-paradigm.png"
+               alt="A graphic describing the decomposition of a module"/>
+      </div>
+
+      <h2>intuition</h2>
+
+      <p>
+        Conceptually, each <em>module</em> within a branch represents a <em>type</em>.
+      </p>
+
+      <p>
+        Modules inherit the narrative design of their branches and as consequence many such modules
+        depend on previous ones. Given this, the design of a module within this library should then fascilitate
+        <em>composability</em> of its code with the code of other modules. This is achieved by requiring
+        the modules to adhere to a template design.
+      </p>
+
+      <p>
+        I have based this design on philosophical ponderings regarding the nature of
+        <em>mathematical spaces</em> and why they are so successful in their utility across the natural sciences.
+        For example, <math>&#8477;<sup>3</sup></math> as a vector space is invaluable in modelling many
+        3-dimensional real world objects. Spheres, cubes, toruses, dodecahedrons, and so on. What is it about this
+        space&#8212;what are the properties of such spaces in general&#8212;that make it and others like it so reusable?
+      </p>
+
+      <h2>theory</h2>
+
+      <p>
+        If you view a type as a <em>mathematical set</em>, then a type's success in its ability to model
+        many applications is largely based on how easily you can create subtypes (<em>subsets</em>),
+        and how easily you can navigate those subtypes. <strong>I make the claim</strong> that the
+        following decomposition of a type <em>is sufficient</em> for such a success, and as
+        consequence offers the specification we seek for the template design of our modules:
+      </p>
+
+      <h3>module template</h3>
+
+      <ol>
+
+        <li>
+          <strong>interface</strong>
+        </li>
+
+        <p>
+          In the world of computing, types are <em>constructive</em>. This is to say they have a grammar
+          which expresses their construction. This expressed construction is then the starting point for
+          navigating and subtyping. It forms a baseline user interface to our type.
+        </p>
+
+          <ol>
+
+            <li>
+              <strong>structure</strong>
+            </li>
+
+            <p>
+              In particular, the grammar used to construct a type generates an underlying structural pattern
+              implied by the shape of the grammar itself. <math>&#8477;<sup>3</sup></math> is a triple product
+              (<math>&#8477;&times;&#8477;&times;&#8477;</math>) of <math>&#8477;</math>. Its constructive grammar
+              is as a product, so to access its <math>x-axis</math>, <math>y-axis</math> or <math>z-axis</math>
+              is to specify access to the respective operand of the product.
+            </p>
+
+            <p>
+              Implication: All such constructive code is maintained in the <em>structure division</em> of a given module.
+            </p>
+
+            <li>
+              <strong>navigator</strong>
+            </li>
+
+            <p>
+              Not only does the constructive grammar imply an underlying structure, but the way in which one navigates
+              the grammatical components also offers a <em>natural</em> and <em>universal</em> coordinate system
+              as a default means to navigating any subtypes within our module. With our <math>&#8477;<sup>3</sup></math>
+              example, our universal coordinate system is the standard <em>catesian</em> coordinate system.
+            </p>
+
+            <p>
+              This particular example points out another consideration: <math>&#8477;<sup>3</sup></math> also has
+              the <em>spherical</em> as well as <em>cylindrical</em> universal coordinate systems. This is to say
+              no assumption is made that there must be a unique universal system, only that they are universal.
+              By this I mean no instance of the whole type is inaccessible by the given system of navigation.
+            </p>
+
+            <p>
+              Implication: All such navigational code is maintained in the <em>navigator division</em> of a given module.
+            </p>
+
+          </ol>
+
+        <li>
+          <strong>perspective</strong>
+        </li>
+
+        <p>
+          Assuming we now have a universal interface for navigation, we focus on being able to subtype.
+          From the lens of set-theory this means we need a language to create subsets. In the broadest sense possible,
+          the starting point for being able to group and regroup objects is the ability to compare them.
+        </p>
+
+        <p>
+          Intuitively, if we can compare two instances of a type, we can say whether they're similar enough
+          to group together or not, but only from the point of view of this particular comparison: Different
+          perspectives of comparison will group instances together differently. Looking at it this way, there
+          are three levels of complexity (of decreasing precision) when it comes to means of comparison:
+        </p>
+
+          <ol>
+
+            <li>
+              <strong>identity</strong>
+            </li>
+
+            <p>
+              To compare for identity is to test for <em>equality</em>. If two objects are of the same type,
+              you should be able to tell if they're equal or not.
+            </p>
+
+            <p>
+              Implication: All such identity comparison code is maintained in the <em>identity division</em> of a given module.
+            </p>
+
+            <li>
+              <strong>proximity</strong>
+            </li>
+
+            <p>
+              Two objects are either equal or their not. If their not equal, then what? The next level of comparison is when
+              you're no longer interested in perfect equality and are focused on <em>nearness</em>. In mathematics, there's
+              a whole branch devoted to concepts of nearness called <em>topology</em>. Metric spaces derive from this,
+              and so does the computational approximate nearest neighbour problem.
+            </p>
+
+            <p>
+              Implication: All such proximity comparison code is maintained in the <em>proximity division</em> of a given module.
+            </p>
+
+            <li>
+              <strong>functor</strong>
+            </li>
+
+            <p>
+              If two objects are not equal and furthermore there is no preferred measure of comparison between them,
+              we weaken our assumptions. It's possible the two objects aren't even of the same type, in which case
+              we compare them by means of the mappings that can exist between them. In category theory
+              (a foundation to type theory) such a mapping between types is called a <em>functor</em>.
+            </p>
+
+            <p>
+              Implication: All such functor comparison code is maintained in the <em>functor division</em> of a given module.
+            </p>
+
+          </ol>
+
+        <li>
+          <strong>model</strong>
+        </li>
+
+        <p>
+          We assume a universal system to navigate the instances of our type. We also assume we are able to compare
+          the instances of a type&#8212;not only to other instances of the same type but to instances of different types
+          altogether. We are finally able to group and regroup our type instances to form subtypes. With that said, in
+          practice the true signature of a type are the functions it's equipped with.
+        </p>
+
+        <p>
+          Again, with our <math>&#8477;<sup>3</sup></math> example we might have general purpose functions for the whole
+          space, but if we subtype to a sphere we often specialize a different inventory of functions just for that sphere.
+          If such functions are specialized just for that substructure, they implicitly form a correspondence and so in
+          many cases can act as an alternative to its original definition.
+        </p>
+
+        <p>
+          Given this reflection&#8212;that we know in advance function inventories for subtypes often exist&#8212;we
+          thus allocate space for them here within this <em>module partition</em>. Any such <em>model divisions</em>
+          will be context specific and so are otherwise generally difficult to predict in advance. With that said,
+          I have made space for a known pattern:
+        </p>
+
+          <ol>
+
+            <li>
+              <strong>printer</strong>
+            </li>
+
+            <p>
+              As a practical consideration, types (regardless of which branch their module belongs to) are often
+              printed to an alternative form as a diagnostic or as human readable output. Technically, by this
+              definition one could categorize printers as functors (they map across types). I have chosen to
+              instead to categorized them here with the intuition that they better help to model subtypes
+              rather than to compare their instances.
+            </p>
+
+            <p>
+              Implication: All such printer code is maintained in the <em>printer division</em> of a given module.
+            </p>
+
+            <p>
+              [<strong>note</strong>:] Keep in mind, for any given type no assumption can be made that graphic modules
+              exist yet to actually be able to print its instances to a screen (the most common case for printing).
+              If one desires to maintain the narrative purity within their own library, the printer functions in
+              these divisions would exist in anticipation of such faculties: In practice they likely would
+              preprocess and hand off the appropriate information to the eventual screen or other printer.
+            </p>
+
+            <p>
+              [<strong>note</strong>:] In the case of this library, as it is built on top of C++ and has print
+              functions available already at a lower level (grammatically), I have allowed these printer
+              divisions full access to screen printing.
+            </p>
+
+          </ol>
+
+      </ol>
+
+      <h2>security</h2>
+
+      <blockquote>
+        Premature optimization is the root of all evil. &#8212;Donald Knuth
+      </blockquote>
+
+      <p>
+        Truthfully this opening quote is problematic, and probably overused in public programming discourses. In any case, 
+        it still offers enough wisdom here that it's worth perpetuating.
+      </p>
+
+      <p>
+        Security is a subtle concept when relating it back to other design considerations such as <em>composability</em>
+        or <em>optimization</em>. On the one hand, modern technology within society has shown that security needs
+        to be built into every level and layer of code. It needs to be privileged higher in the value-system of any specified
+        design, more-so than most (if not all) other considerations. On the other hand, when it actually is implemented within
+        the code at every level and layer, it acts as a <em>tax</em> or a <em>toll</em>. It's a computational expense,
+        and if not carefully done it furthermore reduces the composability of code it's meant to protect. Upon first
+        glance it appears to be a trade-off.
+      </p>
+
+      <p>
+        As a solution to this potential problem, I have divided each <em>module division</em> into two parts:
+      </p>
+
+      <ol>
+
+        <li>
+          <strong>semiotic</strong>
+        </li>
+
+        <p>
+          This version of the code disregards safety and security considerations altogether. It privileges minimalism,
+          composability, and entropy (reusability). Interestingly enough, if this part is done well, as a side effect
+          many security issues are prevented to begin with.
+        </p>
+
+        <li>
+          <strong>media</strong>
+        </li>
+
+        <p>
+          This version of the code privileges safety. Effectively, you can think of it as a wrapper for the unsafe,
+          insecure semiotic version. It's like having a toll to get into the building, but once you're in you're
+          allowed to move around freely.
+        </p>
+
+      </ol>
+
+      <p>
+        To reiterate and clarify this security feature: By intention, if others were to use this library they
+        would be tagged as <strong>general users</strong> and <strong>architect users</strong>. General users would
+        only have access to use the media versions of this code while architect users (who build the library itself)
+        would have access to the semiotic versions as well. Architects would compose and built optimized data structures
+        and algorithms from the semiotic space, and then wrap their final forms respectfully in a security blanket
+        for general use. General users would then use the media versions to assist in their application code projects.
+      </p>
+
+    </main>
+
+  </body>
+</html>

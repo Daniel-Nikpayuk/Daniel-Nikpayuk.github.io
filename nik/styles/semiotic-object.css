@@ -1,0 +1,322 @@
+
+.value,
+.name
+{
+    font-style: italic;
+    color: maroon;
+}
+
+.type
+{
+    font-style: italic;
+    color: gray;
+}
+
+.default_value > .value
+{
+    color: brown;
+}
+
+.default_value > .center
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.keyword
+{
+    font-style: italic;
+    color: orange;
+
+    padding-left: 5px;
+}
+
+/*******************************************************/
+
+.argument  > .type,
+.parameter > .type,
+.binding   > .type
+{
+    padding-right: 5px;
+}
+
+.angle_braces	> .value::after,
+.angle_braces	> .pair::after,
+.curly_braces	> .value::after,
+.curly_braces	> .pair::after,
+.parentheses	> .value::after,
+.parentheses	> .pair::after
+{
+    padding-right: 10px;
+
+    content: ",";
+}
+
+.angle_braces	> .value:last-child::after,
+.angle_braces	> .pair:last-child::after,
+.curly_braces	> .value:last-child::after,
+.curly_braces	> .pair:last-child::after,
+.parentheses	> .value:last-child::after,
+.parentheses	> .pair:last-child::after
+{
+    padding-right: 0;
+
+    content: "";
+}
+
+.template > .name
+{
+    font-style: normal;
+    color: purple;
+}
+
+.procedure > .name
+{
+    font-style: normal;
+    color: teal;
+}
+
+.adjective > .name,
+.adjective > .linked_name
+{
+    font-style: normal;
+    color: purple;
+
+    padding-right: 5px;
+}
+
+.template  > .type,
+.procedure > .type,
+.adjective > .type
+{
+    padding-right: 5px;
+}
+
+/*
+.adjective > .link
+{
+    font-style: normal;
+
+    padding-right: 5px;
+}
+*/
+
+/*******************************************************/
+
+.alias_entry
+{
+    display: flex;
+
+    padding-left: 5%;
+}
+
+.alias_entry > .left
+{
+    font-style: italic;
+    color: red;
+
+    padding-right: 10px;
+}
+
+.alias_entry > .type
+{
+    font-style: italic;
+    color: green;
+
+    padding-right: 10px;
+}
+
+.alias_entry > .name
+{
+    font-style: normal;
+    color: teal;
+
+    width: 40%;
+}
+
+.alias_entry > .binding
+{
+    width: 31.40%;
+}
+
+.alias_entry > .binding > .name
+{
+    font-style: normal;
+    color: teal;
+}
+
+.alias_entry > .center
+{
+    padding-right: 5px;
+}
+
+.alias_entry > .right
+{
+    color: orange;
+
+    padding-left: 5px;
+}
+
+/*******************************************************/
+
+.member_entry
+{
+    display: block;
+}
+
+.member_entry > .left
+{
+    font-style: italic;
+    color: red;
+
+    padding-right: 5px;
+}
+
+/*
+.member_entry > a:link
+{
+    color: teal;
+}
+*/
+
+.member_entry > .right
+{
+    color: orange;
+
+    padding-left: 5px;
+}
+
+/*******************************************************/
+
+.category
+{
+    padding-left: 2%;
+}
+
+.paragraph
+{
+    font-style: normal;
+    color: black;
+
+    line-height: 1;
+
+    margin: 1% 0 3% 0;
+    padding: 0;
+}
+
+.collapsible_category
+{
+    display: block;
+}
+
+.collapsible_category > .cell
+{
+    display: inline-block;
+
+    width: 0;
+    height: 0;
+
+    margin: 0 5px 0 -11px;
+
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid red;
+
+    content: "";
+}
+
+.collapsible_category > .category
+{
+    padding: 0;
+    margin: 0;
+}
+
+.collapsible_list
+{
+    display: none;
+}
+
+.list > .list > .alias_entry > .name
+{
+/*  53/144 */
+
+    width: 36.81%;
+}
+
+.list
+{
+    display: block;
+
+    line-height: 1.5;
+
+    padding-left: 4%;
+    padding-bottom: 1%;
+}
+
+/*******************************************************/
+
+/*
+#syntax_list
+{
+    font-family: "Consolas"			,
+                 "Monaco"			,
+                 "Lucida Console"		,
+                 "Liberation Mono"		,
+                 "DejaVu Sans Mono"		,
+                 "Bitstream Vera Sans Mono"	,
+                 "Courier New"			,
+                  serif;
+}
+*/
+
+#syntax_list > .list > .template > .linked_name
+{
+    font-style: normal;
+    font-weight: bold;
+}
+
+#syntax_list > .list > .collapsible_list > a,
+#syntax_list > .list > .collapsible_list > .procedure
+{
+    display: block;
+
+    padding-left: 5%;
+}
+
+#syntax_list > .list > a[class~="collapsible_category"]:link,
+#syntax_list > .list > a[class~="collapsible_category"]:visited,
+#syntax_list > .list > a[class~="collapsible_category"]:focus,
+#syntax_list > .list > a[class~="collapsible_category"]:hover,
+#syntax_list > .list > a[class~="collapsible_category"]:active
+{
+    outline: none;
+    text-decoration: none;
+    color: black;
+
+    padding-left: 2%;
+}
+
+#syntax_list > .list
+{
+    line-height: 1.1;
+}
+
+/*******************************************************/
+
+#semantics_list > .list > .member_entry,
+#semantics_list > .list > .description > .member_entry,
+#semantics_list > .list > .procedure
+{
+    padding-left: 5%;
+}
+
+/*******************************************************/
+
+/*
+#adjective_list .linked_name
+{
+    font-style: normal;
+    font-weight: bold;
+}
+*/
+

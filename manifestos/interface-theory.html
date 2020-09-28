@@ -1,0 +1,220 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Language Design</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Language Design</h1>
+    </header>
+
+    <main id="interface-theory">
+      <section id="preamble">
+        <h2>Interface Theory: A paradigm for interface design</h2>
+        <h3>December 17th, 2017</h3>
+
+        <p>
+          <strong>Manifest Statement</strong>: <em>Computational Programming as a discipline deserves theoretical
+          spaces for the design of interface models, which themselves are the foundations for navigating, translating,
+          and solving computational problems.</em>
+        </p>
+
+        <p>
+          I assert that as toolmakers&mdash;as designers of tools&mdash;problem solving starts with interfaces.
+          As with any language, we first learn to read, then to write; we then express and manipulate a language's
+          interfaces to solve its problems. A poor or badly chosen interface of interaction hinders our ability
+          and our capacity to construct solutions to the problems we set out to solve.
+        </p>
+
+        <p>
+          An interface is a space of names to which we navigate. We express our problem as an initial location,
+          and determine a path to a terminal location as our solution. In practice, our computational space is a data
+          structure. This is significant as our paradigm is best served by modularizing structure from data, which
+          is possible since it is known in general that <strong>structure and content are orthogonal</strong>.
+        </p>
+      </section>
+
+      <section id="main">
+        <h2>Interface Template</h2>
+
+        <p>
+          A general and potent template for cleanly designing any interface is as follows:
+        </p>
+
+        <ol>
+          <li>
+            Constructively define the structure being modeled, starting with the irreducible names.
+          </li>
+          <li>
+            Define every possible substructure, not only are these navigable spaces themselves, they are also names.
+          </li>
+          <li>
+            Find all possible algebras of names, frequently these are monoidal spaces.
+          </li>
+          <li>
+            Compress the names within each algebra, these are the <strong>interface layers</strong>.
+          </li>
+          <li>
+            Determine how each interface layer relates to every other interface layer.
+          </li>
+        </ol>
+
+        <p>
+          This template as an algorithm suffers from a computational asymmetry: Using it to find a solution
+          to an interface design tends to be computationally expensive, while verifying such a solution tends
+          to be computationally inexpensive.
+        </p>
+
+        <p>
+          I declare then that this theoretical paradigm is primarily applicable as a <strong>diagnostic</strong>:
+          Any <strong>heuristic</strong> design can be tested against this template to see if it satisfies.
+          With committed practice, this template can then be used to shape ones habits of design, allowing
+          a good designer to build an inventory of <strong>best practices</strong> within this genre of interface model.
+        </p>
+
+        <h2>Orders of Design</h2>
+
+        <p>
+          The secondary application of this theoretical paradigm is in deducing best practices, known here as
+          <em>orders of design</em>. This separates such practices from inducing best practices&mdash;ones learned
+          from inductive experience with (as of yet) no known deductive mechanism.
+        </p>
+
+        <p>
+          A <strong>guiding principle</strong> of our orders of design (alluded to above) I now state as follows:
+          <em>Literacy is mastered first by reading, then by writing</em>. In the context of an interface, this
+          translates to first designing the navigational operators, then designing the mutative operators
+          (assuming they exist, or there is sufficient privilege).
+        </p>
+
+        <p>
+          With this guiding principle comes our first order of design:
+        </p>
+
+        <h3>Batching</h3>
+
+        <p>
+          Structure and content are orthogonal in specification, but in implementation when one is concerned with various
+          efficiency optimizations, they are not. A functional map (fmap) is often used to refactor the process of applying
+          the same operator to the content of several locations of a structure: Fmap then, as a generic operator intersects
+          both structure and content. This is relevant as there is a special situation where several fmaps operate over the
+          same locations.
+        </p>
+
+        <p>
+          I submit, when optimizing for process efficiency, it is best to refactor separate fmaps by the navigational path
+          of the shared locations being acted upon, as it reduces parse cycles. This is known as <strong>batch mapping</strong>,
+          and it implies that every navigational operator which in theory is independent of content mutation, should actually
+          allow for the batching of mutative operations in practice. Let me restate this for clarity: Design for navigation,
+          then add batch mapping, acknowledging it as a deviation from design.
+        </p>
+
+        <h3>Algebra</h3>
+
+        <p>
+          We often seek monoidal binary operators which allow us to locally navigate existing objects within the interface layer.
+          Such operators allow us to relocate ourselves by knowing our current location as well as a path to the point of relocation.
+        </p>
+
+        <p>
+          When looking to determine an algebra for a given interface layer, a common practical heuristic is to look at the
+          <strong>lifecycle ecology</strong> of the names as objects. The focus is not on the names themselves, but to use
+          them to reveal their lifecycle operators. This might not always expose an underlying algebra directly, but it often
+          reduces the search to a limited handful of operators for which to abstract a common factor. If nothing else, it also
+          leaves the designer with an intuitive operator basis to add as a convenient library module for implementation.
+        </p>
+
+        <p>
+          The above stated heuristic is partitioned into the following categorical stages and their questions:
+        </p>
+
+        <ol>
+          <li>
+            <strong>Birth</strong>: What names can be constructed into the interface layer?
+          </li>
+          <li>
+            <strong>Growth</strong>: Given an existing name, how can it be extended structurally?
+          </li>
+          <li>
+            <strong>Change</strong>: Given an existing name, how can its structure mutate while otherwise
+            remaining invariant?
+          </li>
+          <li>
+            <strong>Decline</strong>: Given an existing name, how can it be reduced structurally?
+          </li>
+          <li>
+            <strong>Death</strong>: What names can be destroyed from the interface layer?
+          </li>
+        </ol>
+
+        <h3>Arithmetic</h3>
+
+        <p>
+          A given ecology or algebra allows for navigation to all possible names within an interface layer.
+          Although we seek to specify certain operators, the ultimate focus remains on the objects being navigated,
+          with the goal of knowing we can access or reach them all. Another order of design related operators though
+          is to find an <em>arithmetic</em> of navigational operators instead, which allows us to construct the operators
+          within our ecologies and our algebras.
+        </p>
+
+        <p>
+          Finding arithmetics reveals the bare minimum we'd need to equip an operator library with. In particular,
+          we seek the constructive grammatical elements that allow us to build any other grammatical element.
+        </p>
+
+        <h3>Transitivity</h3>
+
+        <p>
+          A chain of <em>transitive</em> interface layers is a sequence of layers, where each subsequent layer is not
+          only an interface to the original, it is an interface to all layers in the sequence that came before it.
+          Discovering such sequences in practice allows you to optimize by <strong>inlining</strong>. The idea is that
+          any indirect interface to the original may be translated into a direct interface. Optimization occurs during
+          translation as a change of face often allows for reduction of what is otherwise unnecessary overhead.
+        </p>
+
+        <h3>Security</h3>
+
+        <p>
+          Interface security is a major concern of modern digital technologies. Any interface we heuristically design
+          must also be tested against chosen security models. Here I only (briefly) consider how poor interface design
+          can lead to insecure systems.
+        </p>
+
+        <p>
+          Within industry, there exist many languages with grammar designed for <em>optimization of code</em> (as a means of reducing
+          cost-in-use), but not designed for <em>security of code</em>. As these languages are used to build larger interfaces, and as
+          these interfaces tend to evolve organically, many <strong>bugs</strong>, or rather <em>opportunities for exploitation</em>,
+          are introduced along the way as well. 
+        </p>
+
+        <p>
+          Adhering to more powerful models of interface design such as <strong>functional programming equipped with type theory</strong>
+          offers a means to mitigating the complexity of security. As significant as this form of denotational semantics is,
+          it rests on systems which prevent optimization beyond a certain level. There are still many industries which require
+          a higher level of optimization, and as such we still need supplimentary strategies for secure design. I claim the template
+          offered here is one such strategy.
+        </p>
+
+        <p>
+          Higher optimization occurs in relation to higher entropy of <em>concurrency</em> or <em>side-effects</em>.
+          This is to say, parallel programming, as well as state based functions with side effects each allow for the
+          flexibilities needed in higher orders of optimization. The <strong>chains</strong> of an interface within
+          the above template act as a bridge between these higher and lower entropies allowing both for optimization
+          as well as security in an ideal way.
+        </p>
+
+        <p>
+          Designing lower level layers with weaker more flexible specifications&mdash;greater internal access to those with
+          privilege&mdash;allows us to optimize our interfaces. Using higher level layers with stronger less flexible
+          specifications&mdash;lesser internal access to those without privilege&mdash;allows us to secure our interfaces.
+          A given implemention would create the necessary transition from optimization to security, allowing for
+          the best of both.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

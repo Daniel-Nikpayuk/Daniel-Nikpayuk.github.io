@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Code</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Code</h1>
+    </header>
+
+    <main id="bash">
+      <section id="preamble">
+        <p>
+          As a coder, when working independently I prefer to use the <strong>vim</strong> text-editor
+          (Don't worry, I'm not here to start any tribal wars).
+        </p>
+
+        <p>
+          In order to facilitate calling various compilers and whatnot from vim I also tend to rely on <strong>bash scripts</strong>.
+          I thought I'd share a few of them here. Keep in mind they're nothing spectacular, and if they existed for any other reason
+          than personal use I'd make them more robust, but they might still be of interest to newer bash coders.
+        </p>
+
+        <ol>
+          <li>
+            <a href="#pdflatex">pdflatex</a>
+          </li>
+          <li>
+            <a href="#cpp-compile">cpp-compile</a>
+          </li>
+          <li>
+            <a href="#copyright-update">copyright update</a>
+          </li>
+        </ol>
+      </section>
+
+      <div class="anchor" id="pdflatex"></div>
+
+      <section>
+        <h2>pdflatex</h2>
+        <h4>January 12, 2017</h4>
+
+        <p>
+          I'm frequently writing <em>LaTeX</em> articles. When editing, I'm compiling and recompiling the source often
+          to see what it looks like visually. I prefer to build pdf documents. Anyway, as it gets tedious to call each
+          command directly, I wrote a script instead:
+        </p>
+
+        <image src="bash/pdflatex.png" alt="Image of pdflatex script" style="width:70%">
+
+        <ol>
+          <li>
+            This script is only meant to work with one ".tex" file in a directory.
+          </li>
+          <li>
+            If the user offers a name, it's accepted, otherwise the single file from the directory is deduced.
+          </li>
+          <li>
+            It is verified that exactly one latex file exists. If there's zero or more than one the script halts.
+          </li>
+          <li>
+            I run <strong>pdflatex</strong>, then as I frequently use the <strong>asymptote</strong> programming
+            language in conjunction (as a latex package), I check to see if any ".asy" files were generated.
+            If they were, I compile them.
+          </li>
+          <li>
+            I run pdflatex again. If I have hyperlink references embedded, or I need to update bibliographic info,
+            or if I was in fact using asymptote, I would need to run pdflatex a second time anyway.
+            If not, then I have run it a second time for nothing, which isn't great, but not the worst offense
+            either. If it really mattered, it would be easy enough to modify the script to add the option to
+            prevent double compiling.
+          </li>
+          <li>
+            If everything compiled properly, a ".pdf" file will exist. If not, it won't. I can use this
+            property of the pdflatex compiler to test whether or not I should run <strong>evince</strong>
+            (the supported pdf viewer on my operating system) to view the output.
+          </li>
+        </ol>
+      </section>
+
+      <div class="anchor" id="cpp-compile"></div>
+
+      <section>
+        <h2>cpp-compile</h2>
+        <h4>January 12, 2017</h4>
+
+        <p>
+          As my main personal project is a C++ library, I'm frequently compiling and testing code. It gets tedious
+          to call each command directly, so this is my shortform:
+        </p>
+
+        <image src="bash/cpp-compile.png" alt="Image of cpp-compile script" style="width:80%">
+
+        <ol>
+          <li>
+            I get the working directory by removing the longest pathname prefix ending in "/".
+          </li>
+          <li>
+            I then get the name the user wants for the compiled (executable) file. If the user does not supply
+            a name, I use the working directory name as default.
+          </li>
+          <li>
+            I call gcc or g++ depending on the source "main" file, printing the compiler output both to the screen
+            and to an error file.
+          </li>
+          <li>
+            Assuming the file compiled, I execute its code as well as return its basic runtime statistics.
+          </li>
+        </ol>
+      </section>
+
+      <div class="anchor" id="copyright-update"></div>
+
+      <section>
+        <h2>copyright update</h2>
+        <h4>January 2, 2017</h4>
+
+        <p>
+          Every coder has their own copyright update script I'm sure, this is mine.
+        </p>
+
+        <image src="bash/copyright-update.png" alt="Image of copyright update script" style="width:70%">
+
+        <ol>
+          <li>
+            I call <strong>find</strong> with a <em>regular expression</em>
+            matching C++ filename extensions returning the names (and paths) of C++ files.
+          </li>
+          <li>
+            I then feed this list into the <em>while</em> loop construct where I modify the copyrights.
+          </li>
+          <li>
+            I use a <strong>mawk</strong> script for the text substitutions themselves.
+          </li>
+          <li>
+            The modified file is saved as <em>tmp.txt</em>, and then renamed to replace the original.
+            As such, this script assumes none of the directories you're working in have a file called <em>tmp.txt</em>.
+          </li>
+        </ol>
+
+        <p>
+          The nice thing about the commandline is it literally takes 2-3 seconds to update hundreds of text files :)
+        </p>
+      </section>
+
+    </main>
+
+  </body>
+</html>
+<!--
+        <li>
+          <a href="#"></a>
+        </li>
+
+    <article id="post_00">
+      <section id="">
+        <header>
+          <h1></h1>
+          <h3></h3>
+        </header>
+
+        <image src="bash/.png" alt="Image of ">
+
+        <p>
+        </p>
+
+       </section>
+    </article>
+-->

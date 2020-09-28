@@ -1,0 +1,483 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Mooc Work</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Mooc Work</h1>
+    </header>
+
+    <main id="fundamentals-of-digital-image-and-video-processing">
+      <section id="preamble">
+        <h2>Fundamentals of Digital Image and Video Processing</h2>
+        <h4>June 12th, 2017</h4>
+
+        <p>
+          This coursera mooc is offered by the Northwestern University, the professor being Aggelos K. Katsaggelos.
+          I absolutely loved this mooc, but it should come with at least two warnings.
+        </p>
+
+        <p>
+          The first and biggest one is the overwhelming amount of content thrown at us&mdash;especially in the form of techniques.
+          This is great, but if you're like me and don't have a photographic memory, I'd advise learning the theory parts,
+          and skim/follow the techniques and algorithms so you at least know they exist and how to quickly reference them later.
+          Otherwise you'll probably freak out with all they expect you to learn in 12 weeks. In any case, to ease the navigation
+          of everything that is offered in this course, it might be useful to break it into themed sections:
+        </p>
+
+        <ol>
+          <li>
+            Introduction - Week 1.
+          </li>
+          <li>
+            Tools - Weeks 2-4.
+          </li>
+          <li>
+            Applications - Weeks 5-12.
+          </li>
+        </ol>
+
+        <p>
+          The second warning is that I would not have survived this course if I had not already taken another signal processing
+          mooc called <em>Audio Signal Processing for Music Application</em>. I would make analogy to the audio version being
+          like single-variable calculus while this image/video version of signal processsing being like multivariable calculus.
+          It's a bit more complicated than that though. Yes, what you learn in an audio version is extended to 2D (image) as well
+          as 3D/4D (video), as well as higher dimensions, but with the shift from sound to sight, comes other non-Fourier
+          mathematical techniques as well. You should be comfortable with geometry and vector spaces at the very least.
+        </p>
+
+        <p>
+          With that said, this course was amazing. Not for beginners, and you're only scratching the surface in 12 weeks,
+          but it's greatest strength is the wealth of knowledge you can reference once you make it through.
+        </p>
+
+        <ul>
+          <li>
+            <a href="#week_01">Week 1 - Introduction</a>
+          </li>
+          <li>
+            <a href="#week_02">Week 2 - Discrete Signals</a>
+          </li>
+          <li>
+            <a href="#week_03">Week 3 - Fourier Transform</a>
+          </li>
+          <li>
+            <a href="#week_04">Week 4 - Motion Estimation</a>
+          </li>
+          <li>
+            <a href="#week_05">Week 5 - Enhancement</a>
+          </li>
+          <li>
+            <a href="#week_06">Week 6 - Recovery</a>
+          </li>
+          <li>
+            <a href="#week_07">Week 7 - Recovery</a>
+          </li>
+          <li>
+            <a href="#week_08">Week 8 - Compression</a>
+          </li>
+          <li>
+            <a href="#week_09">Week 9 - Compression</a>
+          </li>
+          <li>
+            <a href="#week_10">Week 10 - Compression</a>
+          </li>
+          <li>
+            <a href="#week_11">Week 11 - Segmentation</a>
+          </li>
+          <li>
+            <a href="#week_12">Week 12 - Sparsity</a>
+          </li>
+        </ul>
+      </section>
+
+      <div class="anchor" id="week_01"></div>
+
+      <section>
+        <h3>Week 1 - Introduction</h3>
+        <h4>June 18th, 2017</h4>
+
+        <p>
+          As with any academic course, the first week is the introduction. There's less about course expectations
+          than I've seen in other moocs, our prof. pretty much gets straight into theories of physics, electromagnetics,
+          image and video types, audio to digital and back to audio again conversions. All the basics you need before
+          you really start a signal processing course.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_02"></div>
+
+      <section>
+        <h3>Week 2 - Discrete Signals</h3>
+        <h4>June 25th, 2017</h4>
+
+        <p>
+          This week was explosive for me in terms of piecing together "the bigger picture". I'm certainly starting to "get"
+          the story of <em>image signal processing</em> now. Let me offer you a narrative:
+        </p>
+
+        <p>
+          For starters, there's no right or wrong way in general to "process" an image. This is to say processing really just means
+          transforming one image (or signal) into another. With that said, it's also ideal to look for systematic ways of doing so,
+          of building, or finding or discovering systems where you understand the underlying mechanics that you can predict general
+          properties about the system as a whole&mdash;this gives you consistency and certainty in ways considered important.
+        </p>
+
+        <p>
+          With this said, the first system to look at is called an LSI: <strong>A linear and spatially invariant system</strong>.
+          What this means is that in such a system you can take what's called the <strong>unit impulse</strong>
+          (you can consider it a special image; or similar to algebras, it could parallel the neutral element),
+          and you transform it under this system and call that transformed image the <strong>impulse response</strong>.
+        </p>
+
+        <p>
+          LSIs have the special property that any other image within the system can be transformed&mdash;not directly, but&mdash;indirectly
+          using this impulse response, and the <strong>convolution</strong> operation. What's the value in that? In practice often
+          it is a matter of practical computation, as the rules of direct transform might be computationally expensive while the
+          convolution applied to your image and the impulse response could be less so&mdash;with the added theoretical benefits of
+          certain guarantees about the processing of all such images under that system.
+        </p>
+
+        <p>
+          The connection with <strong>filters</strong> (<em>lowpass, highpass</em>, etc) is that the impulse response is your filter.
+          So when you use a filter on an image, you're applying the impulse response thus transforming (or processing) that image
+          within an LSI system.
+        </p>
+
+        <p>
+          The connection with the <strong>Fourier transform</strong> is that both let you convert to the fequency domain, but with
+          one-dimensional signal processing you're often working within the time domain, in two-dimensions (or higher) you're working
+          within the spatial domain&mdash;there are additional advantages (insights, information) you can obtain from your original image
+          using its spatial frequency representation.
+        </p>
+
+        <p>
+          For example its known that the convolution in the spatial domain is equivalent to multiplication in the frequency domain
+          (in addition this can provide computational savings), but it also provides new strategies to transform your image
+          in semantically relevant ways. Regarding the impulse response, you then apply the Fourier transform to it you get the
+          <strong>frequency response</strong>, and when you graph its magnitude component (we're working with complex numbers here),
+          you can intuitively get a feel for what kind of filter you actually have (lowpass, highpass, bandpass, etc.).
+          Cool! It's starting to make sense!!! :)
+        </p>
+
+        <p>
+          I've connected a lot of dots this week because in my audio signal processing mooc we spent a lot of time on the
+          <em>short-time Fourier transform</em> and the best practice techniques for interpreting signals in the frequency domain
+          such as <em>phase unwrapping, zero-padding, zero-phase windowing, analysis windowing</em>. In that course filters and
+          the impulse response were mentioned, but we never actually went into them, and nothing was said about LSI systems at all!
+          Okay! Signal Processing is becoming more accessible now. Hooray!
+        </p>
+
+        <p>
+          <strong>topics:</strong> 2D, 3D. Unit Impulse. Unit Step. Exponentials. 1D, 2D Discrete Cosine.
+          LSI - Linear, Spatially Invariant Systems. Impulse response. 2D convolution. Convolution representation of transforms.
+          Boundary Effects. Spatial Filtering. Noise Reduction.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_03"></div>
+
+      <section>
+        <h3>Week 3 - Fourier Transform</h3>
+        <h4>July 2nd, 2017</h4>
+
+        <p>
+          This idea of <strong>spatial frequencies</strong> surprised me, I have no intuition for it so I've been contemplating
+          it further all week.
+        </p>
+
+        <p>
+          I'd like to think I'm starting to get a feel for how <em>space</em> can have frequencies: For starters, the concepts of
+          <em>frequency</em> and <em>signal</em> are nearly synonymous. The way I see it, a signal is a <strong>specification
+          side</strong> conceptual design, while a frequency is an <strong>implementation</strong> of that more abstract concept.
+          Why? Because for example the <em>period</em> is "1 / frequency" which contains the same information as a frequency,
+          so you could consider a period as another implementation of a signal.
+        </p>
+
+        <p>
+          For audio signal processing for example, when looking at the analog source, your signal is created by changes in air
+          pressure at a given location over time. You have the equilibrium air pressure in a room, and that's zero, and if the air
+          pressure dips you go into the negatives, and if it increases that's then an increase in amplitude of your frequency samples.
+        </p>
+
+        <p>
+          With image processing now, your medium of change is not "time", but instead "space". This is to say, if you're moving across
+          an image, you will have change in color and intensity (brightness), and relative to where you were, those changes either
+          increase or decrease in amplitude forming your frequency sample over spatial motion. That's why your lowpass and highpass
+          filters effect blur and sharpness and general edge detection. Interesting stuff.
+        </p>
+
+        <p>
+          <strong>topics:</strong> Filtering. Convolution Theorem. 2D Sampling. Critical Sampling - undersampling, oversampling.
+          2D Nyquist Theorem. Aliasing. 2D DFT. 2D FFT. FFT Optimizations. Centering. Down-sampling. Lowpass frequency filtering
+          to mitigate the alias effect.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_04"></div>
+
+      <section>
+        <h3>Week 4 - Motion Estimation</h3>
+        <h4>July 9th, 2017</h4>
+
+        <p>
+          This week's blogpost is more of a tangent. Motion estimation introduced here is fascinating in its own right,
+          but it was more theory, and without application it's harder to find that motivation.
+        </p>
+
+        <p>
+          In any case, as far as the theory goes, as I've taken <strong>machine learning</strong> previously, I kept
+          thinking up ways to recognize and estimate motion in more computationally heuristic ways. In particular,
+          I think A <strong>semantic network</strong> would allow one to navigate connotations of patterns and how
+          patterns relate to each other (subjectively).
+        </p>
+
+        <p>
+          What's a <em>semantic network</em> though? Take <em>Deep Learning</em> for example: It takes basic patterns
+          and builds up more complex patterns creating hierarchies of "recognizer neurons", to the point that the network can
+          recognize a face. By way of analogy, we then ask: What algorithm describes self-generating
+          <strong>relational networks</strong> when fed correlational big data? I think machine learning's next step isn't to hand
+          code deductive logics, but to figure out the algorithms for self-generating relational networks (given big data input)
+          analogous to what deep learning does for hierarchical pattern recognizers.
+        </p>
+
+        <p>
+          For example, in this week, <strong>block matching motion estimation</strong> is interesting, but with deep learning being
+          able to pattern recognize, I myself would've taken this style of approach to solve this problem. Of course the efficiencies
+          would need to be tested, but otherwise if you can build up a lightweight deductive system, you might be able to track
+          the identities of certain patterns within the frames of a video at a much lower computational cost. My mind wandered
+          this week. It's an idea anyway :)
+        </p>
+
+        <p>
+          <strong>applications:</strong> Object tracking, human computer interactions, temporal interpolation,
+          spatio-temporal filtering, compression. Methods (block matching for example).
+        </p>
+      </section>
+
+      <div class="anchor" id="week_05"></div>
+
+      <section>
+        <h3>Week 5 - Enhancement</h3>
+        <h4>July 16th, 2017</h4>
+
+        <p>
+          Finally, we get to applications. I absolutely love theory, but 3 weeks of intense theory and nothing else
+          is a bit much even for me. I'm glad to be able to see some application for a change :)
+        </p>
+
+        <p>
+          Actually, this week motivated me to review <em>audio signal processing</em>, specifically the <strong>analysis
+          window</strong> used in the <em>short-time Fourier transform</em>.
+        </p>
+
+        <p>
+          There is one word as signifier I've encountered again and again from engineers: <strong>smoothing</strong>.
+          If you regularize a signal, you're smoothing it. If you apply an analysis window, you're smoothing it.
+          I have no intuition for this (yet) because it doesn't follow from pure math&mdash;it doesn't contribute from
+          or to the theoretical aspects of all this&mdash;it's very much an implementation side trope that shows up again
+          and again&mdash;an engineer's way of thinking. It bothers me and fascinates me, haha.
+        </p>
+
+        <p>
+          As best I can currently tell, smoothing is used to make non-continuously differentiable functions continuously
+          differentiable ("smooth"...while preserving the properties of interest) so that more well-behaved calculus can be
+          applied, or for perception as with things like Hanning, Blackman windows (analysis window).
+        </p>
+
+        <p>
+          As best I can currently tell, since windowing is multiplication in the time domain, then it's a convolution in the
+          spectral domain, so it can be thought of as a filter? It takes what would be sharp edges (using image signal processing
+          terminology now) and blurs (smoothens) them so that they still exist, but are computationally, analytically, perceptually
+          easier to distinguish. As with anything engineering it's a tradeoff of course, so by solving one problem you introduce
+          others, meaning you now have to consider the tradeoff between the introduction of noise (side lobes) against frequency
+          resolution (bin width).
+        </p>
+
+        <p>
+          It seems there were a few concepts I didn't fully appreciate when I took audio signal processing, but the more exposure
+          I get from image signal processing, the more it makes sense&mdash;the more I can cross reference, and begin to build conceptual
+          relationships and resolve nuances. Cool!
+        </p>
+
+        <p>
+          As for this week in particular, I liked how <em>enhancement</em> is compared with <em>recovery</em>, though it makes
+          me wonder then if a lot of students get them confused, haha. Regardless, I was especially fond of intensity transformations,
+          because I have so many photos I'd now like to now do that to :)
+        </p>
+
+        <p>
+          <strong>topics:</strong> Intensity Transformations. Histogram Processing. Spatial Filtering: Smoothing, sharpening,
+          homomorphic filtering, pseudo-coloring. Video Enhancement. Many filtering techniques.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_06"></div>
+
+      <section>
+        <h3>Week 6 - Recovery</h3>
+        <h4>July 23rd, 2017</h4>
+
+        <p>
+          This is the first of two weeks exploring <em>recovery</em>. The first week can be considered as looking at
+          <em>deterministic</em> approaches to restoration, while next week seems to be the briefly mentioned <em>stochastic</em>
+          variety.
+        </p>
+
+        <p>
+          There's not too much to write this week, but I did really enjoy the theory of restoration as
+          <strong>degredation/restoration systems</strong>, in the context of the <strong>inverse problem</strong>
+          along with <strong>degredation models</strong> which generated many many filters.
+        </p>
+
+        <p>
+          <strong>deterministic:</strong> Defocusing, blind spatially varying restoration, blocking artifact removal,
+          error concealment, inpointing, super-resolution, dual exposure restoration, pansharpening.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_07"></div>
+
+      <section>
+        <h3>Week 7 - Recovery</h3>
+        <h4>July 30th, 2017</h4>
+
+        <p>
+          This is the second week of recovery. I won't lie, my eyes glossed over a little on this one.
+          It was very theoretical, and very rushed, and although I have the basics of statistics down,
+          it was a little more advanced than I'm use to. I can tell it's important so I'll have to come
+          back to it.
+        </p>
+
+        <p>
+          <strong>stochastic:</strong> Wiener Filter. Bayesian Formulation.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_08"></div>
+
+      <section>
+        <h3>Week 8 - Compression</h3>
+        <h4>August 2nd, 2017</h4>
+
+        <p>
+          I've looked ahead, and it seems like we have 3 weeks of compression. This week in particular we focused on
+          <strong>lossless</strong> compression. What I found most valuable that I didn't already know is just how large
+          raw uncompressed file sizes actually are for our most common multimedia. I knew compression was important,
+          but this was an eye opener.
+        </p>
+
+        <p>
+          This was probably actually my favorite week in the course. I've been developing my own theories of <em>complexity</em>
+          which intersect deeply with compression. As such, I already know a bit about <strong>information theory</strong> and
+          related topics, but this week was really well explained. I think our prof. has a stronger background in compression
+          himself, and it shows: I would actually recommend this week's video lectures to anyone wanting an introduction into
+          information theory itself.
+        </p>
+
+        <p>
+          <strong>lossless:</strong> Why? (raw sizes are huge). Information Theory. Entropy. Source Coding Theorem
+          (actual outlines of proofs). Prefix and UD codes. Huffman Coding Algorithm. Arithmetic Coding.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_09"></div>
+
+      <section>
+        <h3>Week 9 - Compression</h3>
+        <h4>August 7th, 2017</h4>
+
+        <p>
+          This week felt a little rushed. We went through a lot of material completely foreign to me. What worked the
+          most for me was learning the relationships between <strong>lossy</strong> and lossless and how lossless was
+          still used within lossy approaches. Also, I knew lossy strategies depended on removing information in which
+          there is no perceptual difference noticed by humans, but characterizing it as various strategies to lose
+          <strong>quantization</strong> information makes so much more sense.
+        </p>
+
+        <p>
+          I especially liked the <strong>JPEG</strong> examples, as I interact with this format all the time in my
+          daily life. Finally, I enjoyed <strong>fractal encoding</strong>, it's a shame it hasn't taken off in industry.
+        </p>
+
+        <p>
+          <strong>lossy:</strong> Quantization (scalar, vector). Basic - subsampling, pulse code modulation (pcm).
+          Differential Encoding - DPCM. Fractal Encoding. Transform Coding and JPEG.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_10"></div>
+
+      <section>
+        <h3>Week 10 - Compression</h3>
+        <h4>August 13th, 2017</h4>
+
+        <p>
+          First time around, the complexity of compressing video is a bit overwhelming. I'm glad to at least be exposed to it,
+          and the <strong>MPEG-2</strong> case study I found to be especially illuminating. Having index frames which are
+          only compressed the usual lossy image way, then using motion estimation to predict the following few frames
+          (until the next index is reached), then taking the difference between those predictions with the real ones
+          and storing those differences in lossless compression is fascinating.
+        </p>
+
+        <p>
+          I admit there were too many details to really understand these compression standards, but enough of the bigger
+          picture was explained well enough I feel like I have a good overview and could go into those technical details
+          if I ever needed to. I don't know where or how I would even be introduced to the math behind video compression.
+        </p>
+
+        <p>
+          <strong>video:</strong> Data compression system. Hybrid Motion Compensation Video Coding. Standards Comparison.
+          MPEG-2 case study. Frame types. Intra prediction.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_11"></div>
+
+      <section>
+        <h3>Week 11 - Segmentation</h3>
+        <h4>August 22nd, 2017</h4>
+
+        <p>
+          This week I would term as <em>semantic classification</em>. To that extent I found it theoretically interesting.
+          Certainly it intersects with machine learning, as noted by the use of <strong>K-means</strong> for example.
+          It also points out the diversity within signal processing itself, as this area of techniques make no use
+          of the Fourier transform and stay within the spatial domain, using more direct mathematical geometric
+          and statistical approaches.
+        </p>
+
+        <p>
+          <strong>approaches:</strong> Intensity discontinuity, intensity similarity, morphology.
+          Edge detectors. Thresholding. Region growth. Region splitting and merging. Watershedding. K-means.
+          Motion based (video). meanshift graph cut. st-mincut.
+        </p>
+      </section>
+
+      <div class="anchor" id="week_12"></div>
+
+      <section>
+        <h3>Week 12 - Sparsity</h3>
+        <h4>August 25th, 2017</h4>
+
+        <p>
+          Sparsity seems like a really interesting topic. I wish this week had delved more into it, but I suppose
+          part of the reason it didn't is that it's closer to cutting-edge research. Many examples were shown,
+          but little of the details in actual implementation. I don't know what else to say.
+        </p>
+
+        <p>
+        </p>
+
+        <p>
+          <strong>applications:</strong> Image/Video processing. Machine learning. Statistics. Genetics. Econometrics.
+          Neuroscience. Matching pursuit. Smooth reformulation. Image denoising, inpainting, super-resolution.
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>

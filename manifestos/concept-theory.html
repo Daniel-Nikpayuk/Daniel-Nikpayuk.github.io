@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/shared.css" type="text/css" media="screen">
+    <title>Daniel Nikpayuk - Language Design</title>
+  </head>
+  <body>
+
+    <header class="up">
+      <a href="index.html">up</a>
+      <h1>Language Design</h1>
+    </header>
+
+    <main id="concept-theory">
+      <section id="preamble">
+        <h2>Concept Theory: A paradigm for navigation design</h2>
+        <h3>April 14th, 2017</h3>
+
+        <p>
+          <strong>Manifest Statement</strong>: <em>Computational Programming as a discipline deserves a theoretical inventory
+          of navigably complex spaces which allow for the expressions, manipulations, and solutions to its computational problems.</em>
+        </p>
+
+        <p>
+          The interpretation of a <strong>navigably complex space</strong> is unpacked as follows:
+        </p>
+
+        <ol>
+          <li>
+            <strong>navigably complex</strong>: There is a density of elements, subspaces, objects, structures, types,
+            for which to navigate, as well as a rich variety of ways to navigate this density.
+          </li>
+          <li>
+            <strong>navigably computable</strong>: The navigational interface&mdash;the means to navigating to the elements,
+            subspaces, etc.&mdash;is effectively computable.
+          </li>
+          <li>
+            <strong>navigably expressive</strong>: The navigational interface is a flexible and accessible namespace
+            for referring to the elements, subspaces, etc.~within.
+          </li>
+        </ol>
+
+        <p>
+          A space such as this is <em>highly navigable</em>, and allows us to optimize <em>the generality-specificity trade off</em>
+          within predicate logic. It acts as the infrastructure for designing and interpreting detailed models within many different
+          and diverse contexts.
+        </p>
+
+        <p>
+          I assert this unpacked interpretation is not absurd, and demonstrate its existence with a template implementation
+          of a navigably complex space. I show its narrative focus to be that of <em>namespaces</em>, and proclaim as its
+          <strong>guiding principle</strong>: <em>That which cannot be named cannot be accessed.</em>
+        </p>
+      </section>
+
+      <section id="main">
+        <h2>Namespaces</h2>
+
+        <p>
+          The idea of a <strong>navigably complex namespace</strong> is as follows:
+        </p>
+
+        <ol>
+          <li>
+            We choose to mitigate the inherent complexity of this space. We do so by stratifying it into layers of names.
+          </li>
+          <li>
+            Lower layers of names are used to construct higher layers of names.
+          </li>
+          <li>
+            Lower layers have names possessing increased constructive entropy.
+          </li>
+          <li>
+            Higher layers have names possessing decreased constructive entropy.
+          </li>
+          <li>
+            Names which are completely determined have zero entropic ability, and are known as <strong>types</strong>.
+          </li>
+          <li>
+            The act of resolving a name for translation into another namespace is known as <strong>identity resolution</strong>.
+          </li>
+        </ol>
+
+        <p>
+          As we use names in a <em>referential</em> sense, I submit that a referential name has higher entropy when it has
+          a higher ability to delay its reference. The state of a delayed referral is known as a <strong>deferral</strong>,
+          as such a delayed name is a deferred name. I declare that a navigably complex space of deferred names is the
+          <strong>concept space</strong> we seek.
+        </p>
+
+        <p>
+          I invoke the <strong>Curry-Howard Isomorphism</strong> as analogy to offer the following claim: A concept space
+          is isomorphic to a given model of specification semantics. This model of specification semantics states that
+          a specification acts as a semantic filter. Weak specifications lead to stronger specifications, but can still
+          have their own algebras. A classical example in mathematics is the definition of a <em>limit</em> in calculus.
+          It is constructed from weaker topological specifications, which are used to define and prove its algebra.
+          As a filter it applies to many functions and sequences, but can be narrowed further to effective contextual
+          instances during application.
+        </p>
+
+        <p>
+          The isomorphism exists between concepts and filters, offering dual ways to express, manipulate,
+          and solve computational problems. I offer a three part article giving an exact example of a concept space:
+        </p>
+
+        <ol>
+          <li>
+            <a href="https://github.com/Daniel-Nikpayuk/Mathematics/blob/master/Articles/A%20Computational%20Model%20of%20Reference/Stratified%20Powerset%20(Part%20One)/stratified%20powerset%20(part%20one).pdf">Stratified Powerset (Part One)</a>: Constructs a mathematically oriented rigorously proven, infrastructural layer for our concept space.
+          </li>
+          <li>
+            <a href="https://github.com/Daniel-Nikpayuk/Mathematics/blob/master/Articles/A%20Computational%20Model%20of%20Reference/Stratified%20Powertuple%20(Part%20Two)/stratified%20powertuple%20(part%20two).pdf">Stratified Powertuple (Part Two)</a>: Translates the previously constructed infrastructural layer into a computationally oriented universal data structure.
+          </li>
+          <li>
+            <a href="https://github.com/Daniel-Nikpayuk/Mathematics/blob/master/Articles/A%20Computational%20Model%20of%20Reference/Stratified%20Namespace%20(Part%20Three)/stratified%20namespace%20(part%20three).pdf">Stratified Namespace (Part Three)</a>: Explicates the previously translated universal data structure into an implementation of a concept space, with intent for use as an alternative model of programming language compilers.
+          </li>
+        </ol>
+      </section>
+    </main>
+
+  </body>
+</html>
